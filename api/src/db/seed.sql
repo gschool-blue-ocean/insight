@@ -1,41 +1,50 @@
--- Seed data for the 'users' table
-INSERT INTO users (username, firstName, lastName, emailAddress, password) VALUES
-    ('john_doe', 'John', 'Doe', 'john@example.com', 'password123'),
-    ('jane_smith', 'Jane', 'Smith', 'jane@example.com', 'securepassword');
+INSERT INTO users (username, firstName, lastName, emailAddress, password)
+VALUES
+    ('user1', 'John', 'Doe', 'john.doe@example.com', 'password1'),
+    ('user2', 'Jane', 'Smith', 'jane.smith@example.com', 'password2'),
+    ('user3', 'Alice', 'Johnson', 'alice.johnson@example.com', 'password3'),
+    ('user4', 'Bob', 'Brown', 'bob.brown@example.com', 'password4');
 
--- Seed data for the 'cohorts' table
-INSERT INTO cohorts (instructorId, start_date, end_date, nps) VALUES
-    (1, '2023-01-15', '2023-05-15', 85),
-    (2, '2023-02-01', '2023-06-01', 90);
 
--- Seed data for the 'instructors' table
-INSERT INTO instructors (userId) VALUES
-    (1),
-    (2);
+INSERT INTO instructors (userId)
+VALUES
+    (1),  
+    (3); 
 
--- Seed data for the 'students' table
-INSERT INTO students (cohortId, userId) VALUES
-    (1, 1),
-    (1, 2),
-    (2, 1);
 
--- Seed data for the 'assignments' table
-INSERT INTO assignments (title, due_date, description, cohortId) VALUES
-    ('Assignment 1', '2023-02-15', 'Complete exercises 1-5', 1),
-    ('Assignment 2', '2023-03-01', 'Write a research paper', 2);
+INSERT INTO cohorts (instructorId, start_date, end_date, nps)
+VALUES
+    (1, DATE '2023-01-01', DATE '2023-06-30', 85), 
+    (2, DATE '2023-02-15', DATE '2023-07-31', 90); 
 
--- Seed data for the 'avg_grades' table
-INSERT INTO avg_grades (score, studentId, cohortId) VALUES
-    (85, 1, 1),
-    (90, 2, 1),
-    (88, 3, 2);
 
--- Seed data for the 'attendance' table
-INSERT INTO attendance (absences, cohort_length, studentId) VALUES
-    (2, 120, 1),
-    (3, 120, 2),
-    (1, 120, 3);
+INSERT INTO students (cohortId, userId)
+VALUES
+    (1, 2),  
+    (1, 4);  
 
--- Seed data for the 'admin' table
-INSERT INTO admin (userId) VALUES
-    (1);
+
+INSERT INTO assignments (title, due_date, description, cohortId)
+VALUES
+    ('Assignment 1', DATE '2023-02-01', 'Description for Assignment 1', 1),  
+    ('Assignment 2', DATE '2023-03-15', 'Description for Assignment 2', 1);  
+
+
+INSERT INTO avg_grades (score, studentId, cohortId)
+VALUES
+    (90, 1, 1),  
+    (88, 2, 1);  
+
+
+INSERT INTO attendance (absences, cohort_length, studentId)
+VALUES
+    (3, 180, 2), 
+    (5, 180, 4); 
+
+-- Sample admin
+INSERT INTO admin (userId)
+VALUES
+    (1);  
+
+
+
