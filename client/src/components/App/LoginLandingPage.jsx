@@ -1,5 +1,8 @@
 import React from "react";
 const LoginLandingPage = () => {
+  const handleSubmit = () => {
+    //handle it
+  };
   return (
     <>
       <div
@@ -15,24 +18,32 @@ const LoginLandingPage = () => {
               id="loginBox"
               className="flex flex-col gap-[2rem] items-center justify-center h-full w-3/4"
             >
-              <div id="loginTitle" className="flex">
-                <img src="/assets/Logo.svg" alt="" id="Logo" className="" />
-                <h1 className="font-title text-white font-bold text-[48px]">
+              <div id="loginTitle" className="flex items-center">
+                <img src="/assets/Logo.svg" alt="" id="Logo" className="h-[65px] w-[65px]"/>
+                <h1 className="font-title text-white font-bold text-[65px]">
                   Insight
                 </h1>
               </div>
-              <form action="POST" className="flex flex-col gap-[1.5rem] w-full items-center">
+              <form
+                action="POST"
+                className="flex flex-col gap-[1.5rem] w-full items-center"
+              >
                 <input
                   type="text"
                   placeholder="username"
-                  className="bg-[#b0afaf] w-2/5 h-[2.5rem] rounded-[10px] text-white text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-white placeholder:font-bold"
+                  className="bg-[#b0afaf] w-2/5 h-[2.5rem] font-Sig font-bold rounded-[10px] text-white text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-white placeholder:font-bold focus:shadow-focus-purple"
                 />
                 <input
-                  type="text"
+                  type="password"
                   placeholder="password"
-                  className="bg-[#b0afaf] w-2/5 h-[2.5rem] rounded-[10px] text-white text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-white placeholder:font-bold"
+                  className="bg-[#b0afaf] font- w-2/5 h-[2.5rem] font-Sig rounded-[10px] text-white text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-white placeholder:font-bold focus:shadow-focus-purple"
                 />
-                <input type="submit" value="Login" className="bg-[#b0afaf] w-[15%] h-[1.75rem] rounded-xl"/>
+                <input
+                  onSubmit={handleSubmit}
+                  type="submit"
+                  value="Login"
+                  className="bg-[#b0afaf] w-[15%] h-[2.25rem] rounded-xl text-white font-Sig hover:shadow-focus-purple"
+                />
               </form>
             </div>
           </div>
