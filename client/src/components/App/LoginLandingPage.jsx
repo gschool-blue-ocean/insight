@@ -9,23 +9,18 @@ const LoginLandingPage = () => {
         id="pageContainer"
         className="bg-[url('/assets/cityBackground.jpg')] bg-cover bg-center  h-screen"
       >
-        <div className="bg-[green] bg-opacity-[0.3] w-full h-screen flex justify-center items-center">
+        <div className="bg-DGLogin bg-opacity-[0.8] w-full h-screen flex justify-center items-center">
           <div
             id="loginContainer"
-            className="w-1/2 bg-white bg-opacity-[0.2] h-1/3 rounded-[3rem] flex justify-center items-center"
+            className="w-1/2 bg-BGboxDM bg-opacity-[0.6] h-1/3 rounded-[3rem] flex justify-center items-center"
           >
             <div
               id="loginBox"
               className="flex flex-col gap-[2rem] items-center justify-center h-full w-3/4"
             >
               <div id="loginTitle" className="flex items-center">
-                <img
-                  src="/assets/Logo.svg"
-                  alt=""
-                  id="Logo"
-                  className="h-[65px] w-[65px]"
-                />
-                <h1 className="font-title text-white font-bold text-[65px]">
+                <img src="/assets/Logo.svg" alt="" id="Logo" />
+                <h1 className="font-title text-white font-[800] text-[65px]">
                   Insight
                 </h1>
               </div>
@@ -36,18 +31,18 @@ const LoginLandingPage = () => {
                 <input
                   type="text"
                   placeholder="username"
-                  className="bg-[#b0afaf] w-2/5 h-[2.5rem] font-Sig font-bold rounded-[10px] text-white text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-white placeholder:font-bold focus:shadow-focus-purple"
+                  className="bg-DGrayLogin opacity-[0.9] w-2/5 h-[3.25rem] font-Sig font-bold rounded-[10px] text-white text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-white placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusDM-orange"
                 />
                 <input
                   type="password"
                   placeholder="password"
-                  className="bg-[#b0afaf] font- w-2/5 h-[2.5rem] font-Sig rounded-[10px] text-white text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-white placeholder:font-bold focus:shadow-focus-purple"
+                  className="bg-DGrayLogin opacity-[0.9] font- w-2/5 h-[3.25rem] font-Sig rounded-[10px] text-white text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-white placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusDM-orange"
                 />
                 <input
                   onSubmit={handleSubmit}
                   type="submit"
                   value="Login"
-                  className="bg-[#b0afaf] w-[15%] h-[2.25rem] rounded-xl text-white font-Sig hover:shadow-focus-purple"
+                  className="bg-DGrayLogin w-[15%] h-[2.25rem] rounded-xl text-white text-[1.25rem] font-Sig hover:shadow-focusDM-orange"
                 />
               </form>
             </div>
