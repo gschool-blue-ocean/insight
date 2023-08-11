@@ -19,7 +19,12 @@ const LoginLandingPage = () => {
               className="flex flex-col gap-[2rem] items-center justify-center h-full w-3/4"
             >
               <div id="loginTitle" className="flex items-center">
-                <img src="/assets/Logo.svg" alt="" id="Logo" className="h-[65px] w-[65px]"/>
+                <img
+                  src="/assets/Logo.svg"
+                  alt=""
+                  id="Logo"
+                  className="h-[65px] w-[65px]"
+                />
                 <h1 className="font-title text-white font-bold text-[65px]">
                   Insight
                 </h1>
