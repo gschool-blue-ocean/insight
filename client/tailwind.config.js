@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        Sig: ['Lato', 'sans-serif'],
+        title: ['Libre Franklin', 'sans serif']
+      }
+    },
   },
   plugins: [],
 }
