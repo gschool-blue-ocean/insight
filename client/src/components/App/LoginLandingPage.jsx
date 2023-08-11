@@ -2,7 +2,7 @@ import React from 'react';
 const LoginLandingPage = () => {
     return (
         <>
-        <div id="pageContainer" className='bg-black'>
+        <div id="pageContainer" className='bg-gradient-to-t'>
       <div id="loginContainer">
         <div id="loginInputBox">
           <div id="loginTitle">
