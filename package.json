@@ -7,10 +7,15 @@
     "test": "concurrently \"npm:test:*\"",
     "ci": "npm run lint && npm run test",
     "test:client": "npm run test --prefix=client",
-    "test:api": "npm run test --prefix=api"
+    "test:api": "npm run test --prefix=api",
+    "server": "nodemon ./api/src/index.js"
   },
   "devDependencies": {
     "concurrently": "^7.1.0",
     "prettier": "^2.8.4"
+  },
+  "dependencies": {
+    "client": "file:client",
+    "nodemon": "^3.0.1"
   }
 }
