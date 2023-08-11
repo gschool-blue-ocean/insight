@@ -3,17 +3,23 @@ const LoginLandingPage = () => {
   const handleSubmit = () => {
     //handle it
   };
+  const handleToggle = () => {
+    //handle it
+  }
   return (
     <>
       <div
         id="pageContainer"
-        className="bg-[url('/assets/cityBackground.jpg')] bg-cover bg-center  h-screen"
+        className="bg-[url('/assets/cityBackground.jpg')] bg-cover bg-center h-screen"
       >
         <div className="bg-DGLogin bg-opacity-[0.8] w-full h-screen flex justify-center items-center">
           <div
             id="loginContainer"
-            className="w-1/2 bg-BGboxDM bg-opacity-[0.6] h-1/3 rounded-[3rem] flex justify-center items-center"
+            className="w-1/2 bg-BGboxDM bg-opacity-[0.6] h-1/3 rounded-[3rem] flex justify-evenly items-center"
           >
+            <div id="toggleContainer" className="h-full flex flex-col justify-start pt-[2rem]">
+              <img src="assets/toggleOn.svg" alt="das toggle" onClick={handleToggle}/>
+            </div>
             <div
               id="loginBox"
               className="flex flex-col gap-[2rem] items-center justify-center h-full w-3/4"
@@ -41,11 +47,12 @@ const LoginLandingPage = () => {
                 <input
                   onSubmit={handleSubmit}
                   type="submit"
-                  value="Login"
+                  value="login"
                   className="bg-DGrayLogin w-[15%] h-[2.25rem] rounded-xl text-white text-[1.25rem] font-Sig hover:shadow-focusDM-orange"
                 />
               </form>
             </div>
+            <div id="spacer" className="w-[30px]"></div>
           </div>
         </div>
       </div>
