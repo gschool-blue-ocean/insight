@@ -1,5 +1,7 @@
 import React from "react";
+import LandingPageContext from "./LandingPageContext";
 const LoginLandingPage = () => {
+  const data = useContext(LandingPageContext)
   const handleSubmit = () => {
     //handle it
   };
