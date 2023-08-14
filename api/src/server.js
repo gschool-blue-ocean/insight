@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import pg from "pg";
 import dotenv from "dotenv";
+import userRoutes from "./userRoutes.js";
 dotenv.config()
 
 //DBSTRING CONNECTION
@@ -10,30 +11,16 @@ const db = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 const app = express();
 
 //MIDDLEWARES
+userRoutes(app)
 app.use(express.json());
 app.use(cors({ origin: "*" }))
 // app.use(express.static("dist"));
 
 
 //**ROUTES FOR USERS CARL PLEASE FIX IT FOR AUTH*/
-app.get("/users", async (req, res) => {
-  try {
-    const results = await db.query(`SELECT * FROM users`);
-    res.status(200).json(results.rows);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
 
-app.get("/users/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    const results = await db.query(`SELECT * FROM students WHERE id = ${id}`);
-    res.status(200).json(results.rows);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
+
+
 
 //POST REQUIRES BODY DATA
 app.post("/users", async (req, res) => {
@@ -158,6 +145,4 @@ app.delete("/students/:id", async (req, res) => {
   }
 });
 
-
-
-export default app;
+export { app, db }
