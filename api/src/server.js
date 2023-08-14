@@ -14,30 +14,6 @@ const app = express();
 userRoutes(app)
 app.use(express.json());
 app.use(cors({ origin: "*" }))
-// app.use(express.static("dist"));
-
-
-//**ROUTES FOR USERS CARL PLEASE FIX IT FOR AUTH*/
-
-
-
-
-//POST REQUIRES BODY DATA
-app.post("/users", async (req, res) => {
-  const { username, firstName, lastName, emailAddress, password } = req.body;
-  try {
-    const results = await db.query(
-      `INSERT INTO users (username, firstName, lastName, emailAddress, password) VALUES ( ('${username}'), ('${firstName}'), ('${lastName}'), ('${emailAddress}'), ('${password}') ) RETURNING *`
-    );
-    if (results.rowCount === 0) {
-      res.status(404).send("Cannot Find User");
-    } else {
-      res.status(200).json(results.rows[0]);
-    }
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
 
 //PUT REQUIRES AN ID AND BODY DATA
 app.put("/users/:id", async (req, res) => {
