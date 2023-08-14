@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS assignments;
 DROP TABLE IF EXISTS avg_grades;
 DROP TABLE IF EXISTS attendance;
 DROP TABLE IF EXISTS admin;
+-- DROP TABLE IF EXISTS passwords;
 
 CREATE TABLE IF NOT EXISTS users (
     userId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -72,3 +73,10 @@ CREATE TABLE IF NOT EXISTS admin (
     userId INTEGER,
     FOREIGN KEY (userId) REFERENCES users (userId) ON DELETE CASCADE
 );
+
+-- CREATE TABLE IF NOT EXISTS passwords (
+--     passwordId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+--     password varchar(100),
+--     userId int,
+--     FOREIGN KEY (userId) REFERENCES users (userId) ON DELETE CASCADE
+-- );

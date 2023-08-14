@@ -18,7 +18,7 @@ app.use(cors({ origin: "*" }))
 //**ROUTES FOR USERS CARL PLEASE FIX IT FOR AUTH*/
 app.get("/users", async (req, res) => {
   try {
-    const results = await pool.query(`SELECT * FROM users`);
+    const results = await db.query(`SELECT * FROM users`);
     res.status(200).json(results.rows);
   } catch (err) {
     res.status(500).send(err.message);
@@ -39,7 +39,7 @@ app.get("/users/:id", async (req, res) => {
 app.post("/users", async (req, res) => {
   const { username, firstName, lastName, emailAddress, password } = req.body;
   try {
-    const results = await pool.query(
+    const results = await db.query(
       `INSERT INTO users (username, firstName, lastName, emailAddress, password) VALUES ( ('${username}'), ('${firstName}'), ('${lastName}'), ('${emailAddress}'), ('${password}') ) RETURNING *`
     );
     if (results.rowCount === 0) {
@@ -57,7 +57,7 @@ app.put("/users/:id", async (req, res) => {
   const { id } = req.params;
   const put = req.body;
   try {
-    const results = await pool.query(
+    const results = await db.query(
       `UPDATE users SET username = ('${put.username}'), firstName = ('${put.firstName}'), lastName = ('${put.lastName}'), emailAddress = ('${put.emailAddress}') WHERE id = ${id} RETURNING *`
     );
     if (results.rowCount === 0) {
@@ -74,7 +74,7 @@ app.put("/users/:id", async (req, res) => {
 app.delete("/users/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const results = await pool.query(`DELETE FROM users WHERE id = ${id}`);
+    const results = await db.query(`DELETE FROM users WHERE id = ${id}`);
     if (results.rowCount === 0) {
       res.status(404).send("Cannot Find Users");
     } else {
@@ -91,7 +91,7 @@ app.delete("/users/:id", async (req, res) => {
 //**ROUTES FOR STUDENTS NEEDS WORK*/
 app.get("/students", async (req, res) => {
   try {
-    const results = await pool.query(`SELECT * FROM blogs`);
+    const results = await db.query(`SELECT * FROM blogs`);
     res.status(200).json(results.rows);
   } catch (err) {
     res.status(500).send(err.message);
@@ -112,7 +112,7 @@ app.get("/students/:id", async (req, res) => {
 app.post("/students", async (req, res) => {
   const student = req.body;
   try {
-    const results = await pool.query(
+    const results = await db.query(
       `INSERT INTO blogs (author, blogs_title, blogs_body) VALUES ( ('${student.userName}'), ('${student.something}'), ('${student.something}') ) RETURNING *`
     );
     if (results.rowCount === 0) {
@@ -130,7 +130,7 @@ app.put("/students/:id", async (req, res) => {
   const { id } = req.params;
   const post = req.body;
   try {
-    const results = await pool.query(
+    const results = await db.query(
       `UPDATE blogs SET author = ('${post.author}'), blogs_title = ('${post.blogs_title}'), blogs_body = ('${post.blogs_body}') WHERE id = ${id} RETURNING *`
     );
     if (results.rowCount === 0) {
@@ -147,7 +147,7 @@ app.put("/students/:id", async (req, res) => {
 app.delete("/students/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const results = await pool.query(`DELETE FROM blogs WHERE id = ${id}`);
+    const results = await db.query(`DELETE FROM blogs WHERE id = ${id}`);
     if (results.rowCount === 0) {
       res.status(404).send("Cannot Find Blog Post");
     } else {
