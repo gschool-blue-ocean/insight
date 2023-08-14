@@ -1,6 +1,4 @@
-import { app, db } from "./server.js";
-// import dotenv from "dotenv";
-// dotenv.config();
+import { app, db } from "../server.js";
 
 const userRoutes = (app) => {
   app.get("/users", async (req, res) => {

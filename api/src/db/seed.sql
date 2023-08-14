@@ -1,16 +1,16 @@
 INSERT INTO users (username, firstName, lastName, emailAddress, role)
 VALUES
-    ('user1', 'John', 'Doe', 'john.doe@example.com', 'admin'),
-    ('user2', 'Jane', 'Smith', 'jane.smith@example.com', 'student'),
-    ('user3', 'Alice', 'Johnson', 'alice.johnson@example.com', 'instructor'),
-    ('user4', 'Bob', 'Brown', 'bob.brown@example.com', 'student');
+    ('MrHawkins', 'John', 'Hawkins', 'john.hawkins@example.com', 'instructor'),
+    ('BubbaHoundstooth', 'Temuera', 'Morrison', 'temuera.morrison@example.com', 'admin'),
+    ('TrishJenkins', 'Trish', 'Jenkins', 'trish.jenkins@example.com', 'student'),
+    ('MrsMarmalade', 'Jane', 'marmalade', 'jane.marmalade@example.com', 'student');
 
 
 INSERT INTO instructors (userId)
 VALUES
     (1),  
-    (3); 
-
+    (2); 
+    
 
 INSERT INTO cohorts (instructorId, start_date, end_date, nps)
 VALUES
@@ -20,7 +20,7 @@ VALUES
 
 INSERT INTO students (cohortId, userId)
 VALUES
-    (1, 2),  
+    (1, 3),  
     (1, 4);  
 
 
@@ -41,17 +41,16 @@ VALUES
     (3, 180, 1), 
     (5, 180, 2); 
 
--- Sample admin
 INSERT INTO admin (userId)
 VALUES
-    (1);  
+    (2);  
 
 
 INSERT INTO passwords (password, userId) 
 VALUES 
-    ('', 1),
-    ('', 2),
-    ('', 3),
-    ('', 4);
+    ('$2b$10$AEYCw0WmKHdj3DKi1.94QelhQ28KeVisxk9XJ2FVFgZp8VQ3S0o0O', 1),
+    ('$2b$10$oj6cVKykXaBXmi47NZWFMuIrknLVCFdlIxf/1aRqwrbw/B.ArrfJ.', 2),
+    ('$2b$10$fbRPquGm/6BLLTJW9oRQuuKAN25mckxXYSHIYVA.6N5GxXvt15TKu', 3),
+    ('$2b$10$/bEcJM4c1xu48CfWYt6eWuBjmC9CjXs9CSGSq3uJCBXK7tRQrG59m', 4);
 
 
