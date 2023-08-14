@@ -60,8 +60,8 @@ const LoginLandingPage = () => {
                 <h1
                   className={
                     isDarkMode
-                      ? "font-title text-white font-[800] text-[65px]"
-                      : "font-title text-black font-[800] text-[65px]"
+                      ? "font-title text-white font-black text-[55px]"
+                      : "font-title text-black font-black text-[55px]"
                   }
                 >
                   Insight
@@ -76,8 +76,8 @@ const LoginLandingPage = () => {
                   placeholder="username"
                   className={
                     isDarkMode
-                      ? "bg-DGrayLogin opacity-[0.9] w-2/5 h-[3.25rem] font-Sig font-bold rounded-[10px] text-white text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-white placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusDM-orange"
-                      : "bg-LGrayLogin opacity-[0.9] w-2/5 h-[3.25rem] font-Sig font-bold rounded-[10px] text-black text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-black placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusLM-purple"
+                      ? "bg-DGrayLogin opacity-[0.9] w-3/5 h-[3.25rem] font-Sig font-bold rounded-[10px] text-white text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-white placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusDM-orange"
+                      : "bg-LGrayLogin opacity-[0.9] w-3/5 h-[3.25rem] font-Sig font-bold rounded-[10px] text-black text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-black placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusLM-purple"
                   }
                 />
                 <input
@@ -85,18 +85,18 @@ const LoginLandingPage = () => {
                   placeholder="password"
                   className={
                     isDarkMode
-                      ? "bg-DGrayLogin opacity-[0.9] w-2/5 h-[3.25rem] font-Sig font-bold rounded-[10px] text-white text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-white placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusDM-orange"
-                      : "bg-LGrayLogin opacity-[0.9] w-2/5 h-[3.25rem] font-Sig font-bold rounded-[10px] text-black text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-black placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusLM-purple"
+                      ? "bg-DGrayLogin opacity-[0.9] w-3/5 h-[3.25rem] font-Sig font-bold rounded-[10px] text-white text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-white placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusDM-orange"
+                      : "bg-LGrayLogin opacity-[0.9] w-3/5 h-[3.25rem] font-Sig font-bold rounded-[10px] text-black text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-black placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusLM-purple"
                   }
                 />
                 <input
                   onSubmit={handleSubmit}
                   type="submit"
-                  value="login"
+                  value="Login"
                   className={
                     isDarkMode
-                      ? "bg-DGrayLogin w-[15%] h-[2.25rem] rounded-xl text-white text-[1.25rem] font-Sig hover:shadow-focusDM-orange"
-                      : "bg-LGrayLogin w-[15%] h-[2.25rem] rounded-xl text-black text-[1.25rem] font-Sig hover:shadow-focusLM-purple"
+                      ? "bg-DGrayLogin w-[30%] h-[2.25rem] rounded-[5rem] text-white text-[1.25rem] font-Sig hover:shadow-focusDM-orange"
+                      : "bg-LGrayLogin w-[30%] h-[2.25rem] rounded-[5rem] text-black text-[1.25rem] font-Sig hover:shadow-focusLM-purple"
                   }
                 />
               </form>
