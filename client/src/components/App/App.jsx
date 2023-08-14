@@ -1,11 +1,14 @@
 import React from "react";
-import LoginLandingPage from "./LoginLandingPage"
+import LoginLandingPage from "./LandingPage/LoginLandingPage"
+import { LandingPageProvider } from './LandingPage/LandingPageContext'
 const App = () => {
   
 
   return (
     <>
-    <LoginLandingPage />
+    <LandingPageProvider>
+      <LoginLandingPage />
+    </LandingPageProvider>
     </>
   );
 };
