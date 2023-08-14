@@ -101,8 +101,8 @@ const LoginLandingPage = () => {
                     value="Login"
                     className={
                       isDarkMode
-                        ? "bg-DGrayLogin w-[30%] h-[2.25rem] rounded-[5rem] text-white text-[1.25rem] font-Sig hover:shadow-focusDM-orange"
-                        : "bg-LGrayLogin w-[30%] h-[2.25rem] rounded-[5rem] text-black text-[1.25rem] font-Sig hover:shadow-focusLM-purple"
+                        ? "bg-DGrayLogin w-[30%] h-[2.25rem] rounded-[5rem] text-white text-[1.25rem] font-Sig hover:shadow-focusDM-orange cursor-pointer"
+                        : "bg-LGrayLogin w-[30%] h-[2.25rem] rounded-[5rem] text-black text-[1.25rem] font-Sig hover:shadow-focusLM-purple cursor-pointer"
                     }
                   />
                 </form>

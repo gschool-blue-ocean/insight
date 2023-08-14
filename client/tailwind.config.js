@@ -20,7 +20,8 @@ export default {
         DGrayLogin : '#5D6564',
         LGrayLogin : '#DADADA',
         BGboxDM : '#465F59',
-        BGboxLM: '#DDFCF8'
+        BGboxLM: '#DDFCF8',
+        ContentBGDM: '#3E6F5D'
       }
     },
   },

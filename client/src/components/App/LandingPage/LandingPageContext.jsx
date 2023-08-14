@@ -3,9 +3,32 @@ const LandingPageContext = createContext();
 export const LandingPageProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isStudents, setIsStudents] = useState(false);
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const daysOfWeek = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
   return (
     <LandingPageContext.Provider
-      value={{ isDarkMode, setIsDarkMode, isStudents, setIsStudents }}
+      value={{ isDarkMode, setIsDarkMode, isStudents, setIsStudents, daysOfWeek, monthNames }}
     >
       {children}
     </LandingPageContext.Provider>
