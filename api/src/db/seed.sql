@@ -1,9 +1,9 @@
-INSERT INTO users (username, firstName, lastName, emailAddress, password)
+INSERT INTO users (username, firstName, lastName, emailAddress, role)
 VALUES
-    ('user1', 'John', 'Doe', 'john.doe@example.com', 'pass'),
-    ('user2', 'Jane', 'Smith', 'jane.smith@example.com', 'pass'),
-    ('user3', 'Alice', 'Johnson', 'alice.johnson@example.com', 'pass'),
-    ('user4', 'Bob', 'Brown', 'bob.brown@example.com', 'pass');
+    ('user1', 'John', 'Doe', 'john.doe@example.com', 'admin'),
+    ('user2', 'Jane', 'Smith', 'jane.smith@example.com', 'student'),
+    ('user3', 'Alice', 'Johnson', 'alice.johnson@example.com', 'instructor'),
+    ('user4', 'Bob', 'Brown', 'bob.brown@example.com', 'student');
 
 
 INSERT INTO instructors (userId)
@@ -38,8 +38,8 @@ VALUES
 
 INSERT INTO attendance (absences, cohort_length, studentId)
 VALUES
-    (3, 180, 2), 
-    (5, 180, 4); 
+    (3, 180, 1), 
+    (5, 180, 2); 
 
 -- Sample admin
 INSERT INTO admin (userId)
@@ -47,6 +47,11 @@ VALUES
     (1);  
 
 
--- INSERT INTO passwords (password, userId) VALUES ()
+INSERT INTO passwords (password, userId) 
+VALUES 
+    ('', 1),
+    ('', 2),
+    ('', 3),
+    ('', 4);
 
 
