@@ -7,6 +7,7 @@ import attendanceRoutes from "./misc/attendance.js";
 import gradeRoutes from "./misc/avg_grades.js";
 import userRoutes from "./roles/userRoutes.js";
 import dotenv from "dotenv";
+import loginRoute from "./misc/loginRoute.js";
 dotenv.config();
 
 //DBSTRING CONNECTION
@@ -24,6 +25,6 @@ app.use(cors({ origin: "*" }));
 app.use("/assignments", assignmentRoutes);
 app.use("/attendance", attendanceRoutes);
 app.use("/grades", gradeRoutes);
-
+app.use("/login", loginRoute);
 
 export { app, db };

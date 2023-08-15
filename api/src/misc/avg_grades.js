@@ -1,9 +1,6 @@
 import express from "express";
 const router = express.Router();
-import pg from "pg";
-import dotenv from "dotenv";
-
-const db = new pg.Pool({ connectionString: process.env.DATABASE_URL });
+import { db } from "../server.js";
 
 //!grades ROUTES should be good
 router.get("/", async (req, res) => {
