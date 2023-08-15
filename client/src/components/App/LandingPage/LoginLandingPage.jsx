@@ -1,5 +1,9 @@
 import React, { useContext } from "react";
 import LandingPageContext from "./LandingPageContext";
+import LogoDM from '/assets/Logo/LogoDM.svg'
+import LogoLM from '/assets/Logo/LogoLM.svg'
+import toggleDM from '/assets/toggle/toggleOnOffDM.svg'
+import toggleLM from '/assets/toggle/toggleOnOffLM.svg'
 
 const LoginLandingPage = () => {
   const { isDarkMode, setIsDarkMode, isStudents, setIsStudents } =
@@ -47,8 +51,8 @@ const LoginLandingPage = () => {
               id="loginContainer"
               className={
                 isDarkMode
-                  ? `w-1/2 bg-BGboxDM bg-opacity-[0.6] h-1/3 rounded-[3rem] flex justify-evenly items-center`
-                  : `w-1/2 bg-BGboxLM bg-opacity-[0.6] h-1/3 rounded-[3rem] flex justify-evenly items-center`
+                  ? `w-1/2 bg-BGboxDM bg-opacity-[0.6] h-1/2 rounded-[3rem] flex justify-evenly items-center`
+                  : `w-1/2 bg-BGboxLM bg-opacity-[0.6] h-1/2 rounded-[3rem] flex justify-evenly items-center`
               }
             >
               <div
@@ -57,14 +61,14 @@ const LoginLandingPage = () => {
               >
                 {isDarkMode ? (
                   <img
-                    src="assets/toggle/toggleOnOffDM.svg"
+                    src={toggleDM}
                     alt="das toggle"
                     onClick={handleToggle}
                     className="cursor-pointer"
                   />
                 ) : (
                   <img
-                    src="assets/toggle/toggleOnOffLM.svg"
+                    src={toggleLM}
                     alt="das toggle"
                     onClick={handleToggle}
                     className="cursor-pointer"
@@ -77,9 +81,9 @@ const LoginLandingPage = () => {
               >
                 <div id="loginTitle" className="flex items-center">
                   {isDarkMode ? (
-                    <img src="/assets/Logo/LogoDM.svg" alt="" id="Logo" />
+                    <img src={LogoDM} alt="" id="Logo" />
                   ) : (
-                    <img src="/assets/Logo/LogoLM.svg" alt="" id="Logo" />
+                    <img src={LogoLM} alt="" id="Logo" />
                   )}
                   <h1
                     className={
@@ -94,7 +98,7 @@ const LoginLandingPage = () => {
                 </div>
                 <form
                   action="POST"
-                  className="flex flex-col gap-[1.5rem] w-full items-center"
+                  className="flex flex-col gap-[1.5rem] w-full items-center pb-[2rem]"
                 >
                   <input
                     type="text"
