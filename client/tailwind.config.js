@@ -9,7 +9,7 @@ export default {
         robot: ["Roboto Serif", "sans serif"]
       },
       boxShadow: {
-        "focusDM-orange": "0 0 5px 5px #F0BE5E",
+        "focusDM-orange": "0 0 3px 3px #F0BE5E",
         "focusLM-purple": "0 0 5px 5px #875598"
       },
       colors: {
@@ -20,9 +20,13 @@ export default {
         DGrayLogin : '#5D6564',
         LGrayLogin : '#DADADA',
         BGboxDM : '#465F59',
-        BGboxLM: '#DDFCF8'
+        BGboxLM: '#DDFCF8',
+        ContentBGDM: '#3E6F5D',
+        lighterGray: '#6D7170'
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')
+  ],
 };
