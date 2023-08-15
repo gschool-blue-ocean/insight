@@ -9,7 +9,6 @@ const App = () => {
       <LandingPageProvider>
         <LoginLandingPage />
         <StudentsPage />
-        <Assignments />
       </LandingPageProvider>
     </>
   );
