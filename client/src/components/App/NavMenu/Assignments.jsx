@@ -32,7 +32,7 @@ const Assignments = () => {
         >
           <p className="font-bold text-[1.75rem] pb-[1.5rem]">Assignments</p>
         </div>
-        <div className="w-[95%] mt-[.5rem] border-[1px] overflow-y-scroll max-h-[60%] scrollbar-thin scrollbar-track-ContentBGDM scrollbar-thumb-DGLogin border-white">
+        <div className="w-[95%] mt-[.5rem] border-[1px] overflow-y-scroll max-h-[60%] scrollbar-thin scrollbar-rounded-[20px] scrollbar-track-ContentBGDM scrollbar-thumb-DGLogin border-white">
           <table className="w-full overflow-y-scroll max-h-[80%]">
             <thead className="text-[#DCD3EB] text-[1.25rem]">
               <tr>

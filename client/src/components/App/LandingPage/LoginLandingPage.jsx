@@ -1,5 +1,9 @@
 import React, { useContext } from "react";
 import LandingPageContext from "./LandingPageContext";
+import LogoDM from '/assets/Logo/LogoDM.svg'
+import LogoLM from '/assets/Logo/LogoLM.svg'
+import toggleDM from '/assets/toggle/toggleOnOffDM.svg'
+import toggleLM from '/assets/toggle/toggleOnOffLM.svg'
 
 const LoginLandingPage = () => {
   const { isDarkMode, setIsDarkMode, isStudents, setIsStudents } =
@@ -57,14 +61,14 @@ const LoginLandingPage = () => {
               >
                 {isDarkMode ? (
                   <img
-                    src="assets/toggle/toggleOnOffDM.svg"
+                    src={toggleDM}
                     alt="das toggle"
                     onClick={handleToggle}
                     className="cursor-pointer"
                   />
                 ) : (
                   <img
-                    src="assets/toggle/toggleOnOffLM.svg"
+                    src={toggleLM}
                     alt="das toggle"
                     onClick={handleToggle}
                     className="cursor-pointer"
@@ -77,9 +81,9 @@ const LoginLandingPage = () => {
               >
                 <div id="loginTitle" className="flex items-center">
                   {isDarkMode ? (
-                    <img src="/assets/Logo/LogoDM.svg" alt="" id="Logo" />
+                    <img src={LogoDM} alt="" id="Logo" />
                   ) : (
-                    <img src="/assets/Logo/LogoLM.svg" alt="" id="Logo" />
+                    <img src={LogoLM} alt="" id="Logo" />
                   )}
                   <h1
                     className={
