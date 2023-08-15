@@ -7,7 +7,7 @@ router.use(express.json());
 
 router.get("/", async (req, res) => {
   try {
-    const results = await db.query(`SELECT * FROM users`);
+    const results = await db.query(`SELECT * FROM instructors`);
     res.status(200).json(results.rows);
   } catch (err) {
     res.status(500).send(err.message);
@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const results = await db.query(`SELECT * FROM users WHERE userId = ${id}`);
+    const results = await db.query(`SELECT * FROM instructors WHERE instructorid = ${id}`);
     results.rowCount === 0
       ? res.status(400).send("User not found")
       : res.status(200).json(results.rows);
@@ -27,10 +27,10 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { username, firstname, lastname, role } = req.body;
+  const { userid } = req.body;
   try {
     const results = await db.query(
-      `INSERT INTO users (username, firstname, lastname, role) VALUES ( ('${username}'), ('${firstname}'), ('${lastname}'), ('${role}') ) RETURNING *`
+      `INSERT INTO instructors (userid) VALUES ('${userid}') RETURNING *`
     );
     if (results.rowCount === 0) {
       res.status(404).send("Cannot Find User");
@@ -44,10 +44,10 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
-  const { username, firstname, lastname, role } = req.body;
+  const { userid } = req.body;
   try {
     const results = await db.query(
-      `UPDATE users SET username = ('${username}'), firstname = ('${firstname}'), lastname = ('${lastname}'), role = ('${role}') WHERE userId = ${id} RETURNING *`
+      `UPDATE instructors SET userid = '${userid}' WHERE instructorid = ${id} RETURNING *`
     );
     if (results.rowCount === 0) {
       res.status(404).send("Cannot Find User");
@@ -62,7 +62,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const results = await db.query(`DELETE FROM users WHERE userId = ${id}`);
+    const results = await db.query(`DELETE FROM instructors WHERE instructorid = ${id}`);
     if (results.rowCount === 0) {
       res.status(404).send("Cannot Find User");
     } else {
