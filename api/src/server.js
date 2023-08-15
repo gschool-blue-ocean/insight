@@ -6,7 +6,7 @@ import assignmentRoutes from "./misc/assignments.js";
 import attendanceRoutes from "./misc/attendance.js";
 import gradeRoutes from "./misc/avg_grades.js";
 import dotenv from "dotenv";
-dotenv.config()
+dotenv.config();
 
 //DBSTRING CONNECTION
 const db = new pg.Pool({ connectionString: process.env.DATABASE_URL });
@@ -92,8 +92,6 @@ app.delete("/users/:id", async (req, res) => {
     res.status(500).send(err.message);
   }
 });
-
-
 
 
 //**ROUTES FOR STUDENTS NEEDS WORK*/
