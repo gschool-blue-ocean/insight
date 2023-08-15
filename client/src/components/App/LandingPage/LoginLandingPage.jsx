@@ -3,6 +3,7 @@ import LandingPageContext from "./LandingPageContext";
 const LoginLandingPage = () => {
   const { isDarkMode, setIsDarkMode, isStudents, setIsStudents } =
     useContext(LandingPageContext);
+    console.log(isDarkMode)
   const handleSubmit = () => {
     //handle it
   };
@@ -12,7 +13,7 @@ const LoginLandingPage = () => {
   const switchScenes = () => {
     setIsStudents(true);
   };
-  if (isStudents) {
+  if (!isStudents) {
     return (
       <>
         <div
@@ -40,7 +41,7 @@ const LoginLandingPage = () => {
               >
                 {isDarkMode ? (
                   <img
-                    src="assets/toggleOnOffDM.svg"
+                    src="assets/toggle/toggleOnOffDM.svg"
                     alt="das toggle"
                     onClick={handleToggle}
                   />
