@@ -1,11 +1,12 @@
+import { db } from "../server.js";
+
 import express from "express";
+
 const router = express.Router();
-import pg from "pg";
-import dotenv from "dotenv";
 
-const db = new pg.Pool({ connectionString: process.env.DATABASE_URL });
+router.use(express.json());
 
-//!assignments ROUTES should be good
+//!assignments ROUTES WORKS
 router.get("/", async (req, res) => {
   try {
     const results = await db.query(`SELECT * FROM assignments`);
@@ -47,7 +48,7 @@ router.post("/", async (req, res) => {
 //PUT REQUIRES AN ID AND BODY DATA
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
- const { title, due_date, description, cohortId } = req.body;
+  const { title, due_date, description, cohortId } = req.body;
   try {
     const results = await db.query(
       `UPDATE assignments SET title = ('${title}'), due_date = ('${due_date}'), description = ('${description}'), cohortId = (${cohortId}) WHERE id = ${id} RETURNING *`
