@@ -1,11 +1,15 @@
-import app from "./server.js";
-import dotenv from "dotenv"
-//pathing up to grab .env config
-dotenv.config({ path: "./../.env" }); 
+import { app } from "./server.js";
+import dotenv from "dotenv";
 
-const PORT = process.env.API_PORT || 3000;
+dotenv.config("api/.env");
 
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
+
+
+
+
+    

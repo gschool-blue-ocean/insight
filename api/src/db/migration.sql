@@ -1,19 +1,19 @@
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS cohorts;
-DROP TABLE IF EXISTS instructors;
-DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS cohorts CASCADE;
+DROP TABLE IF EXISTS instructors CASCADE;
+DROP TABLE IF EXISTS students CASCADE;
 DROP TABLE IF EXISTS assignments;
 DROP TABLE IF EXISTS avg_grades;
 DROP TABLE IF EXISTS attendance;
 DROP TABLE IF EXISTS admin;
+DROP TABLE IF EXISTS passwords;
 
 CREATE TABLE IF NOT EXISTS users (
     userId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     username TEXT,
     firstName TEXT,
     lastName TEXT,
-    emailAddress TEXT,
-    password TEXT
+    role TEXT
 );
 
 CREATE TABLE IF NOT EXISTS instructors (
@@ -35,16 +35,16 @@ CREATE TABLE IF NOT EXISTS students (
     studentId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     cohortId INTEGER,
     userId INTEGER,
+    nps_rating INTEGER,
     FOREIGN KEY (cohortId) REFERENCES cohorts (cohortId) ON DELETE CASCADE,
     FOREIGN KEY (userId) REFERENCES users (userId) ON DELETE CASCADE
 );
-
 
 CREATE TABLE IF NOT EXISTS assignments (
     assignmentId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title TEXT,
     due_date DATE,
-    description text,
+    description TEXT,
     cohortId INTEGER,
     FOREIGN KEY (cohortId) REFERENCES cohorts (cohortId) ON DELETE CASCADE
 );
@@ -58,7 +58,6 @@ CREATE TABLE IF NOT EXISTS avg_grades (
     FOREIGN KEY (cohortId) REFERENCES cohorts (cohortId) ON DELETE CASCADE
 );
 
-
 CREATE TABLE IF NOT EXISTS attendance (
     attendanceId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     absences INTEGER,
@@ -69,6 +68,13 @@ CREATE TABLE IF NOT EXISTS attendance (
 
 CREATE TABLE IF NOT EXISTS admin (
     adminId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    userId INTEGER,
+    FOREIGN KEY (userId) REFERENCES users (userId) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS passwords (
+    passwordId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    password VARCHAR(100),
     userId INTEGER,
     FOREIGN KEY (userId) REFERENCES users (userId) ON DELETE CASCADE
 );
