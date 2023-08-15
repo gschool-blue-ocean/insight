@@ -4,6 +4,7 @@ export const LandingPageProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isStudents, setIsStudents] = useState(false);
   const [profileMenu, setProfileMenu] = useState(false);
+  const [isAssignments, setIsAssignments] = useState(false);
   const monthNames = [
     "January",
     "February",
@@ -37,7 +38,9 @@ export const LandingPageProvider = ({ children }) => {
         daysOfWeek,
         monthNames,
         profileMenu,
-        setProfileMenu
+        setProfileMenu,
+        isAssignments,
+        setIsAssignments
       }}
     >
       {children}

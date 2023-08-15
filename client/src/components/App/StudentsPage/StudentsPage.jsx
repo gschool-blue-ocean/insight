@@ -12,11 +12,13 @@ const StudentsPage = () => {
     setProfileMenu,
     isDarkMode,
     setIsDarkMode,
+    isAssignments,
+    setIsAssignments,
   } = useContext(LandingPageContext);
 
   //testdata
   let studentsFullName = "William Carrot";
-  
+
   const switchScenes = () => {
     setIsStudents(false);
   };
@@ -26,6 +28,9 @@ const StudentsPage = () => {
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
+  const selectAssignments = () => {
+    setIsAssignments(!isAssignments)
+  }
   if (!isStudents) {
     return (
       <>
@@ -125,7 +130,7 @@ const StudentsPage = () => {
               id="navMenu"
               className="pl-[2rem] flex flex-col gap-[1.5rem] pt-[5rem]"
             >
-              <div id="assigmentsContainer" className="flex gap-[1rem]">
+              <div id="assigmentsContainer" className="flex gap-[1rem]" onClick={selectAssignments}>
                 {isDarkMode ? (
                   <img
                     src="/assets/assignment/assignmentDM.svg"
@@ -184,8 +189,7 @@ const StudentsPage = () => {
                   : "bg-BGboxLM w-[70%] rounded-xl ml-[5rem] flex flex-col"
               }
             >
-              {/* <StudentsLanding /> */}
-              <Assignments />
+              {isAssignments ? <Assignments /> : <StudentsLanding />}
             </div>
           </div>
         </div>
