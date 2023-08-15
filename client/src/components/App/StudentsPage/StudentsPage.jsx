@@ -1,5 +1,6 @@
 import LandingPageContext from "../LandingPage/LandingPageContext";
 import React, { useContext } from "react";
+import StudentsLanding from "./StudentsLanding";
 const StudentsPage = () => {
   const {
     isStudents,
@@ -13,19 +14,8 @@ const StudentsPage = () => {
   } = useContext(LandingPageContext);
 
   //testdata
-  let daysMissed = 69;
-  let cohortNumber = 69;
-  let studentsFirstName = "William";
   let studentsFullName = "William Carrot";
-  let GPA = 4.2;
-
-  //dates obj
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
-  const day = currentDate.getDate();
-  const dayOfWeek = currentDate.getDay();
-
+  
   const switchScenes = () => {
     setIsStudents(false);
   };
@@ -129,7 +119,7 @@ const StudentsPage = () => {
               </div>
             </div>
           ) : null}
-          <div id="contentContainer" className="flex pt-[10%] h-[80%] font-Sig">
+          <div id="contentContainer" className="flex pt-[5%] h-[80%] font-Sig">
             <div
               id="navMenu"
               className="pl-[2rem] flex flex-col gap-[1.5rem] pt-[5rem]"
@@ -187,73 +177,14 @@ const StudentsPage = () => {
             </div>
             <div
               id="workHub"
-              className={isDarkMode ? "bg-ContentBGDM w-[70%] rounded-xl ml-[5rem] flex flex-col" : "bg-BGboxLM w-[70%] rounded-xl ml-[5rem] flex flex-col"}
+              className={
+                isDarkMode
+                  ? "bg-ContentBGDM w-[70%] rounded-xl ml-[5rem] flex flex-col"
+                  : "bg-BGboxLM w-[70%] rounded-xl ml-[5rem] flex flex-col"
+              }
             >
-              <div id="workHeader" className="flex justify-between w-full">
-                <div
-                  id="attendanceContainer"
-                  className="pl-[2rem] pt-[1rem] mr-[9%]"
-                >
-                  <p>Attendance</p>
-                  <div id="checkInContainer" className="flex gap-[0.5rem]">
-                    <input type="checkbox" className="cursor-pointer" />
-                    <p>Check-in</p>
-                  </div>
-                  <p>{`${daysMissed} Missed Days`}</p>
-                </div>
-                <div
-                  id="welcomeContainer"
-                  className="flex flex-col items-center pt-[2rem]"
-                >
-                  <h1 className="text-[3rem]">{`Cohort ${cohortNumber}`}</h1>
-                  <p>{`Welcome ${studentsFirstName}`}</p>
-                </div>
-                <div
-                  id="date"
-                  className="flex items-start pt-[1rem] pr-[1rem] gap-[1rem]"
-                >
-                  <p>{`${daysOfWeek[dayOfWeek]} ${monthNames[month]} ${day}, ${year}`}</p>
-                  {isDarkMode ? (
-                    <img
-                      src="/assets/alerts/alertDM.svg"
-                      alt="notification bell"
-                    />
-                  ) : (
-                    <img
-                      src="/assets/alerts/alertLM.svg"
-                      alt="notification bell"
-                    />
-                  )}
-                </div>
-              </div>
-              <div
-                id="analyticsContainer"
-                className="px-[2rem] py-[2rem] text-[1.25rem] flex justify-between items-end h-[80%]"
-              >
-                <div
-                  id="countdown"
-                  className="flex flex-col items-center gap-[1rem]"
-                >
-                  <p>Days till Graduation</p>
-                  <div className="bg-white h-[15rem] w-[15rem]"></div>
-                </div>
-                <div
-                  id="GPA"
-                  className="flex flex-col items-center gap-[1rem] pb-[4rem]"
-                >
-                  <p>{`Current GPA : ${GPA}`}</p>
-                  <div className="bg-white h-[18rem] w-[18rem] rounded-[10rem]"></div>
-                </div>
-                <div
-                  id="assignments"
-                  className="flex flex-col items-center gap-[1rem]"
-                >
-                  <p>Upcoming Assignments</p>
-                  <div className="bg-white h-[15rem] w-[15rem]"></div>
-                </div>
-              </div>
+              {/* <StudentsLanding /> */}
             </div>
-            <div id="spacer"></div>
           </div>
         </div>
       </>
