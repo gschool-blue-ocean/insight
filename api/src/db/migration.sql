@@ -76,5 +76,7 @@ CREATE TABLE IF NOT EXISTS passwords (
     passwordId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     password VARCHAR(100),
     userId INTEGER,
+    token TEXT, 
+    expiration_date DATE,
     FOREIGN KEY (userId) REFERENCES users (userId) ON DELETE CASCADE
 );
