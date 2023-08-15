@@ -1,8 +1,13 @@
+import { db } from "../server.js";
+
 import express from "express";
+
 const router = express.Router();
 import { db } from "../server.js";
 
-//!assignments ROUTES should be good
+router.use(express.json());
+
+//!assignments ROUTES WORKS
 router.get("/", async (req, res) => {
   try {
     const results = await db.query(`SELECT * FROM assignments`);
