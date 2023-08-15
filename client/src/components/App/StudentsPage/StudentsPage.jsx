@@ -11,8 +11,7 @@ const StudentsPage = () => {
     isDarkMode,
     setIsDarkMode,
   } = useContext(LandingPageContext);
-  console.log(isDarkMode);
-  console.log(isStudents);
+
   //testdata
   let daysMissed = 69;
   let cohortNumber = 69;
