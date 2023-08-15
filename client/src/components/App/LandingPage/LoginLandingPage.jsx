@@ -51,8 +51,8 @@ const LoginLandingPage = () => {
               id="loginContainer"
               className={
                 isDarkMode
-                  ? `w-1/2 bg-BGboxDM bg-opacity-[0.6] h-1/3 rounded-[3rem] flex justify-evenly items-center`
-                  : `w-1/2 bg-BGboxLM bg-opacity-[0.6] h-1/3 rounded-[3rem] flex justify-evenly items-center`
+                  ? `w-1/2 bg-BGboxDM bg-opacity-[0.6] h-1/2 rounded-[3rem] flex justify-evenly items-center`
+                  : `w-1/2 bg-BGboxLM bg-opacity-[0.6] h-1/2 rounded-[3rem] flex justify-evenly items-center`
               }
             >
               <div
@@ -98,7 +98,7 @@ const LoginLandingPage = () => {
                 </div>
                 <form
                   action="POST"
-                  className="flex flex-col gap-[1.5rem] w-full items-center"
+                  className="flex flex-col gap-[1.5rem] w-full items-center pb-[2rem]"
                 >
                   <input
                     type="text"

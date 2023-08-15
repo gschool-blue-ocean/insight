@@ -1,5 +1,8 @@
 import React, { useContext } from "react";
 import LandingPageContext from "../LandingPage/LandingPageContext";
+import alertDM from "/assets/alerts/alertDM.svg";
+import alertLM from "/assets/alerts/alertLM.svg";
+
 const StudentsLanding = () => {
   const {
     monthNames,
@@ -44,9 +47,9 @@ const StudentsLanding = () => {
         >
           <p>{`${daysOfWeek[dayOfWeek]} ${monthNames[month]} ${day}, ${year}`}</p>
           {isDarkMode ? (
-            <img src="/assets/alerts/alertDM.svg" alt="notification bell" />
+            <img src={alertDM} alt="notification bell" />
           ) : (
-            <img src="/assets/alerts/alertLM.svg" alt="notification bell" />
+            <img src={alertLM} alt="notification bell" />
           )}
         </div>
       </div>

@@ -2,6 +2,22 @@ import LandingPageContext from "../LandingPage/LandingPageContext";
 import React, { useContext } from "react";
 import StudentsLanding from "./StudentsLanding";
 import Assignments from "../NavMenu/Assignments";
+import LogoDM from "/assets/Logo/LogoDM.svg";
+import LogoLM from "/assets/Logo/LogoLM.svg";
+import ProfileCircleDM from "/assets/profileCircle/ProfileCircleDM.svg";
+import ProfileCircleLM from "/assets/profileCircle/ProfileCircleLM.svg";
+import ProfileCircleSmallLM from "/assets/profileCircle/profileCircleLMsmall.svg";
+import ProfileCircleSmallDM from "/assets/profileCircle/profileCircleDMsmall.svg";
+import assignmentDM from "/assets/assignment/assignmentDM.svg";
+import assignmentLM from "/assets/assignment/assignmentLM.svg";
+import messagesDM from "/assets/messages/chatLineDM.svg";
+import messagesLM from "/assets/messages/chatLineLM.svg";
+import calendarDM from "/assets/calendar/calendarDM.svg";
+import calendarLM from "/assets/calendar/calendarLM.svg";
+import gradesDM from "/assets/grades/gradesDM.svg";
+import gradesLM from "/assets/grades/gradesLM.svg";
+import toggleDM from "/assets/toggle/toggleOnOffDM.svg";
+import toggleLM from "/assets/toggle/toggleOnOffLM.svg";
 const StudentsPage = () => {
   const {
     isStudents,
@@ -29,8 +45,8 @@ const StudentsPage = () => {
     setIsDarkMode(!isDarkMode);
   };
   const selectAssignments = () => {
-    setIsAssignments(!isAssignments)
-  }
+    setIsAssignments(!isAssignments);
+  };
   if (isStudents) {
     return (
       <>
@@ -45,9 +61,9 @@ const StudentsPage = () => {
           <div id="header" className="flex justify-between">
             <div id="title" className="flex items-center pl-[2rem]">
               {isDarkMode ? (
-                <img src="/assets/Logo/LogoDM.svg" alt="Insight Logo" />
+                <img src={LogoDM} alt="Insight Logo" />
               ) : (
-                <img src="/assets/Logo/LogoLM.svg" alt="Insight Logo" />
+                <img src={LogoLM} alt="Insight Logo" />
               )}
               <h1
                 onClick={switchScenes}
@@ -61,12 +77,21 @@ const StudentsPage = () => {
               className="flex items-center flex-nowrap pr-[2rem] gap-[1rem]"
             >
               <p className="text-[1.25rem] font-Sig">{`${studentsFullName}`}</p>
-              <img
-                src="/assets/profileCircle/profileCircleDM.svg"
-                alt="profile circle"
-                onClick={openProfileMenu}
-                className="cursor-pointer"
-              />
+              {isDarkMode ? (
+                <img
+                  src={ProfileCircleDM}
+                  alt="profile circle"
+                  onClick={openProfileMenu}
+                  className="cursor-pointer"
+                />
+              ) : (
+                <img
+                  src={ProfileCircleLM}
+                  alt="profile circle"
+                  onClick={openProfileMenu}
+                  className="cursor-pointer"
+                />
+              )}
             </div>
           </div>
           {profileMenu ? (
@@ -79,29 +104,23 @@ const StudentsPage = () => {
             >
               <div id="mySettings" className="flex items-center gap-[0.5rem]">
                 {isDarkMode ? (
-                  <img
-                    src="/assets/profileCircle/profileCircleDMsmall.svg"
-                    alt="profile icon"
-                  />
+                  <img src={ProfileCircleSmallDM} alt="profile icon" />
                 ) : (
-                  <img
-                    src="/assets/profileCircle/profileCircleLMsmall.svg"
-                    alt="profile icon"
-                  />
+                  <img src={ProfileCircleSmallLM} alt="profile icon" />
                 )}
                 <p>My Profile</p>
               </div>
               <div id="themeToggle" className="flex items-center gap-[0.5rem]">
                 {isDarkMode ? (
                   <img
-                    src="/assets/toggle/toggleOnOffDM.svg"
+                    src={toggleDM}
                     alt="toggle icon"
                     onClick={toggleTheme}
                     className="cursor-pointer"
                   />
                 ) : (
                   <img
-                    src="/assets/toggle/toggleOnOffLM.svg"
+                    src={toggleLM}
                     alt="toggle icon"
                     onClick={toggleTheme}
                     className="cursor-pointer"
@@ -111,15 +130,9 @@ const StudentsPage = () => {
               </div>
               <div id="chatbot" className="flex gap-[0.5rem] items-center">
                 {isDarkMode ? (
-                  <img
-                    src="/assets/messages/chatLineDM.svg"
-                    alt="messages icon"
-                  />
+                  <img src={messagesDM} alt="messages icon" />
                 ) : (
-                  <img
-                    src="/assets/messages/chatLineLM.svg"
-                    alt="messages icon"
-                  />
+                  <img src={messagesLM} alt="messages icon" />
                 )}
                 <p>Chat</p>
               </div>
@@ -130,53 +143,39 @@ const StudentsPage = () => {
               id="navMenu"
               className="pl-[2rem] flex flex-col gap-[1.5rem] pt-[5rem]"
             >
-              <div id="assigmentsContainer" className="flex gap-[1rem]" onClick={selectAssignments}>
+              <div
+                id="assigmentsContainer"
+                className="flex gap-[1rem]"
+                onClick={selectAssignments}
+              >
                 {isDarkMode ? (
-                  <img
-                    src="/assets/assignment/assignmentDM.svg"
-                    alt="assignment icon"
-                  />
+                  <img src={assignmentDM} alt="assignment icon" />
                 ) : (
-                  <img
-                    src="/assets/assignment/assignmentLM.svg"
-                    alt="assignment icon"
-                  />
+                  <img src={assignmentLM} alt="assignment icon" />
                 )}
                 <h2 className="text-[1.5rem] cursor-pointer">Assignments</h2>
               </div>
               <div id="messagesContainer" className="flex gap-[1rem]">
                 {isDarkMode ? (
-                  <img
-                    src="/assets/messages/chatLineDM.svg"
-                    alt="messages icon"
-                  />
+                  <img src={messagesDM} alt="messages icon" />
                 ) : (
-                  <img
-                    src="/assets/messages/chatLineLM.svg"
-                    alt="chat bubble icon"
-                  />
+                  <img src={messagesLM} alt="chat bubble icon" />
                 )}
                 <h2 className="text-[1.5rem] cursor-pointer">Messages</h2>
               </div>
               <div id="calendarContainer" className="flex gap-[1rem]">
                 {isDarkMode ? (
-                  <img
-                    src="/assets/calendar/calendarDM.svg"
-                    alt="calendar icon"
-                  />
+                  <img src={calendarDM} alt="calendar icon" />
                 ) : (
-                  <img
-                    src="/assets/calendar/calendarLM.svg"
-                    alt="calendar icon"
-                  />
+                  <img src={calendarLM} alt="calendar icon" />
                 )}
                 <h2 className="text-[1.5rem] cursor-pointer">Calendar</h2>
               </div>
               <div id="gradesContainer" className="flex gap-[1rem]">
                 {isDarkMode ? (
-                  <img src="/assets/grades/gradesDM.svg" alt="gradebook icon" />
+                  <img src={gradesDM} alt="gradebook icon" />
                 ) : (
-                  <img src="/assets/grades/gradesLM.svg" alt="gradebook icon" />
+                  <img src={gradesLM} alt="gradebook icon" />
                 )}
                 <h2 className="text-[1.5rem] cursor-pointer">Grades</h2>
               </div>
