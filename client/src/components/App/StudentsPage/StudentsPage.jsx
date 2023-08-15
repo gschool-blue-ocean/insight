@@ -31,7 +31,7 @@ const StudentsPage = () => {
   const selectAssignments = () => {
     setIsAssignments(!isAssignments)
   }
-  if (!isStudents) {
+  if (isStudents) {
     return (
       <>
         <div

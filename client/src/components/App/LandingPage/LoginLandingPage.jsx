@@ -12,7 +12,7 @@ const LoginLandingPage = () => {
   const switchScenes = () => {
     setIsStudents(true);
   };
-  if (isStudents) {
+  if (!isStudents) {
     return (
       <>
         <div
