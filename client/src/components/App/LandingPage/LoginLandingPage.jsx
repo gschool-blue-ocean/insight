@@ -37,10 +37,6 @@ const LoginLandingPage = () => {
         className="bg-[url('/assets/cityBackground.jpg')] bg-cover bg-center h-screen"
       >
         <div
-          id="pageContainer"
-          className="bg-[url('/assets/cityBackground.jpg')] bg-cover bg-center h-screen"
-        >
-          <div
             className={
               isDarkMode
                 ? `bg-DGLogin bg-opacity-[0.65] w-full h-screen flex justify-center items-center`
@@ -134,7 +130,6 @@ const LoginLandingPage = () => {
             </div>
           </div>
         </div>
-      </div>
     );
   }
 };
