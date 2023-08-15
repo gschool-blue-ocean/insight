@@ -15,12 +15,12 @@ const db = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 const app = express();
 
 //MIDDLEWARES
-app.use("/users", userRoutes);
 app.use(express.json());
 app.use(cors({ origin: "*" }));
 
 // app.use(express.static("dist"));
 //!ROUTES
+app.use("/users", userRoutes);
 app.use("/assignments", assignmentRoutes);
 app.use("/attendance", attendanceRoutes);
 app.use("/grades", gradeRoutes);
