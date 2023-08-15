@@ -3,6 +3,7 @@ const LandingPageContext = createContext();
 export const LandingPageProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isStudents, setIsStudents] = useState(false);
+  const [profileMenu, setProfileMenu] = useState(false);
   const monthNames = [
     "January",
     "February",
@@ -28,7 +29,16 @@ export const LandingPageProvider = ({ children }) => {
   ];
   return (
     <LandingPageContext.Provider
-      value={{ isDarkMode, setIsDarkMode, isStudents, setIsStudents, daysOfWeek, monthNames }}
+      value={{
+        isDarkMode,
+        setIsDarkMode,
+        isStudents,
+        setIsStudents,
+        daysOfWeek,
+        monthNames,
+        profileMenu,
+        setProfileMenu
+      }}
     >
       {children}
     </LandingPageContext.Provider>
