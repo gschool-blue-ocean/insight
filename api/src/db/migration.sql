@@ -13,7 +13,6 @@ CREATE TABLE IF NOT EXISTS users (
     username TEXT,
     firstName TEXT,
     lastName TEXT,
-    emailAddress TEXT,
     role TEXT
 );
 
@@ -36,6 +35,7 @@ CREATE TABLE IF NOT EXISTS students (
     studentId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     cohortId INTEGER,
     userId INTEGER,
+    nps_rating INTEGER,
     FOREIGN KEY (cohortId) REFERENCES cohorts (cohortId) ON DELETE CASCADE,
     FOREIGN KEY (userId) REFERENCES users (userId) ON DELETE CASCADE
 );
