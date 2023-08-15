@@ -1,20 +1,49 @@
 import React, { useContext } from "react";
 import LandingPageContext from "./LandingPageContext";
+
+
 const LoginLandingPage = () => {
+
   const { isDarkMode, setIsDarkMode, isStudents, setIsStudents } =
     useContext(LandingPageContext);
-  const handleSubmit = () => {
-    //handle it
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = { username, password };
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    try {
+      const response = await fetch("/users/login", options);
+      await response.json();
+    } catch (err) {
+      console.error(err);
+    }
   };
+
+
   const handleToggle = () => {
     setIsDarkMode(!isDarkMode);
   };
+
   const switchScenes = () => {
     setIsStudents(true);
   };
   if (!isStudents) {
     return (
       <>
+
+      <div
+        id="pageContainer"
+        className="bg-[url('/assets/cityBackground.jpg')] bg-cover bg-center h-screen"
+      >
+
         <div
           id="pageContainer"
           className="bg-[url('/assets/cityBackground.jpg')] bg-cover bg-center h-screen"
