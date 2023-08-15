@@ -1,9 +1,9 @@
-INSERT INTO users (username, firstName, lastName, emailAddress, role)
+INSERT INTO users (username, firstName, lastName, role)
 VALUES
-    ('MrHawkins', 'John', 'Hawkins', 'john.hawkins@example.com', 'instructor'),
-    ('BubbaHoundstooth', 'Temuera', 'Morrison', 'temuera.morrison@example.com', 'admin'),
-    ('TrishJenkins', 'Trish', 'Jenkins', 'trish.jenkins@example.com', 'student'),
-    ('MrsMarmalade', 'Jane', 'marmalade', 'jane.marmalade@example.com', 'student');
+    ('MrHawkins', 'John', 'Hawkins', 'instructor'),
+    ('BubbaHoundstooth', 'Temuera', 'Morrison', 'admin'),
+    ('TrishJenkins', 'Trish', 'Jenkins', 'student'),
+    ('MrsMarmalade', 'Jane', 'marmalade', 'student');
 
 
 INSERT INTO instructors (userId)
@@ -14,14 +14,14 @@ VALUES
 
 INSERT INTO cohorts (instructorId, start_date, end_date, nps)
 VALUES
-    (1, DATE '2023-01-01', DATE '2023-06-30', 85), 
-    (2, DATE '2023-02-15', DATE '2023-07-31', 90); 
+    (1, DATE '2023-01-01', DATE '2023-06-30', 3), 
+    (2, DATE '2023-02-15', DATE '2023-07-31', 4); 
 
 
-INSERT INTO students (cohortId, userId)
+INSERT INTO students (cohortId, userId, nps_rating)
 VALUES
-    (1, 3),  
-    (1, 4);  
+    (1, 3, 3),  
+    (1, 4, 4);  
 
 
 INSERT INTO assignments (title, due_date, description, cohortId)

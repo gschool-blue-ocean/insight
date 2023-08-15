@@ -3,7 +3,8 @@ import cors from "cors";
 import pg from "pg";
 import dotenv from "dotenv";
 import userRoutes from "./roles/userRoutes.js";
-dotenv.config()
+
+dotenv.config();
 
 //DBSTRING CONNECTION
 const db = new pg.Pool({ connectionString: process.env.DATABASE_URL });
@@ -11,9 +12,9 @@ const db = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 const app = express();
 
 //MIDDLEWARES
-userRoutes(app)
+app.use("/users", userRoutes);
 app.use(express.json());
-app.use(cors({ origin: "*" }))
+app.use(cors({ origin: "*" }));
 
 //PUT REQUIRES AN ID AND BODY DATA
 app.put("/users/:id", async (req, res) => {
@@ -47,9 +48,6 @@ app.delete("/users/:id", async (req, res) => {
     res.status(500).send(err.message);
   }
 });
-
-
-
 
 //**ROUTES FOR STUDENTS NEEDS WORK*/
 app.get("/students", async (req, res) => {
@@ -121,4 +119,4 @@ app.delete("/students/:id", async (req, res) => {
   }
 });
 
-export { app, db }
+export { app, db };
