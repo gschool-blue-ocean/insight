@@ -43,12 +43,14 @@ const LoginLandingPage = () => {
                     src="assets/toggle/toggleOnOffDM.svg"
                     alt="das toggle"
                     onClick={handleToggle}
+                    className="cursor-pointer"
                   />
                 ) : (
                   <img
                     src="assets/toggle/toggleOnOffLM.svg"
                     alt="das toggle"
                     onClick={handleToggle}
+                    className="cursor-pointer"
                   />
                 )}
               </div>
