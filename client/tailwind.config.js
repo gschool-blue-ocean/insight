@@ -21,7 +21,8 @@ export default {
         LGrayLogin : '#DADADA',
         BGboxDM : '#465F59',
         BGboxLM: '#DDFCF8',
-        ContentBGDM: '#3E6F5D'
+        ContentBGDM: '#3E6F5D',
+        lighterGray: '#6D7170'
       }
     },
   },

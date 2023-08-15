@@ -1,6 +1,7 @@
 import LandingPageContext from "../LandingPage/LandingPageContext";
 import React, { useContext } from "react";
 import StudentsLanding from "./StudentsLanding";
+import Assignments from "../NavMenu/Assignments";
 const StudentsPage = () => {
   const {
     isStudents,
@@ -25,7 +26,7 @@ const StudentsPage = () => {
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
-  if (isStudents) {
+  if (!isStudents) {
     return (
       <>
         <div
@@ -179,11 +180,12 @@ const StudentsPage = () => {
               id="workHub"
               className={
                 isDarkMode
-                  ? "bg-ContentBGDM w-[70%] rounded-xl ml-[5rem] flex flex-col"
+                  ? "bg-ContentBGDM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col"
                   : "bg-BGboxLM w-[70%] rounded-xl ml-[5rem] flex flex-col"
               }
             >
               {/* <StudentsLanding /> */}
+              <Assignments />
             </div>
           </div>
         </div>
