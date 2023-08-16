@@ -6,6 +6,14 @@ export const LandingPageProvider = ({ children }) => {
   const [profileMenu, setProfileMenu] = useState(false);
   const [isAssignments, setIsAssignments] = useState(false);
   const [averageGrade, setAverageGrade] = useState(0);
+  const [countdown, setCountdown] = useState(117);
+  //dates obj
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  const day = currentDate.getDate();
+  const dayOfWeek = currentDate.getDay();
+
   const monthNames = [
     "January",
     "February",
@@ -56,9 +64,19 @@ export const LandingPageProvider = ({ children }) => {
     let roundedGrade = parseFloat(averageGrade.toFixed(2));
     setAverageGrade(roundedGrade);
   };
+  const changeCountdown = () => {
+    const startDate = new Date(2023, 8, 16)
+    const endDate = new Date(startDate);
+    endDate.setDate(startDate.getDate() + 117)
+    let millisUntil = endDate - currentDate
+    let daysUntil = millisUntil / 86400000
+    setCountdown(Math.floor(daysUntil))
+  };
   useEffect(() => {
     determineAverage();
-}, []);
+    changeCountdown();
+  }, []);
+
   return (
     <LandingPageContext.Provider
       value={{
@@ -71,7 +89,13 @@ export const LandingPageProvider = ({ children }) => {
         isAssignments,
         setIsAssignments,
         averageGrade,
-        tableData
+        tableData,
+        countdown,
+        setCountdown,
+        year,
+        month,
+        day,
+        dayOfWeek,
       }}
     >
       {children}
