@@ -12,6 +12,7 @@ const ProfileClosed = () => {
   };
   return (
     <>
+    <div className="pb-[1rem]">
       <div id="themeToggle" className="flex items-center gap-[0.5rem]">
         {isDarkMode ? (
           <img
@@ -37,6 +38,7 @@ const ProfileClosed = () => {
           <img src={messagesLM} alt="messages icon" />
         )}
         <p>Chat</p>
+      </div>
       </div>
     </>
   );

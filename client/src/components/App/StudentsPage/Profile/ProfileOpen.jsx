@@ -3,15 +3,18 @@ const ProfileOpen = () => {
   const username = "Willy";
   return (
     <>
-      <div className="flex flex-col gap-[0.5rem] pb-[2rem]">
+      <div className="flex flex-col gap-[0.5rem] pb-[2rem] items-center text-[1.25rem]">
         <div id="username">
-          <p className="text-center">{username}</p>
+          <p>{username}</p>
         </div>
         <div id="changePassword">
-          <p>change password</p>
+          <p>Change Password</p>
+        </div>
+        <div>
+          <button>Sign Out</button>
         </div>
         <button id="deleteAccount" className="flex bg-[#ff24249e]  px-[0.25rem] rounded-xl  justify-center ">
-          <p className="text-center">delete account</p>
+          <p className="text-center">Delete Account</p>
         </button>
       </div>
     </>
