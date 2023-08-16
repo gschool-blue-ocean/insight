@@ -9,27 +9,27 @@ const Assignments = () => {
     {
       title: "Assignment 1",
       submitted: false,
-      comments: "you suck",
+      comments: "you did great",
     },
-    { title: "Assignment 2", submitted: true, comments: "you suck" },
-    { title: "Assignment 3", submitted: false, comments: "you still suck" },
+    { title: "Assignment 2", submitted: true, comments: "good job" },
+    { title: "Assignment 3", submitted: false, comments: "good job" },
     {
       title: "Assignment 3",
       submitted: true,
       comments:
-        "you super super super super super super super super super super super super super super super super super super super super still suck",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Donec in efficitur leo. In nec lacus sit amet justo accumsan tristique. Curabitur at velit vel sem auctor dignissim",
     },
-    { title: "Assignment 3", submitted: false, comments: "you still suck" },
-    { title: "Assignment 3", submitted: true, comments: "you still suck" },
-    { title: "Assignment 3", submitted: false, comments: "you still suck" },
-    { title: "Assignment 3", submitted: true, comments: "you still suck" },
-    { title: "Assignment 3", submitted: true, comments: "you still suck" },
-    { title: "Assignment 3", submitted: false, comments: "you still suck" },
-    { title: "Assignment 3", submitted: true, comments: "you still suck" },
-    { title: "Assignment 3", submitted: true, comments: "you still suck" },
-    { title: "Assignment 3", submitted: true, comments: "you still suck" },
-    { title: "Assignment 3", submitted: true, comments: "you still suck" },
-    { title: "Assignment 3", submitted: true, comments: "you still suck" },
+    { title: "Assignment 3", submitted: false, comments: "good job" },
+    { title: "Assignment 3", submitted: true, comments: "good job" },
+    { title: "Assignment 3", submitted: false, comments: "good job" },
+    { title: "Assignment 3", submitted: true, comments: "good job" },
+    { title: "Assignment 3", submitted: true, comments: "good job" },
+    { title: "Assignment 3", submitted: false, comments: "good job" },
+    { title: "Assignment 3", submitted: true, comments: "good job" },
+    { title: "Assignment 3", submitted: true, comments: "good job" },
+    { title: "Assignment 3", submitted: true, comments: "good job" },
+    { title: "Assignment 3", submitted: true, comments: "good job" },
+    { title: "Assignment 3", submitted: true, comments: "good job" },
   ];
   const viewComment = () => {
     console.log("test");
@@ -66,7 +66,13 @@ const Assignments = () => {
           }
         >
           <table className="w-full overflow-y-scroll max-h-[80%]">
-            <thead className={isDarkMode ? "text-[#DCD3EB] text-[1.25rem]" : "text-DGrayLogin text-[1.25rem]"}>
+            <thead
+              className={
+                isDarkMode
+                  ? "text-[#DCD3EB] text-[1.25rem]"
+                  : "text-DGrayLogin text-[1.25rem]"
+              }
+            >
               <tr>
                 <th className="py-[1rem]">Title</th>
                 <th>Submitted</th>
@@ -98,8 +104,11 @@ const Assignments = () => {
                         readOnly
                       />
                       <FontAwesomeIcon
-                        className={isDarkMode ? "text-[2rem] h-5 w-5 text-DOLogin" : "text-[2rem] h-5 w-5 text-LPLogin"}
-                        
+                        className={
+                          isDarkMode
+                            ? "text-[2rem] h-5 w-5 text-DOLogin"
+                            : "text-[2rem] h-5 w-5 text-LPLogin"
+                        }
                         icon={faCheck}
                       />
                     </label>
