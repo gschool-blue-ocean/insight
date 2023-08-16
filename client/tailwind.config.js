@@ -10,7 +10,9 @@ export default {
       },
       boxShadow: {
         "focusDM-orange": "0 0 3px 3px #F0BE5E",
-        "focusLM-purple": "0 0 5px 5px #875598"
+        "focusLM-purple": "0 0 5px 5px #875598",
+        "outlineDM-purple":" 0 0 2px 2px #875598",
+        "outlineLM-orange":" 0 0 2px 2px #F0BE5E"
       },
       colors: {
         DGLogin : '#1A3D36',

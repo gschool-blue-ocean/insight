@@ -7,33 +7,30 @@ const Assignments = () => {
   //testdata
   const tableData = [
     {
-      title: "Assignment 1",
-      submitted: false,
-      comments: "you did great",
-    },
-    { title: "Assignment 2", submitted: true, comments: "good job" },
-    { title: "Assignment 3", submitted: false, comments: "good job" },
-    {
-      title: "Assignment 3",
+      title: "Task A",
       submitted: true,
-      comments:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Donec in efficitur leo. In nec lacus sit amet justo accumsan tristique. Curabitur at velit vel sem auctor dignissim",
+      comments: "Solid effort, keep it up!",
     },
-    { title: "Assignment 3", submitted: false, comments: "good job" },
-    { title: "Assignment 3", submitted: true, comments: "good job" },
-    { title: "Assignment 3", submitted: false, comments: "good job" },
-    { title: "Assignment 3", submitted: true, comments: "good job" },
-    { title: "Assignment 3", submitted: true, comments: "good job" },
-    { title: "Assignment 3", submitted: false, comments: "good job" },
-    { title: "Assignment 3", submitted: true, comments: "good job" },
-    { title: "Assignment 3", submitted: true, comments: "good job" },
-    { title: "Assignment 3", submitted: true, comments: "good job" },
-    { title: "Assignment 3", submitted: true, comments: "good job" },
-    { title: "Assignment 3", submitted: true, comments: "good job" },
+    { title: "Task B", submitted: false, comments: "Needs improvement" },
+    { title: "Task C", submitted: true, comments: "Well done!" },
+    {
+      title: "Task D",
+      submitted: false,
+      comments:
+        "This was an exemplary submission. Your attention to detail and your thorough analysis stood out. It's clear that you put a lot of effort into this. Just remember to focus on the main points next time, as some areas felt a bit verbose.",
+    },
+    { title: "Task E", submitted: true, comments: "Average performance" },
+    { title: "Task F", submitted: false, comments: "You've missed the main point" },
+    { title: "Task G", submitted: true, comments: "Above average, good job" },
+    { title: "Task H", submitted: false, comments: "Perfect, well done!" },
+    { title: "Task I", submitted: true, comments: "You can do better next time" },
+    { title: "Task J", submitted: true, comments: "Very thorough!" },
+    { title: "Task K", submitted: true, comments: "See me after class" },
+    { title: "Task L", submitted: false, comments: "This was a good attempt" },
   ];
-  const viewComment = () => {
-    console.log("test");
-  };
+  
+  
+  
   return (
     <>
       <div
@@ -114,7 +111,7 @@ const Assignments = () => {
                     </label>
                   </td>
                   <td
-                    className={`overflow-x-${viewComment} overflow-y-${viewComment} text-center max-h-[20px] max-w-[10rem]`}
+                    className={`text-center max-h-[20px] max-w-[10rem]`}
                   >
                     {item.comments}
                   </td>
