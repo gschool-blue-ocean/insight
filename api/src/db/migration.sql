@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS assignments (
     due_date DATE,
     description TEXT,
     cohortId INTEGER,
+    instructor_comments VARCHAR(256),
     FOREIGN KEY (cohortId) REFERENCES cohorts (cohortId) ON DELETE CASCADE
 );
 

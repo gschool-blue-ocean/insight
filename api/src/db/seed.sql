@@ -63,19 +63,19 @@ VALUES
     (4, 23, 3, null);
 
 
-INSERT INTO assignments (title, due_date, description, cohortId)
+INSERT INTO assignments (title, due_date, description, cohortId, instructor_comments)
 VALUES
-    ('Pixel Art Maker', DATE '2023-09-15', 'Create a pixel art maker', 2),  
-    ('Hackathon', DATE '2023-09-25', 'Your very own 1 day project', 2),
+    ('Pixel Art Maker', DATE '2023-09-15', 'Create a pixel art maker', 2, null),  
+    ('Hackathon', DATE '2023-09-25', 'Your very own 1 day project', 2, null),
 
-    ('Pixel Art Maker', DATE '2024-01-15', 'Create a pixel art maker', 1),  
-    ('Hackathon', DATE '2024-01-25', 'Your very own 1 day project', 1),  
+    ('Pixel Art Maker', DATE '2024-01-15', 'Create a pixel art maker', 1, null),  
+    ('Hackathon', DATE '2024-01-25', 'Your very own 1 day project', 1, null),  
 
-    ('Pixel Art Maker', DATE '2023-10-15', 'Create a pixel art maker', 3),  
-    ('Hackathon', DATE '2023-10-25', 'Your very own 1 day project', 3),
+    ('Pixel Art Maker', DATE '2023-10-15', 'Create a pixel art maker', 3, null),  
+    ('Hackathon', DATE '2023-10-25', 'Your very own 1 day project', 3, null),
 
-    ('Pixel Art Maker', DATE '2024-03-01', 'Create a pixel art maker', 4),  
-    ('Hackathon', DATE '2024-03-15', 'Your very own 1 day project', 4);  
+    ('Pixel Art Maker', DATE '2024-03-01', 'Create a pixel art maker', 4, null),  
+    ('Hackathon', DATE '2024-03-15', 'Your very own 1 day project', 4, null);  
 
 
 INSERT INTO avg_grades (score, studentId)
@@ -112,5 +112,7 @@ VALUES
     ('$2b$10$oj6cVKykXaBXmi47NZWFMuIrknLVCFdlIxf/1aRqwrbw/B.ArrfJ.', 2, null, null),
     ('$2b$10$fbRPquGm/6BLLTJW9oRQuuKAN25mckxXYSHIYVA.6N5GxXvt15TKu', 3, null, null),
     ('$2b$10$/bEcJM4c1xu48CfWYt6eWuBjmC9CjXs9CSGSq3uJCBXK7tRQrG59m', 4, null, null);
+
+
 
 
