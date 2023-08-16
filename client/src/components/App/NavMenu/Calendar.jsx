@@ -3,10 +3,38 @@ import { format } from "date-fns"; // Using date-fns for date formatting
 
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [assignmentDetails, setAssignmentDetails] = useState({});
+  const [showAssignmentInput, setShowAssignmentInput] = useState(false);
 
-  const handleDateClick = (date) => {
-    setSelectedDate(date);
-    // You can add more logic here, like showing events for the clicked date
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newAssignment, setNewAssignment] = useState({
+    title: "",
+    description: "",
+    dueDate: null,
+  });
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setNewAssignment((prevAssignment) => ({
+      ...prevAssignment,
+      [name]: value,
+    }));
+  };
+
+  const handleAssignmentSubmit = (event) => {
+    event.preventDefault();
+    if (newAssignment.title && newAssignment.dueDate) {
+      setAssignmentDetails(newAssignment);
+      closeModal();
+    }
   };
 
   const handlePrevMonth = () => {
@@ -55,7 +83,7 @@ const Calendar = () => {
       week.push(
         <div
           key={dayIndex}
-          className={`text-center h-[8rem] p-12 ${
+          className={`text-left h-[8rem] p-2 ${
             isCurrentMonth ? "cursor-pointer" : "bg-[#00000033]"
           } ${
             selectedDate.getDate() === dayNumber &&
@@ -79,11 +107,82 @@ const Calendar = () => {
   return (
     <div className="p-4 rounded shadow m-14">
       <div className="flex items-center justify-between mb-2">
-        <button onClick={handlePrevMonth}></button>
+        <button onClick={handlePrevMonth}>Previous</button>
         <h2 className="text-xl font-semibold">{monthYearString}</h2>
-        <button onClick={handleNextMonth}></button>
+        <button onClick={handleNextMonth}>Next</button>
       </div>
       {calendarGrid}
+      <button
+        className="m-2 p-2 text-1xl text-white bg-[#31503b] rounded-[10rem]"
+        onClick={openModal}
+      >
+        Add Assignment
+      </button>
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center modal-overlay">
+          <div className="w-full p-4 bg-white rounded shadow-lg modal sm:w-96">
+            <h2 className="mb-4 text-xl font-semibold">Add Assignment</h2>
+            <form onSubmit={handleAssignmentSubmit}>
+              <div className="mb-4">
+                <label htmlFor="title" className="block mb-1 font-medium">
+                  Assignment Title:
+                </label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  value={newAssignment.title}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="description" className="block mb-1 font-medium">
+                  Description:
+                </label>
+                <textarea
+                  id="description"
+                  name="description"
+                  value={newAssignment.description}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="dueDate" className="block mb-1 font-medium">
+                  Due Date:
+                </label>
+                <input
+                  type="date"
+                  id="dueDate"
+                  name="dueDate"
+                  value={newAssignment.dueDate}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
+              </div>
+              <div className="flex justify-end">
+                <button
+                  type="submit"
+                  className="px-4 py-2 mr-2 text-white bg-blue-500 rounded"
+                >
+                  Submit Assignment
+                </button>
+                <button
+                  type="button"
+                  onClick={closeModal}
+                  className="px-4 py-2 text-gray-700 bg-gray-300 rounded"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
