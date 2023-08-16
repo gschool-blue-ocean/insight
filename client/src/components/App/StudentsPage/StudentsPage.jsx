@@ -156,7 +156,9 @@ const StudentsPage = () => {
               ) : (
                 <img src={messagesLM} alt="chat bubble icon" />
               )}
-              <h2 className="text-[1.5rem] cursor-pointer">Messages</h2>
+              <Link to="Messages">
+                <h2 className="text-[1.5rem] cursor-pointer">Messages</h2>
+              </Link>
             </div>
             <div id="calendarContainer" className="flex gap-[1rem]">
               {isDarkMode ? (
@@ -164,7 +166,9 @@ const StudentsPage = () => {
               ) : (
                 <img src={calendarLM} alt="calendar icon" />
               )}
-              <h2 className="text-[1.5rem] cursor-pointer">Calendar</h2>
+              <Link to="Calendar">
+                <h2 className="text-[1.5rem] cursor-pointer">Calendar</h2>
+              </Link>
             </div>
             <div id="gradesContainer" className="flex gap-[1rem]">
               {isDarkMode ? (

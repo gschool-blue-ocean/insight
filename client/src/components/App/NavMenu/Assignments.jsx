@@ -41,8 +41,8 @@ const Assignments = () => {
           id="assignmentHeader"
           className={
             isDarkMode
-              ? "font-Sig text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-white"
-              : "font-Sig text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-black"
+              ? "font-robot text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-white"
+              : "font-robot text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-black"
           }
         >
           <p
