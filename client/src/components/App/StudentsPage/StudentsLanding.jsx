@@ -84,7 +84,7 @@ const StudentsLanding = () => {
       <div className="flex flex-col items-center justify-between">
         <div
           id="workHeader"
-          className="flex justify-between items-center text-center border-b-2 border-DGLogin w-[90%] pb-[2rem] mb-[2rem]"
+          className="flex justify-between items-center  border-b-2 border-DGLogin w-[90%] pb-[2rem] mb-[2rem]"
         >
           <div id="attendanceContainer" className="pl-[2rem] pt-[1rem] mr-[9%]">
             <p>Attendance</p>
