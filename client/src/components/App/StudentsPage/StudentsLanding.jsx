@@ -28,7 +28,7 @@ const StudentsLanding = () => {
 
   ChartJS.register(ArcElement, Tooltip, Legend);
   ChartJS.register(BarElement, CategoryScale, LinearScale, Legend);
-  ChartJS.defaults.color = '#000000' 
+  ChartJS.defaults.color = "#000000";
   const attendanceChart = {
     labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
     datasets: [
@@ -38,7 +38,7 @@ const StudentsLanding = () => {
           53.2, 72.8, 89.4, 67.5, 78.1, 91.3, 59.2, 84.6, 65.9, 76.3, 58.7,
           80.4, 92.1, 55.5, 86.8, 70.3,
         ],
-        backgroundColor: "#1A3D36",
+        backgroundColor: isDarkMode ? "#1A3D36" : "#63B9AA",
         borderColor: "#000000",
         borderWidth: 2,
       },
@@ -50,7 +50,9 @@ const StudentsLanding = () => {
     datasets: [
       {
         data: [averageGrade, uncompleted],
-        backgroundColor: ["#1A3D36", "#F0BE5E"],
+        backgroundColor: isDarkMode
+          ? ["#1A3D36", "#F0BE5E"]
+          : ["#63B9AA", "#280137"],
         borderColor: ["black"],
       },
     ],
@@ -129,7 +131,13 @@ const StudentsLanding = () => {
         <div className="flex justify-evenly">
           <div id="countdown" className="flex flex-col items-center gap-[1rem]">
             <p className="pb-[1rem]">Days until Graduation</p>
-            <div className="text-[8rem] font-bold border-black border-[3px] bg-DGLogin text-DOLogin rounded-md">
+            <div
+              className={
+                isDarkMode
+                  ? "text-[8rem] font-bold border-black border-[3px] bg-DGLogin text-DOLogin rounded-md"
+                  : "text-[8rem] font-bold border-black border-[3px] bg-LGLogin text-LPLogin rounded-md"
+              }
+            >
               <p
                 className={
                   countdown < 0
