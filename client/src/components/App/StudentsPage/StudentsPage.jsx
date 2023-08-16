@@ -25,8 +25,8 @@ const StudentsPage = () => {
     setProfileMenu,
     isDarkMode,
     setIsDarkMode,
-    isAssignments,
-    setIsAssignments,
+    isProfileOpen,
+    setIsProfileOpen,
   } = useContext(LandingPageContext);
 
   //testdata
@@ -37,9 +37,6 @@ const StudentsPage = () => {
   };
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-  };
-  const selectAssignments = () => {
-    setIsAssignments(!isAssignments);
   };
 
   return (
@@ -95,13 +92,15 @@ const StudentsPage = () => {
                 : "absolute h-[10rem] flex flex-col gap-[0.5rem] pl-[2rem] w-[15rem] right-3 bg-LGrayLogin rounded-xl text-black text-[1.5rem] pt-[1rem] border-black border-[1px]"
             }
           >
-            <div id="mySettings" className="flex items-center gap-[0.5rem]">
+            <div id="myProfile" className="flex items-center gap-[0.5rem]">
               {isDarkMode ? (
                 <img src={ProfileCircleSmallDM} alt="profile icon" />
               ) : (
                 <img src={ProfileCircleSmallLM} alt="profile icon" />
               )}
-              <p>My Profile</p>
+              <Link to="profile">
+                <p className="cursor-pointer">My Profile</p>
+              </Link>
             </div>
             <div id="themeToggle" className="flex items-center gap-[0.5rem]">
               {isDarkMode ? (
@@ -136,11 +135,7 @@ const StudentsPage = () => {
             id="navMenu"
             className="pl-[2rem] flex flex-col gap-[1.5rem] pt-[5rem]"
           >
-            <div
-              id="assigmentsContainer"
-              className="flex gap-[1rem]"
-              onClick={selectAssignments}
-            >
+            <div id="assigmentsContainer" className="flex gap-[1rem]">
               {isDarkMode ? (
                 <img src={assignmentDM} alt="assignment icon" />
               ) : (

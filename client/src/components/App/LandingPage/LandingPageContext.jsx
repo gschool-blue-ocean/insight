@@ -2,9 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 const LandingPageContext = createContext();
 export const LandingPageProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [isStudents, setIsStudents] = useState(false);
   const [profileMenu, setProfileMenu] = useState(false);
-  const [isAssignments, setIsAssignments] = useState(false);
   const [averageGrade, setAverageGrade] = useState(0);
   const [countdown, setCountdown] = useState(117);
   //dates obj
@@ -65,9 +63,9 @@ export const LandingPageProvider = ({ children }) => {
     setAverageGrade(roundedGrade);
   };
   const changeCountdown = () => {
-    const startDate = new Date(2023,7,16);
+    const startDate = new Date(2023, 7, 16);
     const currentDate = new Date();
-    currentDate.setHours(0,0,0,0)
+    currentDate.setHours(0, 0, 0, 0);
     const endDate = new Date(startDate);
     endDate.setDate(startDate.getDate() + 117);
     let millisUntil = endDate - currentDate;
@@ -75,7 +73,6 @@ export const LandingPageProvider = ({ children }) => {
     setCountdown(Math.floor(daysUntil));
   };
 
-  
   useEffect(() => {
     determineAverage();
     changeCountdown();
@@ -90,8 +87,6 @@ export const LandingPageProvider = ({ children }) => {
         monthNames,
         profileMenu,
         setProfileMenu,
-        isAssignments,
-        setIsAssignments,
         averageGrade,
         tableData,
         countdown,
