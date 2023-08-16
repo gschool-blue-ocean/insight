@@ -12,7 +12,9 @@ import cohortRoutes from "./misc/cohort.js";
 import adminRoutes from "./roles/adminRoutes.js";
 import dotenv from "dotenv";
 import loginRoute from "./misc/loginRoute.js";
-dotenv.config("api/.env");
+dotenv.config({ path: '../.env' });
+
+const PORT = process.env.PORT
 
 //DBSTRING CONNECTION
 const db = new pg.Pool({ connectionString: process.env.DATABASE_URL });
@@ -41,4 +43,15 @@ app.use("/grades", gradeRoutes);
 app.use("/login", loginRoute);
 app.use("/cohorts", cohortRoutes);
 
+
+
+
+app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
+  });
+  
+
 export { app, db };
+
+
+
