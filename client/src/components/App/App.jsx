@@ -20,8 +20,12 @@ const App = () => {
               <Route path="Assignments" element={<Assignments />} />
               <Route path="Grades" element={<Grades />} />
             </Route>
-            {/* route for Instructor */}
-            {/* route for admin */}
+            <ProtectedRoute>
+              <Route path="Instructor" element={<InstructorLandingPage />} />
+            </ProtectedRoute>
+            <ProtectedRoute>
+              <Route path="Admin" element={<AdminLandingPage />} />
+            </ProtectedRoute>
             <Route path="*" element={<Error />} />
           </Routes>
         </LandingPageProvider>
