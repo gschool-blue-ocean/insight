@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Doughnut } from 'react-chartjs-2'
 import LandingPageContext from "../LandingPage/LandingPageContext";
 import alertDM from "/assets/alerts/alertDM.svg";
 import alertLM from "/assets/alerts/alertLM.svg";
@@ -16,6 +17,17 @@ const StudentsLanding = () => {
     dayOfWeek,
   } = useContext(LandingPageContext);
 
+  const gpaChart = {
+    labels: ["Red", "Blue", "Yellow"],
+    datasets: [
+      {
+        data: averageGrade,
+        backgroundColor: ["red", "blue", "white"],
+        hoverOffset: 4,
+      },
+    ],
+  };
+  
   //testdata
   let daysMissed = 4;
   let cohortNumber = 22;
@@ -67,7 +79,7 @@ const StudentsLanding = () => {
           className="flex flex-col items-center gap-[1rem] pb-[4rem]"
         >
           <p>{`Current Grade Average : ${GPA}%`}</p>
-          <div className="bg-white h-[18rem] w-[18rem] rounded-[10rem]"></div>
+          <Doughnut data={data} />
         </div>
         <div id="assignments" className="flex flex-col items-center gap-[1rem]">
           <p>Upcoming Assignments</p>

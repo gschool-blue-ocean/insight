@@ -65,13 +65,15 @@ export const LandingPageProvider = ({ children }) => {
     setAverageGrade(roundedGrade);
   };
   const changeCountdown = () => {
-    const startDate = new Date(2023, 8, 16)
+    const startDate = new Date(2023, 8, 16);
     const endDate = new Date(startDate);
-    endDate.setDate(startDate.getDate() + 117)
-    let millisUntil = endDate - currentDate
-    let daysUntil = millisUntil / 86400000
-    setCountdown(Math.floor(daysUntil))
+    endDate.setDate(startDate.getDate() + 117);
+    let millisUntil = endDate - currentDate;
+    let daysUntil = millisUntil / 86400000;
+    setCountdown(Math.floor(daysUntil));
   };
+
+  
   useEffect(() => {
     determineAverage();
     changeCountdown();
