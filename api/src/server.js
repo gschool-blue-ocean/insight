@@ -10,7 +10,6 @@ import instructorRoutes from "./roles/instructorRoutes.js";
 import userRoutes from "./roles/userRoutes.js";
 import cohortRoutes from "./misc/cohort.js";
 import adminRoutes from "./roles/adminRoutes.js";
-
 import dotenv from "dotenv";
 import loginRoute from "./misc/loginRoute.js";
 dotenv.config("api/.env");

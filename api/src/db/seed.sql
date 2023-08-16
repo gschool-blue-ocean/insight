@@ -26,14 +26,14 @@ VALUES
 
 INSERT INTO assignments (title, due_date, description, cohortId)
 VALUES
-    ('Assignment 1', DATE '2023-02-01', 'Description for Assignment 1', 1),  
-    ('Assignment 2', DATE '2023-03-15', 'Description for Assignment 2', 1);  
+    ('Assignment 1', DATE '2023-09-01', 'Obtain Employment', 1),  
+    ('Assignment 2', DATE '2023-08-25', 'Blue Ocean Project', 1);  
 
 
-INSERT INTO avg_grades (score, studentId, cohortId)
+INSERT INTO avg_grades (score, studentId)
 VALUES
-    (90, 1, 1),  
-    (88, 2, 1);  
+    (90, 1),  
+    (88, 2);  
 
 
 INSERT INTO attendance (absences, cohort_length, studentId)

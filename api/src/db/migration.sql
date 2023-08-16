@@ -53,9 +53,7 @@ CREATE TABLE IF NOT EXISTS avg_grades (
     gradeId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     score INTEGER,
     studentId INTEGER,
-    cohortId INTEGER,
-    FOREIGN KEY (studentId) REFERENCES students (studentId) ON DELETE CASCADE,
-    FOREIGN KEY (cohortId) REFERENCES cohorts (cohortId) ON DELETE CASCADE
+    FOREIGN KEY (studentId) REFERENCES students (studentId) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS attendance (
