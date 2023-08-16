@@ -36,7 +36,6 @@ app.use("/admin", adminRoutes);
 app.use("/instructors", instructorRoutes);
 app.use("/students", studentRoutes);
 app.use("/users", userRoutes);
-
 app.use("/assignments", assignmentRoutes);
 app.use("/attendance", attendanceRoutes);
 app.use("/grades", gradeRoutes);
