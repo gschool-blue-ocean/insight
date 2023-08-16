@@ -8,13 +8,14 @@ const StudentsLanding = () => {
     monthNames,
     daysOfWeek,
     isDarkMode,
+    averageGrade,
   } = useContext(LandingPageContext);
 
   //testdata
   let daysMissed = 4;
   let cohortNumber = 22;
   let studentsFirstName = "William";
-  let GPA = 3.9;
+  let GPA = averageGrade;
 
   //dates obj
   const currentDate = new Date();
@@ -65,7 +66,7 @@ const StudentsLanding = () => {
           id="GPA"
           className="flex flex-col items-center gap-[1rem] pb-[4rem]"
         >
-          <p>{`Current GPA : ${GPA}`}</p>
+          <p>{`Current Grade Average : ${GPA}%`}</p>
           <div className="bg-white h-[18rem] w-[18rem] rounded-[10rem]"></div>
         </div>
         <div id="assignments" className="flex flex-col items-center gap-[1rem]">
