@@ -14,6 +14,8 @@ import instructorRoutes from "./roles/instructorRoutes.js";
 import userRoutes from "./roles/userRoutes.js";
 import cohortRoutes from "./misc/cohort.js";
 import adminRoutes from "./roles/adminRoutes.js";
+import loginRoute from "./misc/loginRoute.js";
+
 //env config pathing
 dotenv.config({ path: ".env" });
 
@@ -57,7 +59,8 @@ if (cluster.isPrimary) { //if prim see total cpus aval on system
   app.use("/assignments", assignmentRoutes);
   app.use("/attendance", attendanceRoutes);
   app.use("/grades", gradeRoutes);
-  app.use("/cohorts", cohortRoutes);
+    app.use("/cohorts", cohortRoutes);
+    app.use("/login", loginRoute);
 
   // ... Existing code for the clustering ...
   app.get("/status", (req, res) => {
@@ -90,5 +93,6 @@ const PORT = process.env.PORT;
     console.log(`Listening on port ${PORT}`);
   });
 }
+ 
 
 export { app, db };

@@ -8,20 +8,19 @@ const StudentsLanding = () => {
     monthNames,
     daysOfWeek,
     isDarkMode,
+    averageGrade,
+    countdown,
+    year,
+    month,
+    day,
+    dayOfWeek,
   } = useContext(LandingPageContext);
 
   //testdata
-  let daysMissed = 69;
-  let cohortNumber = 69;
+  let daysMissed = 4;
+  let cohortNumber = 22;
   let studentsFirstName = "William";
-  let GPA = 4.2;
-
-  //dates obj
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
-  const day = currentDate.getDate();
-  const dayOfWeek = currentDate.getDay();
+  let GPA = averageGrade;
 
   return (
     <>
@@ -59,13 +58,15 @@ const StudentsLanding = () => {
       >
         <div id="countdown" className="flex flex-col items-center gap-[1rem]">
           <p>Days till Graduation</p>
-          <div className="bg-white h-[15rem] w-[15rem]"></div>
+          <div className="text-[8rem] font-bold border-black border-[3px] bg-DGLogin text-DOLogin rounded-md">
+            <p className="font-robot p-[1rem]">{countdown}</p>
+          </div>
         </div>
         <div
           id="GPA"
           className="flex flex-col items-center gap-[1rem] pb-[4rem]"
         >
-          <p>{`Current GPA : ${GPA}`}</p>
+          <p>{`Current Grade Average : ${GPA}%`}</p>
           <div className="bg-white h-[18rem] w-[18rem] rounded-[10rem]"></div>
         </div>
         <div id="assignments" className="flex flex-col items-center gap-[1rem]">
