@@ -19,12 +19,12 @@ const Assignments = () => {
       comments:
         "you super super super super super super super super super super super super super super super super super super super super still suck",
     },
+    { title: "Assignment 3", submitted: false, comments: "you still suck" },
+    { title: "Assignment 3", submitted: true, comments: "you still suck" },
+    { title: "Assignment 3", submitted: false, comments: "you still suck" },
     { title: "Assignment 3", submitted: true, comments: "you still suck" },
     { title: "Assignment 3", submitted: true, comments: "you still suck" },
-    { title: "Assignment 3", submitted: true, comments: "you still suck" },
-    { title: "Assignment 3", submitted: true, comments: "you still suck" },
-    { title: "Assignment 3", submitted: true, comments: "you still suck" },
-    { title: "Assignment 3", submitted: true, comments: "you still suck" },
+    { title: "Assignment 3", submitted: false, comments: "you still suck" },
     { title: "Assignment 3", submitted: true, comments: "you still suck" },
     { title: "Assignment 3", submitted: true, comments: "you still suck" },
     { title: "Assignment 3", submitted: true, comments: "you still suck" },
@@ -99,6 +99,7 @@ const Assignments = () => {
                       />
                       <FontAwesomeIcon
                         className={isDarkMode ? "text-[2rem] h-5 w-5 text-DOLogin" : "text-[2rem] h-5 w-5 text-LPLogin"}
+                        
                         icon={faCheck}
                       />
                     </label>
