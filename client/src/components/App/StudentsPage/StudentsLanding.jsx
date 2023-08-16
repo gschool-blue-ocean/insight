@@ -116,7 +116,7 @@ const StudentsLanding = () => {
       </div>
       <div
         id="analyticsContainer"
-        className="px-[2rem] py-[1rem] text-[1.25rem] justify-between items-end h-[80%] w-full flex"
+        className="px-[2rem] pb-[2.5rem] text-[1.25rem] justify-between items-end h-[80%] w-full flex"
       >
         <div id="attendance" className="flex flex-col items-center gap-[1rem]">
           <p>Attendance By Week</p>
