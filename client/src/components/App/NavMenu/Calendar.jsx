@@ -135,10 +135,15 @@ const Calendar = () => {
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center modal-overlay">
           <div className="w-full p-4 bg-white rounded shadow-lg modal sm:w-96">
-            <h2 className="mb-4 text-xl font-semibold">Add Assignment</h2>
+            <h2 className="mb-4 text-xl font-semibold text-black">
+              Add Assignment
+            </h2>
             <form onSubmit={handleAssignmentSubmit}>
               <div className="mb-4">
-                <label htmlFor="title" className="block mb-1 font-medium">
+                <label
+                  htmlFor="title"
+                  className="block mb-1 font-medium text-black"
+                >
                   Assignment Title:
                 </label>
                 <input
@@ -147,12 +152,15 @@ const Calendar = () => {
                   name="title"
                   value={newAssignment.title}
                   onChange={handleInputChange}
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full p-2 text-black border border-gray-300 rounded"
                   required
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="description" className="block mb-1 font-medium">
+                <label
+                  htmlFor="description"
+                  className="block mb-1 font-medium text-black"
+                >
                   Description:
                 </label>
                 <textarea
@@ -160,12 +168,15 @@ const Calendar = () => {
                   name="description"
                   value={newAssignment.description}
                   onChange={handleInputChange}
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full p-2 text-black border border-gray-300 rounded"
                   required
                 />
               </div>
               <div className="mb-4">
-                <label htmlFor="dueDate" className="block mb-1 font-medium">
+                <label
+                  htmlFor="dueDate"
+                  className="block mb-1 font-medium text-black"
+                >
                   Due Date:
                 </label>
                 <input
@@ -174,14 +185,14 @@ const Calendar = () => {
                   name="dueDate"
                   value={newAssignment.dueDate}
                   onChange={handleInputChange}
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full p-2 text-black border border-gray-300 rounded"
                   required
                 />
               </div>
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="px-4 py-2 mr-2 text-white bg-blue-500 rounded"
+                  className="px-4 py-2 mr-2 text-white bg-[#31503b] rounded"
                 >
                   Submit Assignment
                 </button>
