@@ -3,8 +3,7 @@ import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import LogoDM from "/assets/Logo/LogoDM.svg";
 import LogoLM from "/assets/Logo/LogoLM.svg";
-import ProfileCircleDM from "/assets/profileCircle/profileCircleDM.svg";
-import ProfileCircleLM from "/assets/profileCircle/profileCircleLM.svg";
+import instructorAvatar from "/assets/instructorAvatar.svg";
 import ProfileCircleSmallLM from "/assets/profileCircle/profileCircleLMsmall.svg";
 import ProfileCircleSmallDM from "/assets/profileCircle/profileCircleDMsmall.svg";
 import assignmentDM from "/assets/assignment/assignmentDM.svg";
@@ -73,14 +72,14 @@ const InstructorPage = () => {
             <p className="text-[1.25rem] font-Sig">{`${instructorsFullName}`}</p>
             {isDarkMode ? (
               <img
-                src={ProfileCircleDM}
+                src={instructorAvatar}
                 alt="profile circle"
                 onClick={openProfileMenu}
                 className="cursor-pointer"
               />
             ) : (
               <img
-                src={ProfileCircleLM}
+                src={instructorAvatar}
                 alt="profile circle"
                 onClick={openProfileMenu}
                 className="cursor-pointer"
