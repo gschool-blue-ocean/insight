@@ -7,6 +7,7 @@ import StudentsLanding from "./StudentsPage/StudentsLanding";
 import Assignments from "./NavMenu/Assignments";
 import Grades from "./NavMenu/Grades";
 import Calendar from "./NavMenu/Calendar";
+import Messages from "./NavMenu/Messages";
 import Error from "../Error";
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
               <Route path="Assignments" element={<Assignments />} />
               <Route path="Calendar" element={<Calendar />} />
               <Route path="Grades" element={<Grades />} />
+              <Route path="Messages" element={<Messages />} />
             </Route>
             {/* route for Instructor */}
             {/* route for admin */}
