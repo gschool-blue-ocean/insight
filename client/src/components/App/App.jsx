@@ -24,12 +24,18 @@ const App = () => {
               <Route path="Grades" element={<Grades />} />
               <Route path="Messages" element={<Messages />} />
             </Route>
-            <ProtectedRoute>
-              <Route path="Instructor" element={<InstructorLandingPage />} />
+            {/* <ProtectedRoute>
+              <Route path="Instructor" element={<InstructorPage />} />
+              <Route path="InstructorHome" element={<InstructorLanding />} />
+              <Route path="Assignments" element={<Assignments />} />
+              <Route path="Calendar" element={<Calendar />} />
+              <Route path="Grades" element={<Grades />} />
+              <Route path="Messages" element={<Messages />} />
+              <Route path="Students" element={<Students />} />
             </ProtectedRoute>
             <ProtectedRoute>
               <Route path="Admin" element={<AdminLandingPage />} />
-            </ProtectedRoute>
+            </ProtectedRoute> */}
             <Route path="*" element={<Error />} />
           </Routes>
         </LandingPageProvider>
