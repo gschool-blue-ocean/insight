@@ -96,13 +96,13 @@ const Calendar = () => {
           } ${
             selectedDate.getDate() === dayNumber &&
             selectedDate.getMonth() === date.getMonth()
-              ? "bg-[#F0BE5E] text-[#31503b]"
+              ? "bg-[#f0bd5eeb] text-[#31503b]"
               : ""
           } ${
             selectedDay &&
             selectedDay.getDate() === dayNumber &&
             selectedDay.getMonth() === date.getMonth()
-              ? "bg-[#f0bd5eb3] text-white"
+              ? "bg-[#f0bd5eb3] text-[#31503b]"
               : ""
           }`}
           onClick={() => isCurrentMonth && handleDateClick(date)}
@@ -119,7 +119,7 @@ const Calendar = () => {
   }
 
   return (
-    <div className="p-4 m-12 rounded shadow">
+    <div className="p-4 m-12 rounded shadow font-robot">
       <div className="flex items-center justify-between mb-2">
         <button onClick={handlePrevMonth}>Previous</button>
         <h2 className="text-xl font-semibold">{monthYearString}</h2>

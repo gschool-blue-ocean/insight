@@ -64,7 +64,7 @@ const Messages = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6 m-7">
+    <div className="flex flex-col gap-6 m-7 font-robot">
       {/* Inbox Sidebar */}
       <div className="w-full p-4 bg-[#31503b] rounded-xl">
         <h2 className="mb-4 text-lg font-semibold">Inbox</h2>
