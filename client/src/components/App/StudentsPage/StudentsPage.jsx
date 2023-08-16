@@ -88,8 +88,8 @@ const StudentsPage = () => {
           <div
             className={
               isDarkMode
-                ? "absolute h-[12rem] flex flex-col gap-[0.5rem] pl-[2rem] w-[15rem] right-3 bg-DGrayLogin rounded-xl text-white text-[1.5rem] pt-[1rem] border-black border-[1px]"
-                : "absolute h-[12rem] flex flex-col gap-[0.5rem] pl-[2rem] w-[15rem] right-3 bg-LGrayLogin rounded-xl text-black text-[1.5rem] pt-[1rem] border-black border-[1px]"
+                ? "absolute h-[13rem] flex flex-col gap-[.5rem] items-start pl-[1rem] w-[15rem] right-3 bg-DGrayLogin rounded-xl text-white text-[1.5rem] pt-[1rem] border-black border-[1px]"
+                : "absolute h-[13rem] flex flex-col gap-[.5rem] items-start w-[15rem] pl-[1rem] right-3 bg-LGrayLogin rounded-xl text-black text-[1.5rem] pt-[1rem] border-black border-[1px]"
             }
           >
             <div id="myProfile" className="flex items-center gap-[0.5rem]">
