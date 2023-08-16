@@ -31,7 +31,7 @@ const InstructorPage = () => {
   } = useContext(LandingPageContext);
 
   //testdata
-  let studentsFullName = "William Carrot";
+  let instructorsFullName = "Nancy Root";
 
   const openProfileMenu = () => {
     setProfileMenu(!profileMenu);

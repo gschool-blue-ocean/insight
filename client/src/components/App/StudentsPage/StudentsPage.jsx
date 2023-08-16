@@ -5,8 +5,7 @@ import StudentsLanding from "./StudentsLanding";
 import Assignments from "../NavMenu/Assignments";
 import LogoDM from "/assets/Logo/LogoDM.svg";
 import LogoLM from "/assets/Logo/LogoLM.svg";
-import ProfileCircleDM from "/assets/profileCircle/profileCircleDM.svg";
-import ProfileCircleLM from "/assets/profileCircle/profileCircleLM.svg";
+import studentAvatar from "/assets/studentAvatar.svg";
 import ProfileCircleSmallLM from "/assets/profileCircle/profileCircleLMsmall.svg";
 import ProfileCircleSmallDM from "/assets/profileCircle/profileCircleDMsmall.svg";
 import assignmentDM from "/assets/assignment/assignmentDM.svg";
@@ -72,14 +71,14 @@ const StudentsPage = () => {
             <p className="text-[1.25rem] font-Sig">{`${studentsFullName}`}</p>
             {isDarkMode ? (
               <img
-                src={ProfileCircleDM}
+                src={studentAvatar}
                 alt="profile circle"
                 onClick={openProfileMenu}
                 className="cursor-pointer"
               />
             ) : (
               <img
-                src={ProfileCircleLM}
+                src={studentAvatar}
                 alt="profile circle"
                 onClick={openProfileMenu}
                 className="cursor-pointer"
