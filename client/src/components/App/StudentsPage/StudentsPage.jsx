@@ -185,8 +185,8 @@ const StudentsPage = () => {
             id="workHub"
             className={
               isDarkMode
-                ? "bg-ContentBGDM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col"
-                : "bg-BGboxLM w-[70%] rounded-xl ml-[5rem] flex flex-col"
+                ? "bg-ContentBGDM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col items-center"
+                : "bg-BGboxLM w-[70%] rounded-xl ml-[5rem] flex flex-col items-center"
             }
           >
             <Outlet />

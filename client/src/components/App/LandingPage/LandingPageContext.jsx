@@ -8,11 +8,11 @@ export const LandingPageProvider = ({ children }) => {
   const [averageGrade, setAverageGrade] = useState(0);
   const [countdown, setCountdown] = useState(117);
   //dates obj
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
-  const day = currentDate.getDate();
-  const dayOfWeek = currentDate.getDay();
+  const todayDate = new Date();
+  const year = todayDate.getFullYear();
+  const month = todayDate.getMonth();
+  const day = todayDate.getDate();
+  const dayOfWeek = todayDate.getDay();
 
   const monthNames = [
     "January",
@@ -65,7 +65,9 @@ export const LandingPageProvider = ({ children }) => {
     setAverageGrade(roundedGrade);
   };
   const changeCountdown = () => {
-    const startDate = new Date(2023, 8, 16);
+    const startDate = new Date(2023,7,16);
+    const currentDate = new Date();
+    currentDate.setHours(0,0,0,0)
     const endDate = new Date(startDate);
     endDate.setDate(startDate.getDate() + 117);
     let millisUntil = endDate - currentDate;
