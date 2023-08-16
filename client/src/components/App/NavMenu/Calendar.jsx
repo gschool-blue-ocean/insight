@@ -119,10 +119,13 @@ const Calendar = () => {
   }
 
   return (
-    <div className="p-4 m-12 rounded shadow font-robot">
+    <div className="p-4 m-10 rounded shadow font-robot">
+      <h1 className="text-xl font-bold text-left text-[#e1f9ee]">
+        Assignment Due Date Tracker
+      </h1>
       <div className="flex items-center justify-between mb-2">
         <button onClick={handlePrevMonth}>Previous</button>
-        <h2 className="text-xl font-semibold">{monthYearString}</h2>
+        <h2 className="text-xl font-semibold text-center">{monthYearString}</h2>
         <button onClick={handleNextMonth}>Next</button>
       </div>
       {calendarGrid}

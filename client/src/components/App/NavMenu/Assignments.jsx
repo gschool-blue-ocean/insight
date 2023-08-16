@@ -44,8 +44,8 @@ const Assignments = () => {
           id="assignmentHeader"
           className={
             isDarkMode
-              ? "font-Sig text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-white"
-              : "font-Sig text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-black"
+              ? "font-robot text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-white"
+              : "font-robot text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-black"
           }
         >
           <p
@@ -66,7 +66,13 @@ const Assignments = () => {
           }
         >
           <table className="w-full overflow-y-scroll max-h-[80%]">
-            <thead className={isDarkMode ? "text-[#DCD3EB] text-[1.25rem]" : "text-DGrayLogin text-[1.25rem]"}>
+            <thead
+              className={
+                isDarkMode
+                  ? "text-[#DCD3EB] text-[1.25rem]"
+                  : "text-DGrayLogin text-[1.25rem]"
+              }
+            >
               <tr>
                 <th className="py-[1rem]">Title</th>
                 <th>Submitted</th>
@@ -98,8 +104,11 @@ const Assignments = () => {
                         readOnly
                       />
                       <FontAwesomeIcon
-                        className={isDarkMode ? "text-[2rem] h-5 w-5 text-DOLogin" : "text-[2rem] h-5 w-5 text-LPLogin"}
-                        
+                        className={
+                          isDarkMode
+                            ? "text-[2rem] h-5 w-5 text-DOLogin"
+                            : "text-[2rem] h-5 w-5 text-LPLogin"
+                        }
                         icon={faCheck}
                       />
                     </label>

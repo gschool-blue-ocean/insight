@@ -64,7 +64,8 @@ const Messages = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6 m-7 font-robot">
+    <div className="flex flex-col gap-2 m-2 font-robot">
+      <h1 className="p-2 text-2xl font-bold text-center">Insight Email</h1>
       {/* Inbox Sidebar */}
       <div className="w-full p-4 bg-[#31503b] rounded-xl">
         <h2 className="mb-4 text-lg font-semibold">Inbox</h2>
@@ -83,7 +84,7 @@ const Messages = () => {
 
       {/* Email Compose */}
       <div className="w-full p-4 bg-[#31503b] shadow-md rounded-xl">
-        <h2 className="mb-4 text-2xl font-semibold">Compose Email</h2>
+        <h2 className="mb-4 font-semibold text-[20px]">Compose Email</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block mb-2 text-sm font-bold ">To:</label>
