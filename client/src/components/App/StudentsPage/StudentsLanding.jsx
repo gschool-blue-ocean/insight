@@ -11,10 +11,10 @@ const StudentsLanding = () => {
   } = useContext(LandingPageContext);
 
   //testdata
-  let daysMissed = 69;
-  let cohortNumber = 69;
+  let daysMissed = 4;
+  let cohortNumber = 22;
   let studentsFirstName = "William";
-  let GPA = 4.2;
+  let GPA = 3.9;
 
   //dates obj
   const currentDate = new Date();
