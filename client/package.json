@@ -26,11 +26,8 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "axios": "^0.27.2",
-<<<<<<< HEAD
     "moment": "^2.29.4",
-=======
     "jwt-decode": "^3.1.2",
->>>>>>> 6471aaca42f949176308a218e1e4564f117eb3b4
     "react": "^18.2.0",
     "react-big-calendar": "^1.8.2",
     "react-dom": "^18.2.0",
