@@ -6,10 +6,10 @@
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "test": "echo 'add tests'",
-    "server": "nodemon src/index.js"
+    "server": "nodemon src/server.js"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22",
+    "nodemon": "^3.0.1",
     "supertest": "^6.3.3",
     "vitest": "^0.29.2"
   },
@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "os": "^0.1.2",
     "pg": "^8.11.2"
   }
 }
