@@ -4,7 +4,6 @@ DROP TABLE IF EXISTS instructors CASCADE;
 DROP TABLE IF EXISTS students CASCADE;
 DROP TABLE IF EXISTS assignments;
 DROP TABLE IF EXISTS avg_grades;
-DROP TABLE IF EXISTS attendance;
 DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS auth;
 
@@ -36,6 +35,7 @@ CREATE TABLE IF NOT EXISTS students (
     cohortId INTEGER,
     userId INTEGER,
     nps_rating INTEGER,
+    days_absent INTEGER,
     FOREIGN KEY (cohortId) REFERENCES cohorts (cohortId) ON DELETE CASCADE,
     FOREIGN KEY (userId) REFERENCES users (userId) ON DELETE CASCADE
 );
@@ -56,13 +56,6 @@ CREATE TABLE IF NOT EXISTS avg_grades (
     FOREIGN KEY (studentId) REFERENCES students (studentId) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS attendance (
-    attendanceId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    absences INTEGER,
-    cohort_length INTEGER,
-    studentId INTEGER,
-    FOREIGN KEY (studentId) REFERENCES students (studentId) ON DELETE CASCADE
-);
 
 CREATE TABLE IF NOT EXISTS admin (
     adminId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
