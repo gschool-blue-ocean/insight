@@ -1,8 +1,8 @@
 import LandingPageContext from "../LandingPage/LandingPageContext";
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
-import StudentsLanding from "./StudentsLanding";
-import Assignments from "../NavMenu/Assignments";
+import ProfileClosed from "./Profile/ProfileClosed";
+import ProfileOpen from "./Profile/ProfileOpen";
 import LogoDM from "/assets/Logo/LogoDM.svg";
 import LogoLM from "/assets/Logo/LogoLM.svg";
 import ProfileCircleDM from "/assets/profileCircle/profileCircleDM.svg";
@@ -17,26 +17,26 @@ import calendarDM from "/assets/calendar/calendarDM.svg";
 import calendarLM from "/assets/calendar/calendarLM.svg";
 import gradesDM from "/assets/grades/gradesDM.svg";
 import gradesLM from "/assets/grades/gradesLM.svg";
-import toggleDM from "/assets/toggle/toggleOnOffDM.svg";
-import toggleLM from "/assets/toggle/toggleOnOffLM.svg";
+
+
 const StudentsPage = () => {
   const {
     profileMenu,
     setProfileMenu,
     isDarkMode,
-    setIsDarkMode,
     isProfileOpen,
     setIsProfileOpen,
+    studentsFullName
   } = useContext(LandingPageContext);
 
-  //testdata
-  let studentsFullName = "William Carrot";
+ 
 
   const openProfileMenu = () => {
     setProfileMenu(!profileMenu);
   };
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+  
+  const openProfile = () => {
+    setIsProfileOpen(!isProfileOpen);
   };
 
   return (
@@ -98,36 +98,11 @@ const StudentsPage = () => {
               ) : (
                 <img src={ProfileCircleSmallLM} alt="profile icon" />
               )}
-              <Link to="profile">
-                <p className="cursor-pointer">My Profile</p>
-              </Link>
+              <p className="cursor-pointer" onClick={openProfile}>
+                My Profile
+              </p>
             </div>
-            <div id="themeToggle" className="flex items-center gap-[0.5rem]">
-              {isDarkMode ? (
-                <img
-                  src={toggleDM}
-                  alt="toggle icon"
-                  onClick={toggleTheme}
-                  className="cursor-pointer"
-                />
-              ) : (
-                <img
-                  src={toggleLM}
-                  alt="toggle icon"
-                  onClick={toggleTheme}
-                  className="cursor-pointer"
-                />
-              )}
-              <p>Theme</p>
-            </div>
-            <div id="chatbot" className="flex gap-[0.5rem] items-center">
-              {isDarkMode ? (
-                <img src={messagesDM} alt="messages icon" />
-              ) : (
-                <img src={messagesLM} alt="messages icon" />
-              )}
-              <p>Chat</p>
-            </div>
+            {isProfileOpen ? <ProfileOpen /> : <ProfileClosed />}
           </div>
         ) : null}
         <div id="contentContainer" className="flex pt-[5%] h-[80%] font-Sig">

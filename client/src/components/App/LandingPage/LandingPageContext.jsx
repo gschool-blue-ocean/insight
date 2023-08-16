@@ -5,12 +5,16 @@ export const LandingPageProvider = ({ children }) => {
   const [profileMenu, setProfileMenu] = useState(false);
   const [averageGrade, setAverageGrade] = useState(0);
   const [countdown, setCountdown] = useState(117);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   //dates obj
   const todayDate = new Date();
   const year = todayDate.getFullYear();
   const month = todayDate.getMonth();
   const day = todayDate.getDate();
   const dayOfWeek = todayDate.getDay();
+
+   //testdata
+   let studentsFullName = "William Carrot";
 
   const monthNames = [
     "January",
@@ -95,6 +99,9 @@ export const LandingPageProvider = ({ children }) => {
         month,
         day,
         dayOfWeek,
+        isProfileOpen,
+        setIsProfileOpen,
+        studentsFullName
       }}
     >
       {children}
