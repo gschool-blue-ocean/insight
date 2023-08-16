@@ -3,6 +3,7 @@ import { format } from "date-fns"; // Using date-fns for date formatting
 
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDay, setSelectedDay] = useState(null);
   const [assignmentDetails, setAssignmentDetails] = useState({});
   const [showAssignmentInput, setShowAssignmentInput] = useState(false);
 
@@ -41,12 +42,19 @@ const Calendar = () => {
     setSelectedDate(
       new Date(selectedDate.getFullYear(), selectedDate.getMonth() - 1, 1)
     );
+    setSelectedDay(null); // Clear selected day
   };
 
   const handleNextMonth = () => {
     setSelectedDate(
       new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 1)
     );
+    setSelectedDay(null); // Clear selected day
+  };
+
+  const handleDateClick = (date) => {
+    setSelectedDay(date);
+    // Any additional handling you want to perform when a day is clicked
   };
 
   const monthYearString = format(selectedDate, "MMMM yyyy");
@@ -88,7 +96,13 @@ const Calendar = () => {
           } ${
             selectedDate.getDate() === dayNumber &&
             selectedDate.getMonth() === date.getMonth()
-              ? "bg-DOLogin text-[#31503b]"
+              ? "bg-[#F0BE5E] text-[#31503b]"
+              : ""
+          } ${
+            selectedDay &&
+            selectedDay.getDate() === dayNumber &&
+            selectedDay.getMonth() === date.getMonth()
+              ? "bg-[#f0bd5eb3] text-white"
               : ""
           }`}
           onClick={() => isCurrentMonth && handleDateClick(date)}
@@ -98,14 +112,14 @@ const Calendar = () => {
       );
     }
     calendarGrid.push(
-      <div key={i} className="grid grid-cols-7 gap-2">
+      <div key={i} className="grid grid-cols-7 gap-1">
         {week}
       </div>
     );
   }
 
   return (
-    <div className="p-4 rounded shadow m-14">
+    <div className="p-4 m-12 rounded shadow">
       <div className="flex items-center justify-between mb-2">
         <button onClick={handlePrevMonth}>Previous</button>
         <h2 className="text-xl font-semibold">{monthYearString}</h2>
@@ -113,7 +127,7 @@ const Calendar = () => {
       </div>
       {calendarGrid}
       <button
-        className="m-2 p-2 text-1xl text-white bg-[#31503b] rounded-[10rem]"
+        className="mt-2 p-2 text-1xl text-white bg-[#31503b] rounded-[10rem]"
         onClick={openModal}
       >
         Add Assignment
