@@ -88,8 +88,8 @@ const StudentsPage = () => {
           <div
             className={
               isDarkMode
-                ? "absolute h-[10rem] flex flex-col gap-[0.5rem] pl-[2rem] w-[15rem] right-3 bg-DGrayLogin rounded-xl text-white text-[1.5rem] pt-[1rem] border-black border-[1px]"
-                : "absolute h-[10rem] flex flex-col gap-[0.5rem] pl-[2rem] w-[15rem] right-3 bg-LGrayLogin rounded-xl text-black text-[1.5rem] pt-[1rem] border-black border-[1px]"
+                ? "absolute h-[12rem] flex flex-col gap-[0.5rem] pl-[2rem] w-[15rem] right-3 bg-DGrayLogin rounded-xl text-white text-[1.5rem] pt-[1rem] border-black border-[1px]"
+                : "absolute h-[12rem] flex flex-col gap-[0.5rem] pl-[2rem] w-[15rem] right-3 bg-LGrayLogin rounded-xl text-black text-[1.5rem] pt-[1rem] border-black border-[1px]"
             }
           >
             <div id="myProfile" className="flex items-center gap-[0.5rem]">
@@ -105,7 +105,7 @@ const StudentsPage = () => {
             {isProfileOpen ? <ProfileOpen /> : <ProfileClosed />}
           </div>
         ) : null}
-        <div id="contentContainer" className="flex pt-[5%] h-[80%] font-Sig">
+        <div id="contentContainer" className="flex justify-center pt-[5%] h-[80%] font-Sig">
           <div
             id="navMenu"
             className="pl-[2rem] flex flex-col gap-[1.5rem] pt-[5rem]"
@@ -155,8 +155,8 @@ const StudentsPage = () => {
             id="workHub"
             className={
               isDarkMode
-                ? "bg-ContentBGDM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col items-center"
-                : "bg-BGboxLM w-[70%] rounded-xl ml-[5rem] flex flex-col items-center"
+                ? "bg-ContentBGDM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px] justify-between"
+                : "bg-BGboxLM w-[70%] rounded-xl ml-[5rem] flex flex-col max-w-[1500px] justify-between"
             }
           >
             <Outlet />
