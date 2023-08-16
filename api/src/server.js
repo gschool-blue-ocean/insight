@@ -8,9 +8,7 @@ import attendanceRoutes from "./misc/attendance.js";
 import gradeRoutes from "./misc/avg_grades.js";
 import instructorRoutes from "./roles/instructorRoutes.js";
 import userRoutes from "./roles/userRoutes.js";
-
 import cohortRoutes from "./misc/cohort.js";
-
 import adminRoutes from "./roles/adminRoutes.js";
 
 import dotenv from "dotenv";

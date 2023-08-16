@@ -3,17 +3,6 @@ import { db } from "../server.js";
 import express from "express";
 
 const router = express.Router();
-import { db } from "../server.js";
-
-//!ATTENDANCE ROUTES should be good
-router.get("/", async (req, res) => {
-  try {
-    const results = await db.query(`SELECT * FROM attendance`);
-    res.status(200).json(results.rows);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
 
 router.use(express.json());
 
