@@ -17,8 +17,13 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
+<<<<<<< HEAD
+        <LandingPageProvider>
+          <AuthProvider>
+=======
         <AuthProvider>
           <LandingPageProvider>
+>>>>>>> 99fba07431e48162ba2458471df4986b784b16ad
             <Routes>
               <Route path="/" element={<LoginLandingPage />} />
               <Route path="students" element={<StudentsPage />}>
@@ -34,8 +39,13 @@ const App = () => {
               </Route>
               <Route path="*" element={<Error />} />
             </Routes>
+<<<<<<< HEAD
+          </AuthProvider>
+        </LandingPageProvider>
+=======
           </LandingPageProvider>
         </AuthProvider>
+>>>>>>> 99fba07431e48162ba2458471df4986b784b16ad
       </BrowserRouter>
     </>
   );
