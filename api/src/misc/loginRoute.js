@@ -12,24 +12,31 @@ router.use(express.json());
 router.post("/", async (req, res) => {
   const { username, password } = req.body;
   const result = await db.query(
-    `SELECT users.userId, auth.password FROM users JOIN auth ON users.userId=auth.userId WHERE users.username = '${username}';`
+    `SELECT users.userId, users.role, auth.password FROM users JOIN auth ON users.userId=auth.userId WHERE users.username = '${username}';`
   );
-  if (!result) {
+  if (result.rows.length === 0) {
     res.status(404).send("Authentication failed");
-  }
-  try {
-    const data = result.rows[0];
-    console.log(data.userid);
-    if (await bcrypt.compare(password, data.password)) {
-      const accessToken = generateAccessToken(data.userid);
-      const refreshToken = generateRefreshToken(data.userid);
-      await db.query(`INSERT into auth (token) VALUES ('${refreshToken}')`);
-      res.json({ accessToken: accessToken, refreshToken: refreshToken });
-    } else {
-      res.send("Not allowed");
+  } else {
+    try {
+      const data = result.rows[0];
+      console.log(result.rows);
+      if (await bcrypt.compare(password, data.password)) {
+        const accessToken = generateAccessToken(data);
+        const refreshToken = generateRefreshToken(data);
+        await db.query(`INSERT into auth (token) VALUES ('${refreshToken}')`);
+        res.cookie("jwt", refreshToken, {
+          httpOnly: true,
+          // secure: true,
+          // sameSite: "None",
+          // maxAge: 24 * 60 * 60 * 1000,
+        });
+        res.status(200).json({ accessToken });
+      } else {
+        res.send("Not allowed");
+      }
+    } catch {
+      res.status(500).send();
     }
-  } catch {
-    res.status(500).send();
   }
 });
 
