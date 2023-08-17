@@ -51,9 +51,7 @@ const LoginLandingPage = () => {
   const handleToggle = () => {
     setIsDarkMode(!isDarkMode);
   };
-  const switchScenes = () => {
-    setIsStudents(true);
-  };
+  
   return (
     <div
       id="pageContainer"
