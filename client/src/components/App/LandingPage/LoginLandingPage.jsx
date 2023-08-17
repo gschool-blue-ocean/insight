@@ -57,7 +57,7 @@ const LoginLandingPage = () => {
   return (
     <div
       id="pageContainer"
-      className="bg-[url('/assets/cityBackground.jpg')] bg-cover bg-center h-screen"
+      className="bg-[url('/images/cityBackground.jpg')] bg-cover bg-center h-screen"
     >
       <div
         className={
