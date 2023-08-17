@@ -139,7 +139,7 @@ const StudentsPage = () => {
                 <h2 className="text-[1.5rem] cursor-pointer">Calendar</h2>
               </Link>
             </div>
-            <div id="gradesContainer" className="flex gap-[1rem]">
+            <div id="gradesContainer" className="flex gap-[1rem] pl-[2.5px]">
               {isDarkMode ? (
                 <img src={gradesDM} alt="gradebook icon" />
               ) : (
