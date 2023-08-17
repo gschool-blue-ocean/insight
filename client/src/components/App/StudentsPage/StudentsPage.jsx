@@ -26,7 +26,8 @@ const StudentsPage = () => {
     isDarkMode,
     isProfileOpen,
     setIsProfileOpen,
-    studentsFullName
+    studentsFirstName,
+    studentsLastName
   } = useContext(LandingPageContext);
 
  
@@ -66,7 +67,7 @@ const StudentsPage = () => {
             id="profileContainer"
             className="flex items-center flex-nowrap pr-[2rem] gap-[1rem]"
           >
-            <p className="text-[1.25rem] font-Sig">{`${studentsFullName}`}</p>
+            <p className="text-[1.25rem] font-Sig">{`${studentsFirstName} ${studentsLastName}`}</p>
             {isDarkMode ? (
               <img
                 src={ProfileCircleDM}
