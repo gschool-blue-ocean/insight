@@ -10,9 +10,10 @@ import Calendar from "./NavMenu/Calendar";
 import Messages from "./NavMenu/Messages";
 import Error from "../Error";
 import { AuthProvider } from "./AuthFolder/authcontext";
-import  ProtectedRoute  from "./AuthFolder/ProtectedRoute"
+import ProtectedRoute from "./AuthFolder/ProtectedRoute";
 import AdminLandingPage from "./AdminPage/AdminLandingPage";
-import InstructorLandingPage from "./InstructorPage/InstructorLandingPage";
+import InstructorPage from "./InstructorPage/InstructorPage";
+import InstructorLanding from "./InstructorPage/InstructorLanding";
 
 const App = () => {
   return (
@@ -30,7 +31,9 @@ const App = () => {
                 <Route path="Messages" element={<Messages />} />
               </Route>
               <Route element={<ProtectedRoute />}>
-                <Route path="/Instructor" element={<InstructorLandingPage />} />
+                <Route path="/Instructor" element={<InstructorPage />} >
+                  <Route path="instructorHome" element={<InstructorLanding />}/>
+                </Route>
                 <Route path="/Admin" element={<AdminLandingPage />} />
               </Route>
               <Route path="*" element={<Error />} />
