@@ -2,17 +2,19 @@ import React, { createContext, useState, useEffect } from "react";
 const LandingPageContext = createContext();
 export const LandingPageProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [isStudents, setIsStudents] = useState(false);
   const [profileMenu, setProfileMenu] = useState(false);
-  const [isAssignments, setIsAssignments] = useState(false);
   const [averageGrade, setAverageGrade] = useState(0);
   const [countdown, setCountdown] = useState(117);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   //dates obj
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
-  const day = currentDate.getDate();
-  const dayOfWeek = currentDate.getDay();
+  const todayDate = new Date();
+  const year = todayDate.getFullYear();
+  const month = todayDate.getMonth();
+  const day = todayDate.getDate();
+  const dayOfWeek = todayDate.getDay();
+
+   //testdata
+   let studentsFullName = "William Carrot";
 
   const monthNames = [
     "January",
@@ -65,13 +67,16 @@ export const LandingPageProvider = ({ children }) => {
     setAverageGrade(roundedGrade);
   };
   const changeCountdown = () => {
-    const startDate = new Date(2023, 8, 16)
+    const startDate = new Date(2023, 7, 16);
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
     const endDate = new Date(startDate);
-    endDate.setDate(startDate.getDate() + 117)
-    let millisUntil = endDate - currentDate
-    let daysUntil = millisUntil / 86400000
-    setCountdown(Math.floor(daysUntil))
+    endDate.setDate(startDate.getDate() + 117);
+    let millisUntil = endDate - currentDate;
+    let daysUntil = millisUntil / 86400000;
+    setCountdown(Math.floor(daysUntil));
   };
+
   useEffect(() => {
     determineAverage();
     changeCountdown();
@@ -86,8 +91,6 @@ export const LandingPageProvider = ({ children }) => {
         monthNames,
         profileMenu,
         setProfileMenu,
-        isAssignments,
-        setIsAssignments,
         averageGrade,
         tableData,
         countdown,
@@ -96,6 +99,9 @@ export const LandingPageProvider = ({ children }) => {
         month,
         day,
         dayOfWeek,
+        isProfileOpen,
+        setIsProfileOpen,
+        studentsFullName
       }}
     >
       {children}
