@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProtectedRoute from "./AuthFolder/ProtectedRoute.jsx";
 import LoginLandingPage from "./LandingPage/LoginLandingPage";
 import { LandingPageProvider } from "./LandingPage/LandingPageContext";
 import StudentsPage from "./StudentsPage/StudentsPage";
@@ -10,7 +9,6 @@ import Grades from "./NavMenu/Grades";
 import Calendar from "./NavMenu/Calendar";
 import Messages from "./NavMenu/Messages";
 import Error from "../Error";
-import Footer from "./LandingPage/Footer";
 import { AuthProvider } from "./AuthFolder/authcontext";
 import ProtectedRoute from "./AuthFolder/ProtectedRoute";
 import AdminLandingPage from "./AdminPage/AdminLandingPage";
@@ -21,7 +19,6 @@ const App = () => {
     <>
       <BrowserRouter>
         <LandingPageProvider>
-
           <AuthProvider>
             <Routes>
               <Route path="/" element={<LoginLandingPage />} />
@@ -39,7 +36,6 @@ const App = () => {
               <Route path="*" element={<Error />} />
             </Routes>
           </AuthProvider>
-
         </LandingPageProvider>
       </BrowserRouter>
     </>

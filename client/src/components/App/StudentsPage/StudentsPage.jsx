@@ -17,7 +17,6 @@ import calendarLM from "/assets/calendar/calendarLM.svg";
 import gradesDM from "/assets/grades/gradesDM.svg";
 import gradesLM from "/assets/grades/gradesLM.svg";
 
-
 const StudentsPage = () => {
   const {
     profileMenu,
@@ -25,15 +24,13 @@ const StudentsPage = () => {
     isDarkMode,
     isProfileOpen,
     setIsProfileOpen,
-    studentsFullName
+    studentsFullName,
   } = useContext(LandingPageContext);
-
- 
 
   const openProfileMenu = () => {
     setProfileMenu(!profileMenu);
   };
-  
+
   const openProfile = () => {
     setIsProfileOpen(!isProfileOpen);
   };
@@ -104,7 +101,10 @@ const StudentsPage = () => {
             {isProfileOpen ? <ProfileOpen /> : <ProfileClosed />}
           </div>
         ) : null}
-        <div id="contentContainer" className="flex justify-center pt-[5%] h-[80%] font-Sig">
+        <div
+          id="contentContainer"
+          className="flex justify-center pt-[5%] h-[80%] font-Sig"
+        >
           <div
             id="navMenu"
             className="pl-[2rem] flex flex-col gap-[1.5rem] pt-[5rem]"

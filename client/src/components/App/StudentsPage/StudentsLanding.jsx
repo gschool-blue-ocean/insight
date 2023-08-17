@@ -29,10 +29,10 @@ const StudentsLanding = () => {
   ChartJS.register(ArcElement, Tooltip, Legend);
   ChartJS.register(BarElement, CategoryScale, LinearScale, Legend);
   ChartJS.defaults.color = "#000000";
-  
+
   const uncompleted = 100 - averageGrade;
-  const showedUp = 90
-  const skipped = 10
+  const showedUp = 90;
+  const skipped = 10;
   const attendanceChart = {
     datasets: [
       {
@@ -114,14 +114,7 @@ const StudentsLanding = () => {
           </div>
         </div>
       </div>
-      <div
-        id="analyticsContainer"
-<<<<<<< HEAD
-        className="px-[2rem] py-[2rem] text-[1.25rem] flex flex-grow justify-between items-end h-[80%]"
-=======
-        className="px-[2rem] pb-[2.5rem] text-[1.25rem] justify-between items-end h-[80%] w-full flex"
->>>>>>> f6bc52f39f2e443886e4c095c9b20b31e1793191
-      >
+      <div id="analyticsContainer">
         <div id="attendance" className="flex flex-col items-center gap-[1rem]">
           <p>Attendance By Week</p>
           <div className="flex justify-evenly">
@@ -132,8 +125,10 @@ const StudentsLanding = () => {
             />
           </div>
         </div>
-
-        <div id="countdown" className="flex flex-col items-center gap-[1rem] mb-[4rem]">
+        <div
+          id="countdown"
+          className="flex flex-col items-center gap-[1rem] mb-[4rem]"
+        >
           <p className="pb-[1rem] ">Days until Graduation</p>
           <div
             className={
