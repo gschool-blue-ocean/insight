@@ -1,30 +1,51 @@
-import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import LandingPageContext from "./LandingPageContext";
 import LogoDM from "/assets/Logo/LogoDM.svg";
 import LogoLM from "/assets/Logo/LogoLM.svg";
 import toggleDM from "/assets/toggle/toggleOnOffDM.svg";
 import toggleLM from "/assets/toggle/toggleOnOffLM.svg";
+import React, { useState, useContext } from "react";
+import AuthContext from "../AuthFolder/authcontext";
 
 const LoginLandingPage = () => {
   const { isDarkMode, setIsDarkMode } = useContext(LandingPageContext);
+  const { loginProfile } = useContext(AuthContext);
+
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
+  function clearForm() {
+    setFormData({
+      username: "",
+      password: "",
+    });
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = { username, password };
+
     const options = {
       method: "POST",
       headers: {
         Accept: "application/json",
         "content-type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(formData),
     };
     try {
-      const response = await fetch("/users/login", options);
-      await response.json();
+      const response = await fetch("http://localhost:10000/login", options);
+      const token = await response.json();
+      loginProfile(token);
+      clearForm();
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleToggle = () => {
@@ -97,12 +118,15 @@ const LoginLandingPage = () => {
               </Link>
             </div>
             <form
-              action="POST"
               className="flex flex-col gap-[1.5rem] w-full items-center pb-[2rem]"
+              onSubmit={handleSubmit}
             >
               <input
                 type="text"
                 placeholder="username"
+                onChange={handleChange}
+                value={formData.username}
+                name="username"
                 className={
                   isDarkMode
                     ? "bg-DGrayLogin opacity-[0.9] w-3/5 h-[3.25rem] font-Sig font-bold rounded-[10px] text-white text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-white placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusDM-orange"
@@ -112,14 +136,16 @@ const LoginLandingPage = () => {
               <input
                 type="password"
                 placeholder="password"
+                onChange={handleChange}
+                value={formData.password}
+                name="password"
                 className={
                   isDarkMode
                     ? "bg-DGrayLogin opacity-[0.9] w-3/5 h-[3.25rem] font-Sig font-bold rounded-[10px] text-white text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-white placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusDM-orange"
                     : "bg-LGrayLogin opacity-[0.9] w-3/5 h-[3.25rem] font-Sig font-bold rounded-[10px] text-black text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-black placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusLM-purple"
                 }
               />
-              <input
-                onSubmit={handleSubmit}
+              <button
                 type="submit"
                 value="Login"
                 className={
@@ -127,7 +153,9 @@ const LoginLandingPage = () => {
                     ? "bg-DGrayLogin w-[30%] h-[2.25rem] rounded-[5rem] text-white text-[1.25rem] font-Sig hover:shadow-focusDM-orange cursor-pointer"
                     : "bg-LGrayLogin w-[30%] h-[2.25rem] rounded-[5rem] text-black text-[1.25rem] font-Sig hover:shadow-focusLM-purple cursor-pointer"
                 }
-              />
+              >
+                Login
+              </button>
             </form>
           </div>
           <div id="spacer" className="w-[30px]"></div>
