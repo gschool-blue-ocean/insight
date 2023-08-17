@@ -119,7 +119,7 @@ const Calendar = () => {
   }
 
   return (
-    <div className="p-4 m-10 rounded shadow font-robot">
+    <div className="p-4 m-8 overflow-y-auto rounded shadow font-robot">
       <h1 className="text-xl font-bold text-left text-[#e1f9ee]">
         Assignment Due Date Tracker
       </h1>

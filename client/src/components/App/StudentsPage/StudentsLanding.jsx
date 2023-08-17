@@ -54,7 +54,7 @@ const StudentsLanding = () => {
       </div>
       <div
         id="analyticsContainer"
-        className="px-[2rem] py-[2rem] text-[1.25rem] flex justify-between items-end h-[80%]"
+        className="px-[2rem] py-[2rem] text-[1.25rem] flex flex-grow justify-between items-end h-[80%]"
       >
         <div id="countdown" className="flex flex-col items-center gap-[1rem]">
           <p>Days till Graduation</p>

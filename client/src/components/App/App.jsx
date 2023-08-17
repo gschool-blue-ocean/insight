@@ -9,6 +9,7 @@ import Grades from "./NavMenu/Grades";
 import Calendar from "./NavMenu/Calendar";
 import Messages from "./NavMenu/Messages";
 import Error from "../Error";
+import Footer from "./LandingPage/Footer";
 
 const App = () => {
   return (
@@ -47,6 +48,7 @@ const App = () => {
             </ProtectedRoute> */}
             <Route path="*" element={<Error />} />
           </Routes>
+          <Footer />
         </LandingPageProvider>
       </BrowserRouter>
     </>
