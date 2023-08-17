@@ -19,11 +19,12 @@ router.post("/", async (req, res) => {
   } else {
     try {
       const data = result.rows[0];
-      console.log(result.rows);
+      console.log(data);
       if (await bcrypt.compare(password, data.password)) {
         const accessToken = generateAccessToken(data);
         const refreshToken = generateRefreshToken(data);
-        await db.query(`INSERT into auth (token) VALUES ('${refreshToken}')`);
+        await db.query(`UPDATE auth SET token = '${refreshToken}' WHERE userId = ${data.userid}`);
+        console.log(data)
         res.cookie("jwt", refreshToken, {
           httpOnly: true,
           // secure: true,
