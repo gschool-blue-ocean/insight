@@ -91,7 +91,7 @@ const Calendar = () => {
       week.push(
         <div
           key={dayIndex}
-          className={`text-left h-[8rem] p-2 ${
+          className={`text-left h-[7.5rem] p-4 ${
             isCurrentMonth ? "cursor-pointer" : "bg-[#00000033]"
           } ${
             selectedDate.getDate() === dayNumber &&
@@ -119,7 +119,7 @@ const Calendar = () => {
   }
 
   return (
-    <div className="p-4 m-10 rounded shadow font-robot">
+    <div className="p-4 m-8 overflow-y-auto rounded shadow font-robot">
       <h1 className="text-xl font-bold text-left text-[#e1f9ee]">
         Assignment Due Date Tracker
       </h1>
