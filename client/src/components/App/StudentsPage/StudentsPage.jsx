@@ -24,12 +24,8 @@ const StudentsPage = () => {
     isDarkMode,
     isProfileOpen,
     setIsProfileOpen,
-<<<<<<< HEAD
-    studentsFullName,
-=======
     studentsFirstName,
     studentsLastName
->>>>>>> 99fba07431e48162ba2458471df4986b784b16ad
   } = useContext(LandingPageContext);
 
   const openProfileMenu = () => {
