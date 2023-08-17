@@ -1,20 +1,80 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 const LandingPageContext = createContext();
+import AuthContext from "../AuthFolder/authcontext";
 export const LandingPageProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [profileMenu, setProfileMenu] = useState(false);
   const [averageGrade, setAverageGrade] = useState(0);
   const [countdown, setCountdown] = useState(117);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+  const { currentProfile } = useContext(AuthContext);
+  const [currentStudent, setCurrentStudent] = useState({});
+  const [currentUser, setCurrentUser] = useState({});
+
+  const getUserData = async () => {
+    try {
+      let response = await fetch(`${localURL}/users/${currentProfile.userid}`);
+
+      if (!response.ok) {
+        throw new Error(`User not found, Status: ${response.status}`);
+      }
+
+      let student = await response.json();
+      setCurrentUser(student);
+    } catch (error) {
+      console.error("There was a problem finding this user:", error.message);
+    }
+  };
+  useEffect(() => {
+    getUserData();
+  }, [currentProfile]);
+
+  const getStudentData = async () => {
+    try {
+      let response = await fetch(
+        `${localURL}/students/${currentProfile.userid}`
+      );
+
+      if (!response.ok) {
+        throw new Error(`Student not found, Status: ${response.status}`);
+      }
+
+      let student = await response.json();
+      setCurrentStudent(student);
+    } catch (error) {
+      console.error("There was a problem finding this student:", error.message);
+    }
+  };
+  useEffect(() => {
+    getStudentData();
+  }, [currentProfile]);
+
+  let daysMissed  = 0;
+  let cohortNumber = 0;
+  let studentsFirstName = '';
+  let studentsLastName = '';
+
+  if (currentUser[0]) {
+    studentsFirstName = currentUser[0].firstname;
+    studentsLastName = currentUser[0].lastname;
+  }
+  if (currentStudent[0]) {
+    if(!currentStudent[0].days_absent) {
+      daysMissed = 0;
+    } else {
+      daysMissed = currentStudent[0].days_absent;
+    }
+    cohortNumber = currentStudent[0].cohortid;
+  }
+
+  const localURL = "http://localhost:10000";
   //dates obj
   const todayDate = new Date();
   const year = todayDate.getFullYear();
   const month = todayDate.getMonth();
   const day = todayDate.getDate();
   const dayOfWeek = todayDate.getDay();
-
-   //testdata
-   let studentsFullName = "William Carrot";
 
   const monthNames = [
     "January",
@@ -101,7 +161,11 @@ export const LandingPageProvider = ({ children }) => {
         dayOfWeek,
         isProfileOpen,
         setIsProfileOpen,
-        studentsFullName
+        localURL,
+        daysMissed,
+        cohortNumber,
+        studentsFirstName,
+        studentsLastName,
       }}
     >
       {children}

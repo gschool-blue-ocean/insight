@@ -15,6 +15,7 @@ import userRoutes from "./roles/userRoutes.js";
 import cohortRoutes from "./misc/cohort.js";
 import adminRoutes from "./roles/adminRoutes.js";
 import loginRoute from "./misc/loginRoute.js";
+import logoutRoutes from './misc/logoutRoutes.js'
 
 //env config pathing
 dotenv.config({ path: ".env" });
@@ -50,17 +51,18 @@ if (cluster.isPrimary) { //if prim see total cpus aval on system
   //MIDDLEWARE
   app.use(logWorkerAndMemory);
   app.use(express.json());
-  app.use(cors({ origin: "*" }));
+  app.use(cors());
   // ROUTES
   app.use("/admin", adminRoutes);
+  app.use('/logout', logoutRoutes)
   app.use("/instructors", instructorRoutes);
   app.use("/students", studentRoutes);
   app.use("/users", userRoutes);
   app.use("/assignments", assignmentRoutes);
   app.use("/attendance", attendanceRoutes);
   app.use("/grades", gradeRoutes);
-    app.use("/cohorts", cohortRoutes);
-    app.use("/login", loginRoute);
+  app.use("/cohorts", cohortRoutes);
+  app.use("/login", loginRoute);
 
   // ... Existing code for the clustering ...
   app.get("/status", (req, res) => {

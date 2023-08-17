@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -24,7 +24,11 @@ const StudentsLanding = () => {
     month,
     day,
     dayOfWeek,
+    cohortNumber,
+    daysMissed,
+    studentsFirstName
   } = useContext(LandingPageContext);
+  
 
   ChartJS.register(ArcElement, Tooltip, Legend);
   ChartJS.register(BarElement, CategoryScale, LinearScale, Legend);
@@ -74,9 +78,7 @@ const StudentsLanding = () => {
   };
 
   //testdata
-  let daysMissed = 4;
-  let cohortNumber = 22;
-  let studentsFirstName = "William";
+
   let GPA = averageGrade;
 
   return (
