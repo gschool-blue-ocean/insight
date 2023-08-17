@@ -31,7 +31,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const navByRole = (role) => {
-    console.log(role);
     switch (role) {
       case "admin":
         navigate("/Admin");

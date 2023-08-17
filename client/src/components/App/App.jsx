@@ -11,7 +11,7 @@ import Calendar from "./NavMenu/Calendar";
 import Messages from "./NavMenu/Messages";
 import Error from "../Error";
 import { AuthProvider } from "./AuthFolder/authcontext";
-import ProtectedRoute from "./AuthFolder/ProtectedRoute";
+
 import AdminLandingPage from "./AdminPage/AdminLandingPage";
 import InstructorLandingPage from "./InstructorPage/InstructorLandingPage";
 
