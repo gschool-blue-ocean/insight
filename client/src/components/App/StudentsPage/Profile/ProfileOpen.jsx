@@ -1,6 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
+import AuthContext from '../../AuthFolder/authcontext.jsx'
+
+
 const ProfileOpen = () => {
   const username = "Willy";
+
+  const { logoutProfile } = useContext(AuthContext)
+
+  const handleLogout = () => {
+    logoutProfile()
+  }
+
   return (
     <>
       <div className="flex flex-col gap-[0.5rem] pb-[2rem] items-center text-[1.25rem]">
@@ -11,7 +21,7 @@ const ProfileOpen = () => {
           <p>Change Password</p>
         </div>
         <div>
-          <button>Sign Out</button>
+          <button onClick={handleLogout}>Sign Out</button>
         </div>
         <button id="deleteAccount" className="flex bg-[#ff24249e]  px-[0.25rem] rounded-xl  justify-center ">
           <p className="text-center">Delete Account</p>
