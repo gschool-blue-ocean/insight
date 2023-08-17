@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProtectedRoute from "./AuthFolder/ProtectedRoute.jsx";
 import LoginLandingPage from "./LandingPage/LoginLandingPage";
 import { LandingPageProvider } from "./LandingPage/LandingPageContext";
 import StudentsPage from "./StudentsPage/StudentsPage";
@@ -11,7 +10,6 @@ import Calendar from "./NavMenu/Calendar";
 import Messages from "./NavMenu/Messages";
 import Error from "../Error";
 import { AuthProvider } from "./AuthFolder/authcontext";
-
 import AdminLandingPage from "./AdminPage/AdminLandingPage";
 import InstructorLandingPage from "./InstructorPage/InstructorLandingPage";
 
