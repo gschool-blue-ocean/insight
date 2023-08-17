@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProtectedRoute from "./AuthFolder/ProtectedRoute.jsx";
 import LoginLandingPage from "./LandingPage/LoginLandingPage";
 import { LandingPageProvider } from "./LandingPage/LandingPageContext";
 import StudentsPage from "./StudentsPage/StudentsPage";
