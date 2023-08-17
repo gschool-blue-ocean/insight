@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./AuthFolder/ProtectedRoute.jsx";
 import LoginLandingPage from "./LandingPage/LoginLandingPage";
 import { LandingPageProvider } from "./LandingPage/LandingPageContext";
 import StudentsPage from "./StudentsPage/StudentsPage";
@@ -19,6 +20,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <LandingPageProvider>
+
           <AuthProvider>
             <Routes>
               <Route path="/" element={<LoginLandingPage />} />
@@ -36,6 +38,7 @@ const App = () => {
               <Route path="*" element={<Error />} />
             </Routes>
           </AuthProvider>
+
         </LandingPageProvider>
       </BrowserRouter>
     </>
