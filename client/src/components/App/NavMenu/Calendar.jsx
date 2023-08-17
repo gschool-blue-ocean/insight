@@ -91,7 +91,7 @@ const Calendar = () => {
       week.push(
         <div
           key={dayIndex}
-          className={`text-left h-[8rem] p-2 ${
+          className={`text-left h-[7.5rem] p-4 ${
             isCurrentMonth ? "cursor-pointer" : "bg-[#00000033]"
           } ${
             selectedDate.getDate() === dayNumber &&
