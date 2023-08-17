@@ -15,6 +15,7 @@ import userRoutes from "./roles/userRoutes.js";
 import cohortRoutes from "./misc/cohort.js";
 import adminRoutes from "./roles/adminRoutes.js";
 import loginRoute from "./misc/loginRoute.js";
+import logoutRoutes from './misc/logoutRoutes.js'
 
 //env config pathing
 dotenv.config({ path: ".env" });
@@ -53,6 +54,7 @@ if (cluster.isPrimary) { //if prim see total cpus aval on system
   app.use(cors({ origin: "*" }));
   // ROUTES
   app.use("/admin", adminRoutes);
+  app.use('/logout', logoutRoutes)
   app.use("/instructors", instructorRoutes);
   app.use("/students", studentRoutes);
   app.use("/users", userRoutes);
