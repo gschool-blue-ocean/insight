@@ -51,7 +51,7 @@ if (cluster.isPrimary) { //if prim see total cpus aval on system
   //MIDDLEWARE
   app.use(logWorkerAndMemory);
   app.use(express.json());
-  app.use(cors({ origin: "*" }));
+  app.use(cors());
   // ROUTES
   app.use("/admin", adminRoutes);
   app.use('/logout', logoutRoutes)
@@ -61,8 +61,8 @@ if (cluster.isPrimary) { //if prim see total cpus aval on system
   app.use("/assignments", assignmentRoutes);
   app.use("/attendance", attendanceRoutes);
   app.use("/grades", gradeRoutes);
-    app.use("/cohorts", cohortRoutes);
-    app.use("/login", loginRoute);
+  app.use("/cohorts", cohortRoutes);
+  app.use("/login", loginRoute);
 
   // ... Existing code for the clustering ...
   app.get("/status", (req, res) => {
