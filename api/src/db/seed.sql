@@ -2,7 +2,7 @@ INSERT INTO users (username, firstName, lastName, role)
 VALUES
     ('MrHawkins', 'John', 'Hawkins', 'instructor'),
     ('BubbaHoundstooth', 'Temuera', 'Morrison', 'admin'),
-    ('syenite', 'Essun', 'Tirimo', 'instructor'),
+    ('TrishJenkins', 'Trish', 'Jenkins', 'student'),
     ('azure', 'Vivenna', 'Royal', 'student'),
     ('spirit', 'Raoden', 'Sel', 'student'),
     ('slipperypete', 'Art', 'Vandalay', 'student'),
@@ -20,8 +20,8 @@ VALUES
     ('giogio', 'Giorno', 'Giovana', 'student'),
     ('president', 'Streetlamp', 'Le Moose', 'student'),
     ('UGUD', 'Kevin', 'Pouya', 'student'),
+    ('syenite', 'Essun', 'Tirimo', 'instructor'),
     ('blacktongue', 'Aaron', 'Kitcher', 'student'),
-    ('TrishJenkins', 'Trish', 'Jenkins', 'student'),
     ('MrsMarmalade', 'Jane', 'Marmalade', 'student');
 
 
