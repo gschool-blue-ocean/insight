@@ -1,6 +1,9 @@
 import LandingPageContext from "../LandingPage/LandingPageContext";
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import ProfileClosed from "../StudentsPage/Profile/ProfileClosed";
+import ProfileOpen from "../StudentsPage/Profile/ProfileOpen";
+
 import LogoDM from "/assets/Logo/LogoDM.svg";
 import LogoLM from "/assets/Logo/LogoLM.svg";
 import instructorAvatar from "/assets/instructorAvatar.svg";
@@ -23,10 +26,10 @@ const InstructorPage = () => {
   const {
     profileMenu,
     setProfileMenu,
+    setIsProfileOpen,
+    isProfileOpen,
     isDarkMode,
     setIsDarkMode,
-    isAssignments,
-    setIsAssignments,
   } = useContext(LandingPageContext);
 
   //testdata
@@ -35,11 +38,12 @@ const InstructorPage = () => {
   const openProfileMenu = () => {
     setProfileMenu(!profileMenu);
   };
+
+  const openProfile = () => {
+    setIsProfileOpen(!isProfileOpen);
+  };
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-  };
-  const selectAssignments = () => {
-    setIsAssignments(!isAssignments);
   };
 
   return (
@@ -101,7 +105,10 @@ const InstructorPage = () => {
               ) : (
                 <img src={ProfileCircleSmallLM} alt="profile icon" />
               )}
-              <p>My Profile</p>
+              <p className="cursor-pointer" onClick={openProfile}>
+                My Profile
+              </p>
+              {isProfileOpen ? <ProfileOpen /> : <ProfileClosed />}
             </div>
             <div id="themeToggle" className="flex items-center gap-[0.5rem]">
               {isDarkMode ? (
@@ -136,11 +143,7 @@ const InstructorPage = () => {
             id="navMenu"
             className="pl-[2rem] flex flex-col gap-[1.5rem] pt-[5rem]"
           >
-            <div
-              id="assigmentsContainer"
-              className="flex gap-[1rem]"
-              onClick={selectAssignments}
-            >
+            <div id="assigmentsContainer" className="flex gap-[1rem]">
               {isDarkMode ? (
                 <img src={assignmentDM} alt="assignment icon" />
               ) : (
@@ -180,11 +183,7 @@ const InstructorPage = () => {
                 <h2 className="text-[1.5rem] cursor-pointer">Grades</h2>
               </Link>
             </div>
-            <div
-              id="studentssContainer"
-              className="flex gap-[1rem]"
-              onClick={selectStudents}
-            >
+            <div id="studentssContainer" className="flex gap-[1rem]">
               {isDarkMode ? (
                 <img src={studentsDM} alt="student icon" />
               ) : (

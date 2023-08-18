@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
         break;
 
       case "instructor":
-        navigate("/Instructor");
+        navigate("/Instructor/instructorHome");
         break;
 
       case "student":
