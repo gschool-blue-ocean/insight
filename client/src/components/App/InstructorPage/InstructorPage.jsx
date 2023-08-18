@@ -23,6 +23,7 @@ const InstructorPage = () => {
   const { profileMenu, setProfileMenu, isDarkMode, setIsDarkMode } =
     useContext(LandingPageContext);
 
+
   //testdata
   let instructorsFullName = "Nancy Root";
 
@@ -127,7 +128,9 @@ const InstructorPage = () => {
             id="navMenu"
             className="pl-[2rem] flex flex-col gap-[1.5rem] pt-[5rem]"
           >
+
             <div id="assigmentsContainer" className="flex gap-[1rem]">
+
               {isDarkMode ? (
                 <img src={assignmentDM} alt="assignment icon" />
               ) : (
@@ -163,8 +166,9 @@ const InstructorPage = () => {
               )}
 
               <h2 className="text-[1.5rem] cursor-pointer">Grades</h2>
-            </div>
+
             <div id="studentssContainer" className="flex gap-[1rem]">
+
               {isDarkMode ? (
                 <img src={studentsDM} alt="student icon" />
               ) : (
