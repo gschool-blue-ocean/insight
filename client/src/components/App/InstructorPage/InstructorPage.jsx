@@ -20,14 +20,8 @@ import studentsLM from "/assets/students/studentsLM.svg";
 import studentsDM from "/assets/students/studentsDM.svg";
 
 const InstructorPage = () => {
-  const {
-    profileMenu,
-    setProfileMenu,
-    isDarkMode,
-    setIsDarkMode,
-    isAssignments,
-    setIsAssignments,
-  } = useContext(LandingPageContext);
+  const { profileMenu, setProfileMenu, isDarkMode, setIsDarkMode } =
+    useContext(LandingPageContext);
 
   //testdata
   let instructorsFullName = "Nancy Root";
@@ -37,9 +31,6 @@ const InstructorPage = () => {
   };
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-  };
-  const selectAssignments = () => {
-    setIsAssignments(!isAssignments);
   };
 
   return (
@@ -136,19 +127,14 @@ const InstructorPage = () => {
             id="navMenu"
             className="pl-[2rem] flex flex-col gap-[1.5rem] pt-[5rem]"
           >
-            <div
-              id="assigmentsContainer"
-              className="flex gap-[1rem]"
-              onClick={selectAssignments}
-            >
+            <div id="assigmentsContainer" className="flex gap-[1rem]">
               {isDarkMode ? (
                 <img src={assignmentDM} alt="assignment icon" />
               ) : (
                 <img src={assignmentLM} alt="assignment icon" />
               )}
-              <Link to="Assignments">
-                <h2 className="text-[1.5rem] cursor-pointer">Assignments</h2>
-              </Link>
+
+              <h2 className="text-[1.5rem] cursor-pointer">Assignments</h2>
             </div>
             <div id="messagesContainer" className="flex gap-[1rem]">
               {isDarkMode ? (
@@ -156,9 +142,8 @@ const InstructorPage = () => {
               ) : (
                 <img src={messagesLM} alt="chat bubble icon" />
               )}
-              <Link to="Messages">
-                <h2 className="text-[1.5rem] cursor-pointer">Messages</h2>
-              </Link>
+
+              <h2 className="text-[1.5rem] cursor-pointer">Messages</h2>
             </div>
             <div id="calendarContainer" className="flex gap-[1rem]">
               {isDarkMode ? (
@@ -176,23 +161,17 @@ const InstructorPage = () => {
               ) : (
                 <img src={gradesLM} alt="gradebook icon" />
               )}
-              <Link to="Grades">
-                <h2 className="text-[1.5rem] cursor-pointer">Grades</h2>
-              </Link>
+
+              <h2 className="text-[1.5rem] cursor-pointer">Grades</h2>
             </div>
-            <div
-              id="studentssContainer"
-              className="flex gap-[1rem]"
-              onClick={selectStudents}
-            >
+            <div id="studentssContainer" className="flex gap-[1rem]">
               {isDarkMode ? (
                 <img src={studentsDM} alt="student icon" />
               ) : (
                 <img src={studentsLM} alt="student icon" />
               )}
-              <Link to="Students">
-                <h2 className="text-[1.5rem] cursor-pointer">Students</h2>
-              </Link>
+
+              <h2 className="text-[1.5rem] cursor-pointer">Students</h2>
             </div>
           </div>
           <div
