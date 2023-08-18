@@ -95,8 +95,8 @@ const InstructorPage = () => {
           <div
             className={
               isDarkMode
-                ? "absolute flex flex-col gap-[0.5rem] pl-[2%] w-[15rem] right-3 bg-DGrayLogin rounded-xl text-white text-[1.5rem] pt-[1rem] border-black border-[1px]"
-                : "absolute flex flex-col gap-[0.5rem] pl-[2%] w-[15rem] right-3 bg-LGrayLogin rounded-xl text-black text-[1.5rem] pt-[1rem] border-black border-[1px]"
+                ? "absolute flex flex-col items-start gap-[0.5rem] pl-[2%] w-[15rem] right-3 bg-DGrayLogin rounded-xl text-white text-[1.5rem] pt-[1rem] border-black border-[1px]"
+                : "absolute flex flex-col items-start gap-[0.5rem] pl-[2%] w-[15rem] right-3 bg-LGrayLogin rounded-xl text-black text-[1.5rem] pt-[1rem] border-black border-[1px]"
             }
           >
             <div id="myProfile" className="flex items-center gap-[0.5rem]">
@@ -126,8 +126,9 @@ const InstructorPage = () => {
               ) : (
                 <img src={assignmentLM} alt="assignment icon" />
               )}
-
-              <h2 className="text-[1.5rem] cursor-pointer">Assignments</h2>
+              <Link to="Assignments">
+                <h2 className="text-[1.5rem] cursor-pointer">Assignments</h2>
+              </Link>
             </div>
             <div id="messagesContainer" className="flex gap-[1rem]">
               {isDarkMode ? (
@@ -135,7 +136,9 @@ const InstructorPage = () => {
               ) : (
                 <img src={messagesLM} alt="chat bubble icon" />
               )}
-              <Link to="Messages">
+
+              <Link  to="Messages">
+
                 <h2 className="text-[1.5rem] cursor-pointer">Messages</h2>
               </Link>
             </div>
@@ -158,8 +161,9 @@ const InstructorPage = () => {
               <Link to="Grades">
                 <h2 className="text-[1.5rem] cursor-pointer">Grades</h2>
               </Link>
+
             </div>
-            <div id="studentssContainer" className="flex gap-[1rem]">
+            <div id="studentsContainer" className="flex gap-[1rem]">
               {isDarkMode ? (
                 <img src={studentsDM} alt="student icon" />
               ) : (

@@ -11,6 +11,7 @@ import Messages from "./NavMenu/Messages";
 import Error from "../Error";
 import { AuthProvider } from "./AuthFolder/authcontext";
 import ProtectedRoute from "./AuthFolder/ProtectedRoute";
+import AdminPage from "./AdminPage/AdminPage";
 import AdminLandingPage from "./AdminPage/AdminLandingPage";
 import InstructorPage from "./InstructorPage/InstructorPage";
 import InstructorLanding from "./InstructorPage/InstructorLanding";
@@ -31,13 +32,25 @@ const App = () => {
                 <Route path="Messages" element={<Messages />} />
               </Route>
               <Route element={<ProtectedRoute />}>
+                {/* INSTRUCTOR PAGE */}
                 <Route path="/Instructor" element={<InstructorPage />}>
                   <Route
                     path="instructorHome"
                     element={<InstructorLanding />}
                   />
+                  <Route path="Assignments" element={<Assignments />} />
+                  <Route path="Calendar" element={<Calendar />} />
+                  <Route path="Grades" element={<Grades />} />
+                  <Route path="Messages" element={<Messages />} />
                 </Route>
-                <Route path="/Admin" element={<AdminLandingPage />} />
+                {/* ADMIN PAGES */}
+                <Route path="/Admin" element={<AdminPage />}>
+                  <Route path="AdminHome" element={<AdminLandingPage />} />
+                  <Route path="Assignments" element={<Assignments />} />
+                  <Route path="Calendar" element={<Calendar />} />
+                  <Route path="Grades" element={<Grades />} />
+                  <Route path="Messages" element={<Messages />} />
+                </Route>
               </Route>
               <Route path="*" element={<Error />} />
             </Routes>
