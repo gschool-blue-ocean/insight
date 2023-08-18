@@ -52,11 +52,25 @@ const InstructorPage = () => {
         id="pageContainer"
         className={
           isDarkMode
-            ? "h-screen text-white bg-center bg-cover bg-DGLogin"
-            : "h-screen text-black bg-center bg-cover bg-LGLogin"
+            ? "h-screen text-white bg-center bg-cover"
+            : "h-screen text-black bg-center bg-cover"
         }
+        style={{
+          backgroundImage: `url('/images/reversecity.jpg')`,
+          backgroundBlendMode: isDarkMode ? "multiply" : "screen",
+          backgroundColor: isDarkMode
+            ? "rgba(26, 61, 54, 0.9)"
+            : "rgba(138, 145, 143, 0.9)",
+        }}
       >
-        <div id="header" className="flex justify-between">
+        <div
+          id="header"
+          className={
+            isDarkMode
+              ? "flex justify-between bg-DGLogin bg-opacity-[0.95]"
+              : "flex justify-between bg-[#afc9c2] bg-opacity-[0.9]"
+          }
+        >
           <div id="title" className="flex items-center pl-[2rem]">
             {isDarkMode ? (
               <img src={LogoDM} alt="Insight Logo" />
@@ -137,8 +151,7 @@ const InstructorPage = () => {
                 <img src={messagesLM} alt="chat bubble icon" />
               )}
 
-              <Link  to="Messages">
-
+              <Link to="Messages">
                 <h2 className="text-[1.5rem] cursor-pointer">Messages</h2>
               </Link>
             </div>
@@ -161,7 +174,6 @@ const InstructorPage = () => {
               <Link to="Grades">
                 <h2 className="text-[1.5rem] cursor-pointer">Grades</h2>
               </Link>
-
             </div>
             <div id="studentsContainer" className="flex gap-[1rem]">
               {isDarkMode ? (
@@ -178,42 +190,54 @@ const InstructorPage = () => {
             id="workHub"
             className={
               isDarkMode
-                ? "bg-ContentBGDM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px]"
-                : "bg-BGboxLM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px]"
+                ? "bg-ContentBGDM bg-opacity-[0.75]  w-[70%] h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px]"
+                : "bg-[#afc9c2] bg-opacity-[0.9] w-[70%]  h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px]"
             }
           >
             <Outlet />
-
           </div>
         </div>
-        <div className="mt-[10rem] h-[1rem] flex justify-center font-robot ">
+        <div
+          id="footer"
+          className={
+            isDarkMode
+              ? "mt-[10rem] h-[1.2rem] flex justify-center w-full font-robot bg-DGLogin bg-opacity-[0.95]"
+              : "mt-[10rem] h-[1.2rem] flex justify-center w-full font-robot bg-[#afc9c2] bg-opacity-[0.9]"
+          }
+        >
           <div className="flex flex-col items-start">
-            <ul className="inline-block w-full text-xs">
-              <li className="text-black inline-block mr-1 hover:text-[#5a7a64] pl-1 after:content-['|'] cursor-pointer">
+            <ul
+              className={
+                isDarkMode
+                  ? "inline-block w-full text-xs text-white"
+                  : "inline-block w-full text-xs text-black"
+              }
+            >
+              <li className=" inline-block mr-1  pl-1 after:content-['|'] cursor-pointer">
                 {" "}
                 Privacy Policy{" "}
               </li>
-              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1   after:content-['|'] cursor-pointer">
+              <li className="  inline-block mr-1   after:content-['|'] cursor-pointer">
                 {" "}
                 Manage My Privacy{" "}
               </li>
-              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1 after:content-['|'] cursor-pointer">
+              <li className=" inline-block mr-1 after:content-['|'] cursor-pointer">
                 {" "}
                 Do Not Sell or Share My Data{" "}
               </li>
-              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1   after:content-['|'] cursor-pointer">
+              <li className=" inline-block mr-1   after:content-['|'] cursor-pointer">
                 {" "}
                 Legal{" "}
               </li>
-              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1 after:content-['|'] cursor-pointer">
+              <li className="inline-block mr-1 after:content-['|'] cursor-pointer">
                 {" "}
                 Accessibility{" "}
               </li>
-              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1 pl-1 after:content-['|'] cursor-pointer">
+              <li className=" inline-block mr-1 pl-1 after:content-['|'] cursor-pointer">
                 {" "}
                 Contact{" "}
               </li>
-              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1 cursor-pointer">
+              <li className="inline-block mr-1 cursor-pointer">
                 Copyright © 2023 Insight Corporation
               </li>
             </ul>
