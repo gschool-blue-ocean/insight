@@ -104,7 +104,7 @@ const StudentsPage = () => {
         ) : null}
         <div
           id="contentContainer"
-          className="flex justify-start pt-[2%] h-[80%] font-Sig gap-[5rem]"
+          className="flex justify-between pt-[2%] font-Sig h-[80%] "
         >
           <div
             id="navMenu"
@@ -162,15 +162,17 @@ const StudentsPage = () => {
               </Link>
             </div>
           </div>
+          <div className="w-[100%] h-[100%] flex justify-center">
           <div
             id="workHub"
             className={
               isDarkMode
-                ? "bg-ContentBGDM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px]"
-                : "bg-BGboxLM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px]"
+                ? "bg-ContentBGDM h-full w-[90%] rounded-xl flex flex-col max-w-[1500px] mr-[10rem]"
+                : "bg-BGboxLM h-full w-[90%] rounded-xl flex flex-col max-w-[1500px] mr-[10rem]"
             }
           >
             <Outlet />
+          </div>
           </div>
         </div>
         <div className="mt-[10rem] h-[1rem] flex justify-center font-robot ">
