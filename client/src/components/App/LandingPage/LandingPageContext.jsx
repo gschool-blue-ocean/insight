@@ -54,10 +54,12 @@ export const LandingPageProvider = ({ children }) => {
   let cohortNumber = 0;
   let studentsFirstName = '';
   let studentsLastName = '';
+  let username = '';
 
   if (currentUser[0]) {
     studentsFirstName = currentUser[0].firstname;
     studentsLastName = currentUser[0].lastname;
+    username = currentUser[0].username
   }
   if (currentStudent[0]) {
     if(!currentStudent[0].days_absent) {
@@ -166,6 +168,7 @@ export const LandingPageProvider = ({ children }) => {
         cohortNumber,
         studentsFirstName,
         studentsLastName,
+        username
       }}
     >
       {children}

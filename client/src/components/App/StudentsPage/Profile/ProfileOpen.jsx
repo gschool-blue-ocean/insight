@@ -6,19 +6,18 @@ import LandingPageContext from "../../LandingPage/LandingPageContext.jsx";
 
 
 const ProfileOpen = () => {
-  const username = "Willy";
 
-  
-
-
-  const { setProfileMenu } = useContext(LandingPageContext)
+  const { setProfileMenu,currentUser, currentStudent, username } = useContext(LandingPageContext)
   const { logoutProfile } = useContext(AuthContext)
 
   const handleLogout = () => {
     setProfileMenu(false)
     logoutProfile()
   }
-
+  if(currentStudent && currentUser) {
+    console.log(currentUser)
+    console.log(currentStudent)
+  }
 
   return (
     <>

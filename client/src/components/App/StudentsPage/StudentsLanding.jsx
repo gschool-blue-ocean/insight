@@ -121,7 +121,7 @@ const StudentsLanding = () => {
         className="px-[2rem] pb-[2.5rem] text-[1.25rem] justify-between items-center h-[80%] w-full flex"
       >
         <div id="attendance" className="flex flex-col items-center gap-[1rem]">
-          <p>Attendance By Week</p>
+          <p>Attendance</p>
           <div className="flex justify-evenly">
             <Pie
               data={attendanceChart}
