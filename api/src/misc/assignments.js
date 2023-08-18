@@ -20,7 +20,7 @@ router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const results = await db.query(
-      `SELECT * FROM assignments WHERE id = ${id}`
+      `SELECT * FROM assignments WHERE cohortId = ${id}`
     );
     res.status(200).json(results.rows);
   } catch (err) {
