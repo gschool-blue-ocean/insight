@@ -26,14 +26,34 @@ const StudentsLanding = () => {
     dayOfWeek,
     cohortNumber,
     daysMissed,
-    studentsFirstName
+    studentsFirstName,
+    localURL
   } = useContext(LandingPageContext);
   
 
   ChartJS.register(ArcElement, Tooltip, Legend);
   ChartJS.register(BarElement, CategoryScale, LinearScale, Legend);
   ChartJS.defaults.color = "#000000";
-
+  
+  const [grade, setGrade] = useState([]);
+  const getGradeData = async () => {
+    try {
+      let response = await fetch(
+        `${localURL}/assignments`
+      );
+      if (!response.ok) {
+        throw new Error(`grade not found, Status: ${response.status}`);
+      }
+      setGrade(await response.json());
+    } catch (error) {
+      console.error("There was a problem finding this students grade:", error.message);
+    }
+  };
+  useEffect(() => {
+    getGradeData();
+    console.log(grade)
+  }, []);
+  
   const uncompleted = 100 - averageGrade;
   const showedUp = 90;
   const skipped = 10;

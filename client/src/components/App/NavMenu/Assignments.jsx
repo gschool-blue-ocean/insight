@@ -9,7 +9,7 @@ const Assignments = () => {
   const getAssignmentData = async () => {
     try {
       let response = await fetch(
-        `${localURL}/assignments/`
+        `${localURL}/assignments`
       );
 
       if (!response.ok) {
