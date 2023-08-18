@@ -95,11 +95,11 @@ const InstructorPage = () => {
           <div
             className={
               isDarkMode
-                ? "absolute h-[10rem] flex flex-col gap-[0.5rem] pl-[2rem] w-[15rem] right-3 bg-DGrayLogin rounded-xl text-white text-[1.5rem] pt-[1rem] border-black border-[1px]"
-                : "absolute h-[10rem] flex flex-col gap-[0.5rem] pl-[2rem] w-[15rem] right-3 bg-LGrayLogin rounded-xl text-black text-[1.5rem] pt-[1rem] border-black border-[1px]"
+                ? "absolute flex flex-col gap-[0.5rem] pl-[2%] w-[15rem] right-3 bg-DGrayLogin rounded-xl text-white text-[1.5rem] pt-[1rem] border-black border-[1px]"
+                : "absolute flex flex-col gap-[0.5rem] pl-[2%] w-[15rem] right-3 bg-LGrayLogin rounded-xl text-black text-[1.5rem] pt-[1rem] border-black border-[1px]"
             }
           >
-            <div id="mySettings" className="flex items-center gap-[0.5rem]">
+            <div id="myProfile" className="flex items-center gap-[0.5rem]">
               {isDarkMode ? (
                 <img src={ProfileCircleSmallDM} alt="profile icon" />
               ) : (
@@ -108,34 +108,8 @@ const InstructorPage = () => {
               <p className="cursor-pointer" onClick={openProfile}>
                 My Profile
               </p>
-              {isProfileOpen ? <ProfileOpen /> : <ProfileClosed />}
             </div>
-            <div id="themeToggle" className="flex items-center gap-[0.5rem]">
-              {isDarkMode ? (
-                <img
-                  src={toggleDM}
-                  alt="toggle icon"
-                  onClick={toggleTheme}
-                  className="cursor-pointer"
-                />
-              ) : (
-                <img
-                  src={toggleLM}
-                  alt="toggle icon"
-                  onClick={toggleTheme}
-                  className="cursor-pointer"
-                />
-              )}
-              <p>Theme</p>
-            </div>
-            <div id="chatbot" className="flex gap-[0.5rem] items-center">
-              {isDarkMode ? (
-                <img src={messagesDM} alt="messages icon" />
-              ) : (
-                <img src={messagesLM} alt="messages icon" />
-              )}
-              <p>Chat</p>
-            </div>
+            {isProfileOpen ? <ProfileOpen /> : <ProfileClosed />}
           </div>
         ) : null}
         <div id="contentContainer" className="flex pt-[5%] h-[80%] font-Sig">
