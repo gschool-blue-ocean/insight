@@ -108,71 +108,73 @@ const StudentsPage = () => {
         >
           <div
             id="navMenu"
-            className=" flex flex-col h-full  pt-[2rem] w-[10rem]"
+            className=" flex flex-col h-full mr-[1rem] pt-[2rem] w-[10rem]"
           >
-            <div id="assigmentsContainer" className="flex cursor-pointer flex-col p-[2rem] gap-[1rem] hover:bg-ContentBGDM">
-              {isDarkMode ? (
-                <img src={assignmentDM} alt="assignment icon" />
-              ) : (
-                <img src={assignmentLM} alt="assignment icon" />
-              )}
-              <Link to="Assignments">
-                <h2 className="text-[1.25rem] text-center ">
-                  Assignments
-                </h2>
-              </Link>
-            </div>
-            
-            <div id="messagesContainer" className="flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM">
-              {isDarkMode ? (
-                <img src={messagesDM} alt="messages icon" />
-              ) : (
-                <img src={messagesLM} alt="chat bubble icon" />
-              )}
-              <Link to="Messages">
-                <h2 className="text-[1.25rem] text-center">
-                  Messages
-                </h2>
-              </Link>
-            </div>
-            <div
-              id="calendarContainer"
-              className="flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM"
-            >
-              {isDarkMode ? (
-                <img src={calendarDM} alt="calendar icon" />
-              ) : (
-                <img src={calendarLM} alt="calendar icon" />
-              )}
-              <Link to="Calendar">
+            <Link to="Assignments">
+              <div
+                id="assigmentsContainer"
+                className="flex cursor-pointer flex-col p-[2rem] gap-[1rem] hover:bg-ContentBGDM"
+              >
+                {isDarkMode ? (
+                  <img src={assignmentDM} alt="assignment icon" />
+                ) : (
+                  <img src={assignmentLM} alt="assignment icon" />
+                )}
+                <h2 className="text-[1.25rem] text-center ">Assignments</h2>
+              </div>
+            </Link>
+
+            <Link to="Messages">
+              <div
+                id="messagesContainer"
+                className="flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM"
+              >
+                {isDarkMode ? (
+                  <img src={messagesDM} alt="messages icon" />
+                ) : (
+                  <img src={messagesLM} alt="chat bubble icon" />
+                )}
+                <h2 className="text-[1.25rem] text-center">Messages</h2>
+              </div>
+            </Link>
+            <Link to="Calendar">
+              <div
+                id="calendarContainer"
+                className="flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM"
+              >
+                {isDarkMode ? (
+                  <img src={calendarDM} alt="calendar icon" />
+                ) : (
+                  <img src={calendarLM} alt="calendar icon" />
+                )}
                 <h2 className="text-[1.25rem]  text-center">Calendar</h2>
-              </Link>
-            </div>
-            <div
-              id="gradesContainer"
-              className=" cursor-pointer flex flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM"
-            >
-              {isDarkMode ? (
-                <img src={gradesDM} alt="gradebook icon" />
-              ) : (
-                <img src={gradesLM} alt="gradebook icon" />
-              )}
-              <Link to="Grades">
+              </div>
+            </Link>
+            <Link to="Grades">
+              <div
+                id="gradesContainer"
+                className=" cursor-pointer flex flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM"
+              >
+                {isDarkMode ? (
+                  <img src={gradesDM} alt="gradebook icon" />
+                ) : (
+                  <img src={gradesLM} alt="gradebook icon" />
+                )}
                 <h2 className="text-[1.25rem]  text-center">Grades</h2>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
           <div className="w-[100%] h-[100%] flex justify-center">
-          <div
-            id="workHub"
-            className={
-              isDarkMode
-                ? "bg-ContentBGDM h-full w-[90%] rounded-xl flex flex-col max-w-[1500px] mr-[10rem]"
-                : "bg-BGboxLM h-full w-[90%] rounded-xl flex flex-col max-w-[1500px] mr-[10rem]"
-            }
-          >
-            <Outlet />
-          </div>
+            <div
+              id="workHub"
+              className={
+                isDarkMode
+                  ? "bg-ContentBGDM h-full w-[90%] rounded-xl flex flex-col max-w-[1500px] mr-[11rem]"
+                  : "bg-BGboxLM h-full w-[90%] rounded-xl flex flex-col max-w-[1500px] mr-[11rem]"
+              }
+            >
+              <Outlet />
+            </div>
           </div>
         </div>
         <div className="mt-[10rem] h-[1rem] flex justify-center font-robot ">
