@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -24,15 +24,19 @@ const StudentsLanding = () => {
     month,
     day,
     dayOfWeek,
+    cohortNumber,
+    daysMissed,
+    studentsFirstName
   } = useContext(LandingPageContext);
+  
 
   ChartJS.register(ArcElement, Tooltip, Legend);
   ChartJS.register(BarElement, CategoryScale, LinearScale, Legend);
   ChartJS.defaults.color = "#000000";
-  
+
   const uncompleted = 100 - averageGrade;
-  const showedUp = 90
-  const skipped = 10
+  const showedUp = 90;
+  const skipped = 10;
   const attendanceChart = {
     datasets: [
       {
@@ -74,9 +78,7 @@ const StudentsLanding = () => {
   };
 
   //testdata
-  let daysMissed = 4;
-  let cohortNumber = 22;
-  let studentsFirstName = "William";
+
   let GPA = averageGrade;
 
   return (
@@ -129,7 +131,10 @@ const StudentsLanding = () => {
           </div>
         </div>
 
-        <div id="countdown" className="flex flex-col items-center gap-[1rem] mb-[4rem]">
+        <div
+          id="countdown"
+          className="flex flex-col items-center gap-[1rem] mb-[4rem]"
+        >
           <p className="pb-[1rem] ">Days until Graduation</p>
           <div
             className={

@@ -21,7 +21,6 @@ VALUES
     ('president', 'Streetlamp', 'Le Moose', 'student'),
     ('UGUD', 'Kevin', 'Pouya', 'student'),
     ('syenite', 'Essun', 'Tirimo', 'instructor'),
-    ('blacktongue', 'Aaron', 'Kitcher', 'student'),
     ('MrsMarmalade', 'Jane', 'Marmalade', 'student');
 
 
@@ -41,26 +40,27 @@ VALUES
 
 INSERT INTO students (cohortId, userId, nps_rating, days_absent)
 VALUES
+
+    (1, 3, 3, null),
     (1, 4, 3, null),  
     (1, 5, 3, null), 
     (1, 6, 3, 2), 
     (1, 7, 3, null), 
-    (1, 8, 3, 5), 
+    (2, 8, 3, 5), 
     (2, 9, 3, null), 
     (2, 10, 3, null), 
     (2, 11, 3, null), 
     (2, 12, 3, null), 
-    (2, 13, 4, null),
+    (3, 13, 4, null),
     (3, 14, 3, 1), 
     (3, 15, 3, null), 
     (3, 16, 3, null), 
     (3, 17, 3, 2), 
-    (3, 18, 3, null), 
+    (4, 18, 3, null), 
     (4, 19, 3, 2), 
     (4, 20, 3, null), 
     (4, 21, 3, null), 
-    (4, 22, 3, 6), 
-    (4, 23, 3, null);
+    (4, 22, 3, 6);
 
 
 INSERT INTO assignments (title, due_date, description, cohortId, instructor_comments)
