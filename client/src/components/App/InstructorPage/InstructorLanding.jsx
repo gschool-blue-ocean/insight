@@ -27,14 +27,16 @@ const InstructorLanding = () => {
       <div className="flex flex-col items-center justify-between font-robot">
         <div
           id="workHeader"
-          className="flex justify-between items-center gap-6 border-b-2 border-DGLogin w-[90%] pb-[2rem] mb-[2rem]"
+          className="flex justify-between items-center gap-6 border-b-2 border-DGLogin border-opacity-[0.8] w-[90%] pb-[2rem] mb-[2rem]"
         >
           <h1 className="text-[3rem] pt-8 pl-[34rem]">{`Cohort ${cohortNumber}`}</h1>
           <div
             id="date"
             className="flex items-start pt-[1rem] pr-[1rem] gap-[1rem]"
           >
-            <p>{`${daysOfWeek[dayOfWeek - 1]} ${monthNames[month]} ${day}, ${year}`}</p>
+            <p>{`${daysOfWeek[dayOfWeek - 1]} ${
+              monthNames[month]
+            } ${day}, ${year}`}</p>
             {isDarkMode ? (
               <img src={alertDM} alt="notification bell" />
             ) : (
