@@ -23,7 +23,6 @@ import studentsLM from "/assets/students/studentsLM.svg";
 import studentsDM from "/assets/students/studentsDM.svg";
 
 const InstructorPage = () => {
-
   const {
     profileMenu,
     setProfileMenu,
@@ -32,7 +31,6 @@ const InstructorPage = () => {
     isDarkMode,
     setIsDarkMode,
   } = useContext(LandingPageContext);
-
 
   //testdata
   let instructorsFullName = "Nancy Root";
@@ -145,11 +143,7 @@ const InstructorPage = () => {
             id="navMenu"
             className="pl-[2rem] flex flex-col gap-[1.5rem] pt-[5rem]"
           >
-
-
             <div id="assigmentsContainer" className="flex gap-[1rem]">
-
-
               {isDarkMode ? (
                 <img src={assignmentDM} alt="assignment icon" />
               ) : (
@@ -184,30 +178,28 @@ const InstructorPage = () => {
                 <img src={gradesLM} alt="gradebook icon" />
               )}
 
-
               <h2 className="text-[1.5rem] cursor-pointer">Grades</h2>
 
-            <div id="studentssContainer" className="flex gap-[1rem]">
+              <div id="studentssContainer" className="flex gap-[1rem]">
+                {isDarkMode ? (
+                  <img src={studentsDM} alt="student icon" />
+                ) : (
+                  <img src={studentsLM} alt="student icon" />
+                )}
 
-
-              {isDarkMode ? (
-                <img src={studentsDM} alt="student icon" />
-              ) : (
-                <img src={studentsLM} alt="student icon" />
-              )}
-
-              <h2 className="text-[1.5rem] cursor-pointer">Students</h2>
+                <h2 className="text-[1.5rem] cursor-pointer">Students</h2>
+              </div>
             </div>
-          </div>
-          <div
-            id="workHub"
-            className={
-              isDarkMode
-                ? "bg-ContentBGDM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col"
-                : "bg-BGboxLM w-[70%] rounded-xl ml-[5rem] flex flex-col"
-            }
-          >
-            <Outlet />
+            <div
+              id="workHub"
+              className={
+                isDarkMode
+                  ? "bg-ContentBGDM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col"
+                  : "bg-BGboxLM w-[70%] rounded-xl ml-[5rem] flex flex-col"
+              }
+            >
+              <Outlet />
+            </div>
           </div>
         </div>
       </div>
