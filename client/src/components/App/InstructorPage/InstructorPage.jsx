@@ -209,8 +209,8 @@ const InstructorPage = () => {
             <ul
               className={
                 isDarkMode
-                  ? "inline-block w-full text-xs text-white"
-                  : "inline-block w-full text-xs text-black"
+                  ? "inline-block w-full text-xs text-white pt-[2px]"
+                  : "inline-block w-full text-xs text-black pt-[2px]"
               }
             >
               <li className=" inline-block mr-1  pl-1 after:content-['|'] cursor-pointer">
