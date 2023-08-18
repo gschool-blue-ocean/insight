@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import LandingPageContext from "../../LandingPage/LandingPageContext";
 import toggleDM from "/assets/toggle/toggleOnOffDM.svg";
 import toggleLM from "/assets/toggle/toggleOnOffLM.svg";
-import messagesDM from "/assets/messages/chatLineDM.svg";
-import messagesLM from "/assets/messages/chatLineLM.svg";
+import messagesDM from "/assets/messages/chatLineDMmenu.svg";
+import messagesLM from "/assets/messages/chatLineLMmenu.svg";
 const ProfileClosed = () => {
   const { isDarkMode, setIsDarkMode } = useContext(LandingPageContext);
 
@@ -31,7 +31,7 @@ const ProfileClosed = () => {
         )}
         <p>Theme</p>
       </div>
-      <div id="chatbot" className="flex gap-[0.5rem] items-center">
+      <div id="chatbot" className="flex items-center gap-[0.5rem] justify-start">
         {isDarkMode ? (
           <img src={messagesDM} alt="messages icon" />
         ) : (
