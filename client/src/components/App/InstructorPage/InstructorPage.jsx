@@ -179,6 +179,7 @@ const InstructorPage = () => {
             }
           >
             <Outlet />
+
           </div>
         </div>
         <div className="mt-[10rem] h-[1rem] flex justify-center font-robot ">
