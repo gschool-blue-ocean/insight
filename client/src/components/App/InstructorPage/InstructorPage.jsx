@@ -25,8 +25,6 @@ const InstructorPage = () => {
     setProfileMenu,
     isDarkMode,
     setIsDarkMode,
-    isAssignments,
-    setIsAssignments,
   } = useContext(LandingPageContext);
 
   //testdata
@@ -37,9 +35,6 @@ const InstructorPage = () => {
   };
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-  };
-  const selectAssignments = () => {
-    setIsAssignments(!isAssignments);
   };
 
   return (
@@ -139,7 +134,6 @@ const InstructorPage = () => {
             <div
               id="assigmentsContainer"
               className="flex gap-[1rem]"
-              onClick={selectAssignments}
             >
               {isDarkMode ? (
                 <img src={assignmentDM} alt="assignment icon" />
@@ -183,7 +177,6 @@ const InstructorPage = () => {
             <div
               id="studentssContainer"
               className="flex gap-[1rem]"
-              onClick={selectStudents}
             >
               {isDarkMode ? (
                 <img src={studentsDM} alt="student icon" />

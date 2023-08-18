@@ -52,9 +52,7 @@ const LoginLandingPage = () => {
   const handleToggle = () => {
     setIsDarkMode(!isDarkMode);
   };
-  const switchScenes = () => {
-    setIsStudents(true);
-  };
+  
   return (
     <>
       <div
@@ -113,7 +111,6 @@ const LoginLandingPage = () => {
                         ? "font-title text-white font-black text-[55px] cursor-pointer"
                         : "font-title text-black font-black text-[55px] cursor-pointer"
                     }
-                    onClick={switchScenes}
                   >
                     Insight
                   </h1>
