@@ -24,24 +24,23 @@ const InstructorLanding = () => {
 
   return (
     <>
-      <div id="workHeader" className="flex justify-between w-full">
+      <div className="flex flex-col items-center justify-between font-robot">
         <div
-          id="welcomeContainer"
-          className="flex flex-col items-center pt-[2rem] pl-[42%]"
+          id="workHeader"
+          className="flex justify-between items-center gap-6 border-b-2 border-DGLogin w-[90%] pb-[2rem] mb-[2rem]"
         >
-          <h1 className="text-[3rem]">{`Cohort ${cohortNumber}`}</h1>
-          <p>{`Welcome ${instructorsFirstName}`}</p>
-        </div>
-        <div
-          id="date"
-          className="flex items-start pt-[1rem] pr-[1rem] gap-[1rem]"
-        >
-          <p>{`${daysOfWeek[dayOfWeek]} ${monthNames[month]} ${day}, ${year}`}</p>
-          {isDarkMode ? (
-            <img src={alertDM} alt="notification bell" />
-          ) : (
-            <img src={alertLM} alt="notification bell" />
-          )}
+          <h1 className="text-[3rem] pt-8 pl-[34rem]">{`Cohort ${cohortNumber}`}</h1>
+          <div
+            id="date"
+            className="flex items-start pt-[1rem] pr-[1rem] gap-[1rem]"
+          >
+            <p>{`${daysOfWeek[dayOfWeek]} ${monthNames[month]} ${day}, ${year}`}</p>
+            {isDarkMode ? (
+              <img src={alertDM} alt="notification bell" />
+            ) : (
+              <img src={alertLM} alt="notification bell" />
+            )}
+          </div>
         </div>
       </div>
       <div
@@ -56,13 +55,13 @@ const InstructorLanding = () => {
         </div>
         <div
           id="npsdata"
-          className="flex flex-col text-center items-center gap-[2rem] pb-[10rem]"
+          className="flex flex-col text-center items-center gap-[.5rem] mb-[6rem]"
         >
           <p>NPS Data</p>
           <div>
             <img
               src="/images/NPSChart.png"
-              className="h-[450px] w-[620px]"
+              className="h-[580px] w-[680px]"
             ></img>
           </div>
         </div>

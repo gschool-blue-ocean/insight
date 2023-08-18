@@ -27,10 +27,11 @@ const StudentsLanding = () => {
     cohortNumber,
     daysMissed,
     studentsFirstName,
+
     localURL,
     currentStudent
+
   } = useContext(LandingPageContext);
-  
 
   ChartJS.register(ArcElement, Tooltip, Legend);
   ChartJS.register(BarElement, CategoryScale, LinearScale, Legend);
