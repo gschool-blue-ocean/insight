@@ -50,24 +50,25 @@ export const LandingPageProvider = ({ children }) => {
     getStudentData();
   }, [currentProfile]);
 
-  let daysMissed  = 0;
+  let daysMissed = 0;
   let cohortNumber = 0;
-  let studentsFirstName = '';
-  let studentsLastName = '';
+  let studentsFirstName = "";
+  let studentsLastName = "";
+  let username = "";
 
   if (currentUser[0]) {
     studentsFirstName = currentUser[0].firstname;
     studentsLastName = currentUser[0].lastname;
+    username = currentUser[0].username;
   }
   if (currentStudent[0]) {
-    if(!currentStudent[0].days_absent) {
+    if (!currentStudent[0].days_absent) {
       daysMissed = 0;
     } else {
       daysMissed = currentStudent[0].days_absent;
     }
     cohortNumber = currentStudent[0].cohortid;
   }
-
   const localURL = "http://localhost:10000";
   //dates obj
   const todayDate = new Date();
@@ -126,6 +127,7 @@ export const LandingPageProvider = ({ children }) => {
     let roundedGrade = parseFloat(averageGrade.toFixed(2));
     setAverageGrade(roundedGrade);
   };
+  
   const changeCountdown = () => {
     const startDate = new Date(2023, 7, 16);
     const currentDate = new Date();
@@ -166,6 +168,8 @@ export const LandingPageProvider = ({ children }) => {
         cohortNumber,
         studentsFirstName,
         studentsLastName,
+        username,
+        currentStudent
       }}
     >
       {children}
