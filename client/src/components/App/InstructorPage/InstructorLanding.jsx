@@ -27,7 +27,7 @@ const InstructorLanding = () => {
       <div id="workHeader" className="flex justify-between w-full">
         <div
           id="welcomeContainer"
-          className="flex flex-col items-center pt-[2rem]"
+          className="flex flex-col items-center pt-[2rem] pl-[42%]"
         >
           <h1 className="text-[3rem]">{`Cohort ${cohortNumber}`}</h1>
           <p>{`Welcome ${instructorsFirstName}`}</p>
@@ -55,15 +55,20 @@ const InstructorLanding = () => {
           </div>
         </div>
         <div
-          id="GPA"
-          className="flex flex-col items-center gap-[1rem] pb-[4rem]"
+          id="npsdata"
+          className="flex flex-col text-center items-center gap-[2rem] pb-[10rem]"
         >
-          <p>{`Current Grade Average : ${GPA}%`}</p>
-          <div className="bg-white h-[18rem] w-[18rem] rounded-[10rem]"></div>
+          <p>NPS Data</p>
+          <div>
+            <img
+              src="/images/NPSChart.png"
+              className="h-[450px] w-[620px]"
+            ></img>
+          </div>
         </div>
-        <div id="assignments" className="flex flex-col items-center gap-[1rem]">
-          <p>Upcoming Assignments</p>
-          <div className="bg-white h-[15rem] w-[15rem]"></div>
+        <div id="GPA" className="flex flex-col items-center gap-[1rem]">
+          <p>{`Current Cohort Average : ${GPA}%`}</p>
+          <div className="bg-white h-[18rem] w-[18rem] rounded-[10rem]"></div>
         </div>
       </div>
     </>
