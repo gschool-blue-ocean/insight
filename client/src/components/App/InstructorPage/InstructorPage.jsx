@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import ProfileClosed from "../StudentsPage/Profile/ProfileClosed";
 import ProfileOpen from "../StudentsPage/Profile/ProfileOpen";
-
 import LogoDM from "/assets/Logo/LogoDM.svg";
 import LogoLM from "/assets/Logo/LogoLM.svg";
 import instructorAvatar from "/assets/instructorAvatar.svg";
@@ -29,11 +28,12 @@ const InstructorPage = () => {
     setIsProfileOpen,
     isProfileOpen,
     isDarkMode,
+    userFirstName,
+    userLastName,
     setIsDarkMode,
   } = useContext(LandingPageContext);
 
   //testdata
-  let instructorsFullName = "Nancy Root";
 
   const openProfileMenu = () => {
     setProfileMenu(!profileMenu);
@@ -73,7 +73,7 @@ const InstructorPage = () => {
             id="profileContainer"
             className="flex items-center flex-nowrap pr-[2rem] gap-[1rem]"
           >
-            <p className="text-[1.25rem] font-Sig">{`${instructorsFullName}`}</p>
+            <p className="text-[1.25rem] font-Sig">{`${userFirstName} ${userLastName}`}</p>
             {isDarkMode ? (
               <img
                 src={instructorAvatar}
