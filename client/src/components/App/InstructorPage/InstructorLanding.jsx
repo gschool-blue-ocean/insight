@@ -34,7 +34,7 @@ const InstructorLanding = () => {
             id="date"
             className="flex items-start pt-[1rem] pr-[1rem] gap-[1rem]"
           >
-            <p>{`${daysOfWeek[dayOfWeek]} ${monthNames[month]} ${day}, ${year}`}</p>
+            <p>{`${daysOfWeek[dayOfWeek - 1]} ${monthNames[month]} ${day}, ${year}`}</p>
             {isDarkMode ? (
               <img src={alertDM} alt="notification bell" />
             ) : (
