@@ -27,7 +27,6 @@ const StudentsLanding = () => {
     cohortNumber,
     daysMissed,
     studentsFirstName,
-
     localURL,
     currentStudent
 
