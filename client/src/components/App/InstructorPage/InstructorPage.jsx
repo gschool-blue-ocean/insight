@@ -1,6 +1,9 @@
 import LandingPageContext from "../LandingPage/LandingPageContext";
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import ProfileClosed from "../StudentsPage/Profile/ProfileClosed";
+import ProfileOpen from "../StudentsPage/Profile/ProfileOpen";
+
 import LogoDM from "/assets/Logo/LogoDM.svg";
 import LogoLM from "/assets/Logo/LogoLM.svg";
 import instructorAvatar from "/assets/instructorAvatar.svg";
@@ -23,10 +26,10 @@ const InstructorPage = () => {
   const {
     profileMenu,
     setProfileMenu,
+    setIsProfileOpen,
+    isProfileOpen,
     isDarkMode,
     setIsDarkMode,
-    isAssignments,
-    setIsAssignments,
   } = useContext(LandingPageContext);
 
   //testdata
@@ -35,11 +38,12 @@ const InstructorPage = () => {
   const openProfileMenu = () => {
     setProfileMenu(!profileMenu);
   };
+
+  const openProfile = () => {
+    setIsProfileOpen(!isProfileOpen);
+  };
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-  };
-  const selectAssignments = () => {
-    setIsAssignments(!isAssignments);
   };
 
   return (
@@ -91,56 +95,32 @@ const InstructorPage = () => {
           <div
             className={
               isDarkMode
-                ? "absolute h-[10rem] flex flex-col gap-[0.5rem] pl-[2rem] w-[15rem] right-3 bg-DGrayLogin rounded-xl text-white text-[1.5rem] pt-[1rem] border-black border-[1px]"
-                : "absolute h-[10rem] flex flex-col gap-[0.5rem] pl-[2rem] w-[15rem] right-3 bg-LGrayLogin rounded-xl text-black text-[1.5rem] pt-[1rem] border-black border-[1px]"
+                ? "absolute flex flex-col items-start gap-[0.5rem] pl-[2%] w-[15rem] right-3 bg-DGrayLogin rounded-xl text-white text-[1.5rem] pt-[1rem] border-black border-[1px]"
+                : "absolute flex flex-col items-start gap-[0.5rem] pl-[2%] w-[15rem] right-3 bg-LGrayLogin rounded-xl text-black text-[1.5rem] pt-[1rem] border-black border-[1px]"
             }
           >
-            <div id="mySettings" className="flex items-center gap-[0.5rem]">
+            <div id="myProfile" className="flex items-center gap-[0.5rem]">
               {isDarkMode ? (
                 <img src={ProfileCircleSmallDM} alt="profile icon" />
               ) : (
                 <img src={ProfileCircleSmallLM} alt="profile icon" />
               )}
-              <p>My Profile</p>
+              <p className="cursor-pointer" onClick={openProfile}>
+                My Profile
+              </p>
             </div>
-            <div id="themeToggle" className="flex items-center gap-[0.5rem]">
-              {isDarkMode ? (
-                <img
-                  src={toggleDM}
-                  alt="toggle icon"
-                  onClick={toggleTheme}
-                  className="cursor-pointer"
-                />
-              ) : (
-                <img
-                  src={toggleLM}
-                  alt="toggle icon"
-                  onClick={toggleTheme}
-                  className="cursor-pointer"
-                />
-              )}
-              <p>Theme</p>
-            </div>
-            <div id="chatbot" className="flex gap-[0.5rem] items-center">
-              {isDarkMode ? (
-                <img src={messagesDM} alt="messages icon" />
-              ) : (
-                <img src={messagesLM} alt="messages icon" />
-              )}
-              <p>Chat</p>
-            </div>
+            {isProfileOpen ? <ProfileOpen /> : <ProfileClosed />}
           </div>
         ) : null}
-        <div id="contentContainer" className="flex pt-[5%] h-[80%] font-Sig">
+        <div
+          id="contentContainer"
+          className="flex justify-center pt-[5%] h-[80%] font-Sig"
+        >
           <div
             id="navMenu"
             className="pl-[2rem] flex flex-col gap-[1.5rem] pt-[5rem]"
           >
-            <div
-              id="assigmentsContainer"
-              className="flex gap-[1rem]"
-              onClick={selectAssignments}
-            >
+            <div id="assigmentsContainer" className="flex gap-[1rem]">
               {isDarkMode ? (
                 <img src={assignmentDM} alt="assignment icon" />
               ) : (
@@ -156,7 +136,9 @@ const InstructorPage = () => {
               ) : (
                 <img src={messagesLM} alt="chat bubble icon" />
               )}
-              <Link to="Messages">
+
+              <Link  to="Messages">
+
                 <h2 className="text-[1.5rem] cursor-pointer">Messages</h2>
               </Link>
             </div>
@@ -170,7 +152,7 @@ const InstructorPage = () => {
                 <h2 className="text-[1.5rem] cursor-pointer">Calendar</h2>
               </Link>
             </div>
-            <div id="gradesContainer" className="flex gap-[1rem]">
+            <div id="gradesContainer" className="flex gap-[1rem] pl-1">
               {isDarkMode ? (
                 <img src={gradesDM} alt="gradebook icon" />
               ) : (
@@ -179,12 +161,9 @@ const InstructorPage = () => {
               <Link to="Grades">
                 <h2 className="text-[1.5rem] cursor-pointer">Grades</h2>
               </Link>
+
             </div>
-            <div
-              id="studentssContainer"
-              className="flex gap-[1rem]"
-              onClick={selectStudents}
-            >
+            <div id="studentsContainer" className="flex gap-[1rem]">
               {isDarkMode ? (
                 <img src={studentsDM} alt="student icon" />
               ) : (
@@ -199,11 +178,45 @@ const InstructorPage = () => {
             id="workHub"
             className={
               isDarkMode
-                ? "bg-ContentBGDM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col"
-                : "bg-BGboxLM w-[70%] rounded-xl ml-[5rem] flex flex-col"
+                ? "bg-ContentBGDM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px]"
+                : "bg-BGboxLM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px]"
             }
           >
             <Outlet />
+
+          </div>
+        </div>
+        <div className="mt-[10rem] h-[1rem] flex justify-center font-robot ">
+          <div className="flex flex-col items-start">
+            <ul className="inline-block w-full text-xs">
+              <li className="text-black inline-block mr-1 hover:text-[#5a7a64] pl-1 after:content-['|'] cursor-pointer">
+                {" "}
+                Privacy Policy{" "}
+              </li>
+              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1   after:content-['|'] cursor-pointer">
+                {" "}
+                Manage My Privacy{" "}
+              </li>
+              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1 after:content-['|'] cursor-pointer">
+                {" "}
+                Do Not Sell or Share My Data{" "}
+              </li>
+              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1   after:content-['|'] cursor-pointer">
+                {" "}
+                Legal{" "}
+              </li>
+              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1 after:content-['|'] cursor-pointer">
+                {" "}
+                Accessibility{" "}
+              </li>
+              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1 pl-1 after:content-['|'] cursor-pointer">
+                {" "}
+                Contact{" "}
+              </li>
+              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1 cursor-pointer">
+                Copyright © 2023 Insight Corporation
+              </li>
+            </ul>
           </div>
         </div>
       </div>

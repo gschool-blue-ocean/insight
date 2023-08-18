@@ -5,7 +5,7 @@ const Footer = () => {
   const { isDarkMode, setIsDarkMode } = useContext(LandingPageContext);
   return (
     <>
-      <footer className="m-1 h-[1rem] flex justify-center font-robot">
+      <footer className="m-1 h-[1rem] flex justify-center font-robot ">
         <div className="flex flex-col items-start">
           <ul className="inline-block w-full text-xs">
             <li className="text-black inline-block mr-1 hover:text-[#253c2c] pl-1 after:content-['|'] cursor-pointer">

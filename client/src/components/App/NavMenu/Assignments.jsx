@@ -1,34 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect,useState } from "react";
 import LandingPageContext from "../LandingPage/LandingPageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 const Assignments = () => {
-  const { isDarkMode } = useContext(LandingPageContext);
-  //testdata
-  const tableData = [
-    {
-      title: "Task A",
-      submitted: true,
-      comments: "Solid effort, keep it up!",
-    },
-    { title: "Task B", submitted: false, comments: "Needs improvement" },
-    { title: "Task C", submitted: true, comments: "Well done!" },
-    {
-      title: "Task D",
-      submitted: false,
-      comments:
-        "This was an exemplary submission. Your attention to detail and your thorough analysis stood out. It's clear that you put a lot of effort into this. Just remember to focus on the main points next time, as some areas felt a bit verbose.",
-    },
-    { title: "Task E", submitted: true, comments: "Average performance" },
-    { title: "Task F", submitted: false, comments: "You've missed the main point" },
-    { title: "Task G", submitted: true, comments: "Above average, good job" },
-    { title: "Task H", submitted: false, comments: "Perfect, well done!" },
-    { title: "Task I", submitted: true, comments: "You can do better next time" },
-    { title: "Task J", submitted: true, comments: "Very thorough!" },
-    { title: "Task K", submitted: true, comments: "See me after class" },
-    { title: "Task L", submitted: false, comments: "This was a good attempt" },
-  ];
+  const { isDarkMode,localURL} = useContext(LandingPageContext);
   
+  const [assignments, setAssignments] = useState([]);
+  const getAssignmentData = async () => {
+    try {
+      let response = await fetch(
+        `${localURL}/assignments`
+      );
+
+      if (!response.ok) {
+        throw new Error(`assignments not found, Status: ${response.status}`);
+      }
+
+      setAssignments(await response.json());
+    } catch (error) {
+      console.error("There was a problem finding these assignments:", error.message);
+    }
+  };
+  useEffect(() => {
+    getAssignmentData();
+  }, []);
   
   
   return (
@@ -77,7 +72,7 @@ const Assignments = () => {
               </tr>
             </thead>
             <tbody>
-              {tableData.map((item, index) => (
+              {assignments.map((item, index) => (
                 <tr
                   key={index}
                   className={

@@ -24,24 +24,23 @@ const InstructorLanding = () => {
 
   return (
     <>
-      <div id="workHeader" className="flex justify-between w-full">
+      <div className="flex flex-col items-center justify-between font-robot">
         <div
-          id="welcomeContainer"
-          className="flex flex-col items-center pt-[2rem]"
+          id="workHeader"
+          className="flex justify-between items-center gap-6 border-b-2 border-DGLogin w-[90%] pb-[2rem] mb-[2rem]"
         >
-          <h1 className="text-[3rem]">{`Cohort ${cohortNumber}`}</h1>
-          <p>{`Welcome ${instructorsFirstName}`}</p>
-        </div>
-        <div
-          id="date"
-          className="flex items-start pt-[1rem] pr-[1rem] gap-[1rem]"
-        >
-          <p>{`${daysOfWeek[dayOfWeek]} ${monthNames[month]} ${day}, ${year}`}</p>
-          {isDarkMode ? (
-            <img src={alertDM} alt="notification bell" />
-          ) : (
-            <img src={alertLM} alt="notification bell" />
-          )}
+          <h1 className="text-[3rem] pt-8 pl-[34rem]">{`Cohort ${cohortNumber}`}</h1>
+          <div
+            id="date"
+            className="flex items-start pt-[1rem] pr-[1rem] gap-[1rem]"
+          >
+            <p>{`${daysOfWeek[dayOfWeek - 1]} ${monthNames[month]} ${day}, ${year}`}</p>
+            {isDarkMode ? (
+              <img src={alertDM} alt="notification bell" />
+            ) : (
+              <img src={alertLM} alt="notification bell" />
+            )}
+          </div>
         </div>
       </div>
       <div
@@ -55,15 +54,20 @@ const InstructorLanding = () => {
           </div>
         </div>
         <div
-          id="GPA"
-          className="flex flex-col items-center gap-[1rem] pb-[4rem]"
+          id="npsdata"
+          className="flex flex-col text-center items-center gap-[.5rem] mb-[6rem]"
         >
-          <p>{`Current Grade Average : ${GPA}%`}</p>
-          <div className="bg-white h-[18rem] w-[18rem] rounded-[10rem]"></div>
+          <p>NPS Data</p>
+          <div>
+            <img
+              src="/images/NPSChart.png"
+              className="h-[580px] w-[680px]"
+            ></img>
+          </div>
         </div>
-        <div id="assignments" className="flex flex-col items-center gap-[1rem]">
-          <p>Upcoming Assignments</p>
-          <div className="bg-white h-[15rem] w-[15rem]"></div>
+        <div id="GPA" className="flex flex-col items-center gap-[1rem]">
+          <p>{`Current Cohort Average : ${GPA}%`}</p>
+          <div className="bg-white h-[18rem] w-[18rem] rounded-[10rem]"></div>
         </div>
       </div>
     </>

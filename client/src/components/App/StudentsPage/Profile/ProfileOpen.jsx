@@ -6,19 +6,18 @@ import LandingPageContext from "../../LandingPage/LandingPageContext.jsx";
 
 
 const ProfileOpen = () => {
-  const username = "Willy";
 
-  
-
-
-  const { setProfileMenu } = useContext(LandingPageContext)
+  const { setProfileMenu,currentUser, currentStudent, username } = useContext(LandingPageContext)
   const { logoutProfile } = useContext(AuthContext)
 
   const handleLogout = () => {
     setProfileMenu(false)
     logoutProfile()
   }
-
+  if(currentStudent && currentUser) {
+    console.log(currentUser)
+    console.log(currentStudent)
+  }
 
   return (
     <>
@@ -30,14 +29,9 @@ const ProfileOpen = () => {
           <p>Change Password</p>
         </div>
         <div>
-
-          <button className="cursor-pointer">Sign Out</button>
-=======
           <Link to='/'>
             <button onClick={handleLogout}>Sign Out</button>
           </Link>
-          
-
         </div>
         <button id="deleteAccount" className="flex bg-[#ff24249e]  px-[0.25rem] rounded-xl  justify-center ">
           <p className="text-center">Delete Account</p>
