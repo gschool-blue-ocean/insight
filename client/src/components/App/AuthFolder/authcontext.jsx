@@ -20,19 +20,18 @@ export const AuthProvider = ({ children }) => {
   const logoutProfile = async () => {
     const logoutRefreshToken = async () => {
       await fetch(`http://localhost:10000/logout/3`, {
-        method: 'GET',
+        method: "GET",
         credentials: "include", // include this on ALL PROTECTED ROUTES
       });
     };
 
     await logoutRefreshToken();
-    setCurrentAccessToken('');
-    setCurrentProfile('');
+    setCurrentAccessToken("");
+    setCurrentProfile("");
     setIsAuthenticated(false);
   };
 
   const navByRole = (role) => {
-
     switch (role) {
       case "admin":
         navigate("/Admin");

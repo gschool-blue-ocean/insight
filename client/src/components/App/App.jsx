@@ -31,8 +31,11 @@ const App = () => {
                 <Route path="Messages" element={<Messages />} />
               </Route>
               <Route element={<ProtectedRoute />}>
-                <Route path="/Instructor" element={<InstructorPage />} >
-                  <Route path="instructorHome" element={<InstructorLanding />}/>
+                <Route path="/Instructor" element={<InstructorPage />}>
+                  <Route
+                    path="instructorHome"
+                    element={<InstructorLanding />}
+                  />
                 </Route>
                 <Route path="/Admin" element={<AdminLandingPage />} />
               </Route>
