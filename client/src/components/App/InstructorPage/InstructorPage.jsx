@@ -23,7 +23,6 @@ import studentsLM from "/assets/students/studentsLM.svg";
 import studentsDM from "/assets/students/studentsDM.svg";
 
 const InstructorPage = () => {
-
   const {
     profileMenu,
     setProfileMenu,
@@ -32,7 +31,6 @@ const InstructorPage = () => {
     isDarkMode,
     setIsDarkMode,
   } = useContext(LandingPageContext);
-
 
   //testdata
   let instructorsFullName = "Nancy Root";
@@ -97,11 +95,11 @@ const InstructorPage = () => {
           <div
             className={
               isDarkMode
-                ? "absolute h-[10rem] flex flex-col gap-[0.5rem] pl-[2rem] w-[15rem] right-3 bg-DGrayLogin rounded-xl text-white text-[1.5rem] pt-[1rem] border-black border-[1px]"
-                : "absolute h-[10rem] flex flex-col gap-[0.5rem] pl-[2rem] w-[15rem] right-3 bg-LGrayLogin rounded-xl text-black text-[1.5rem] pt-[1rem] border-black border-[1px]"
+                ? "absolute flex flex-col gap-[0.5rem] pl-[2%] w-[15rem] right-3 bg-DGrayLogin rounded-xl text-white text-[1.5rem] pt-[1rem] border-black border-[1px]"
+                : "absolute flex flex-col gap-[0.5rem] pl-[2%] w-[15rem] right-3 bg-LGrayLogin rounded-xl text-black text-[1.5rem] pt-[1rem] border-black border-[1px]"
             }
           >
-            <div id="mySettings" className="flex items-center gap-[0.5rem]">
+            <div id="myProfile" className="flex items-center gap-[0.5rem]">
               {isDarkMode ? (
                 <img src={ProfileCircleSmallDM} alt="profile icon" />
               ) : (
@@ -110,46 +108,19 @@ const InstructorPage = () => {
               <p className="cursor-pointer" onClick={openProfile}>
                 My Profile
               </p>
-              {isProfileOpen ? <ProfileOpen /> : <ProfileClosed />}
             </div>
-            <div id="themeToggle" className="flex items-center gap-[0.5rem]">
-              {isDarkMode ? (
-                <img
-                  src={toggleDM}
-                  alt="toggle icon"
-                  onClick={toggleTheme}
-                  className="cursor-pointer"
-                />
-              ) : (
-                <img
-                  src={toggleLM}
-                  alt="toggle icon"
-                  onClick={toggleTheme}
-                  className="cursor-pointer"
-                />
-              )}
-              <p>Theme</p>
-            </div>
-            <div id="chatbot" className="flex gap-[0.5rem] items-center">
-              {isDarkMode ? (
-                <img src={messagesDM} alt="messages icon" />
-              ) : (
-                <img src={messagesLM} alt="messages icon" />
-              )}
-              <p>Chat</p>
-            </div>
+            {isProfileOpen ? <ProfileOpen /> : <ProfileClosed />}
           </div>
         ) : null}
-        <div id="contentContainer" className="flex pt-[5%] h-[80%] font-Sig">
+        <div
+          id="contentContainer"
+          className="flex justify-center pt-[5%] h-[80%] font-Sig"
+        >
           <div
             id="navMenu"
             className="pl-[2rem] flex flex-col gap-[1.5rem] pt-[5rem]"
           >
-
-
             <div id="assigmentsContainer" className="flex gap-[1rem]">
-
-
               {isDarkMode ? (
                 <img src={assignmentDM} alt="assignment icon" />
               ) : (
@@ -164,8 +135,9 @@ const InstructorPage = () => {
               ) : (
                 <img src={messagesLM} alt="chat bubble icon" />
               )}
-
-              <h2 className="text-[1.5rem] cursor-pointer">Messages</h2>
+              <Link to="Messages">
+                <h2 className="text-[1.5rem] cursor-pointer">Messages</h2>
+              </Link>
             </div>
             <div id="calendarContainer" className="flex gap-[1rem]">
               {isDarkMode ? (
@@ -177,34 +149,33 @@ const InstructorPage = () => {
                 <h2 className="text-[1.5rem] cursor-pointer">Calendar</h2>
               </Link>
             </div>
-            <div id="gradesContainer" className="flex gap-[1rem]">
+            <div id="gradesContainer" className="flex gap-[1rem] pl-1">
               {isDarkMode ? (
                 <img src={gradesDM} alt="gradebook icon" />
               ) : (
                 <img src={gradesLM} alt="gradebook icon" />
               )}
-
-
-              <h2 className="text-[1.5rem] cursor-pointer">Grades</h2>
-
+              <Link to="Grades">
+                <h2 className="text-[1.5rem] cursor-pointer">Grades</h2>
+              </Link>
+            </div>
             <div id="studentssContainer" className="flex gap-[1rem]">
-
-
               {isDarkMode ? (
                 <img src={studentsDM} alt="student icon" />
               ) : (
                 <img src={studentsLM} alt="student icon" />
               )}
-
-              <h2 className="text-[1.5rem] cursor-pointer">Students</h2>
+              <Link to="Students">
+                <h2 className="text-[1.5rem] cursor-pointer">Students</h2>
+              </Link>
             </div>
           </div>
           <div
             id="workHub"
             className={
               isDarkMode
-                ? "bg-ContentBGDM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col"
-                : "bg-BGboxLM w-[70%] rounded-xl ml-[5rem] flex flex-col"
+                ? "bg-ContentBGDM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px]"
+                : "bg-BGboxLM w-[70%] h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px]"
             }
           >
             <Outlet />
