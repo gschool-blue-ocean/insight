@@ -107,7 +107,7 @@ const StudentsLanding = () => {
             id="date"
             className="flex items-start pt-[1rem] pr-[1rem] gap-[1rem]"
           >
-            <p>{`${daysOfWeek[dayOfWeek]} ${monthNames[month]} ${day}, ${year}`}</p>
+            <p>{`${daysOfWeek[dayOfWeek - 1]} ${monthNames[month]} ${day}, ${year}`}</p>
             {isDarkMode ? (
               <img src={alertDM} alt="notification bell" />
             ) : (
@@ -118,7 +118,7 @@ const StudentsLanding = () => {
       </div>
       <div
         id="analyticsContainer"
-        className="px-[2rem] pb-[2.5rem] text-[1.25rem] justify-between items-end h-[80%] w-full flex"
+        className="px-[2rem] pb-[2.5rem] text-[1.25rem] justify-between items-center h-[80%] w-full flex"
       >
         <div id="attendance" className="flex flex-col items-center gap-[1rem]">
           <p>Attendance By Week</p>
