@@ -55,13 +55,13 @@ const InstructorLanding = () => {
         </div>
         <div
           id="npsdata"
-          className="flex flex-col text-center items-center gap-[2rem]"
+          className="flex flex-col text-center items-center gap-[.5rem] mb-[6rem]"
         >
           <p>NPS Data</p>
           <div>
             <img
               src="/images/NPSChart.png"
-              className="h-[580px] w-[620px] pb-[6rem]"
+              className="h-[580px] w-[680px]"
             ></img>
           </div>
         </div>

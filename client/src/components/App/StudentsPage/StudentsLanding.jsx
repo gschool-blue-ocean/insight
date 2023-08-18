@@ -26,9 +26,8 @@ const StudentsLanding = () => {
     dayOfWeek,
     cohortNumber,
     daysMissed,
-    studentsFirstName
+    studentsFirstName,
   } = useContext(LandingPageContext);
-  
 
   ChartJS.register(ArcElement, Tooltip, Legend);
   ChartJS.register(BarElement, CategoryScale, LinearScale, Legend);
