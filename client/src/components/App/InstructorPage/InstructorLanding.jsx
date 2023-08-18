@@ -19,7 +19,6 @@ const InstructorLanding = () => {
   //testdata
   let daysMissed = 4;
   let cohortNumber = 22;
-  let instructorsFirstName = "Nancy";
   let GPA = averageGrade;
 
   return (

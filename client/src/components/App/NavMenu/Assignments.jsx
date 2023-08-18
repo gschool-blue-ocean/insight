@@ -3,13 +3,13 @@ import LandingPageContext from "../LandingPage/LandingPageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 const Assignments = () => {
-  const { isDarkMode,localURL} = useContext(LandingPageContext);
+  const { isDarkMode,localURL,cohortNumber} = useContext(LandingPageContext);
   
   const [assignments, setAssignments] = useState([]);
   const getAssignmentData = async () => {
     try {
       let response = await fetch(
-        `${localURL}/assignments`
+        `${localURL}/assignments/${cohortNumber}`
       );
 
       if (!response.ok) {
@@ -23,6 +23,7 @@ const Assignments = () => {
   };
   useEffect(() => {
     getAssignmentData();
+    console.log(cohortNumber)
   }, []);
   
   

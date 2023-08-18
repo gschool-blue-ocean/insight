@@ -24,8 +24,8 @@ const StudentsPage = () => {
     isDarkMode,
     isProfileOpen,
     setIsProfileOpen,
-    studentsFirstName,
-    studentsLastName,
+    userFirstName,
+    userLastName,
   } = useContext(LandingPageContext);
 
   const openProfileMenu = () => {
@@ -63,7 +63,7 @@ const StudentsPage = () => {
             id="profileContainer"
             className="flex items-center flex-nowrap pr-[2rem] gap-[1rem]"
           >
-            <p className="text-[1.25rem] font-Sig">{`${studentsFirstName} ${studentsLastName}`}</p>
+            <p className="text-[1.25rem] font-Sig">{`${userFirstName} ${userLastName}`}</p>
             {isDarkMode ? (
               <img
                 src={studentAvatar}
