@@ -11,6 +11,8 @@ const {
   averageGrade,
   countdown,
   year,
+  userFirstName,
+  userLastName,
   month,
   day,
   dayOfWeek,
@@ -19,7 +21,6 @@ const {
 //testdata
 let daysMissed = 4;
 let cohortNumber = 22;
-let instructorsFirstName = "Nancy";
 let GPA = averageGrade;
 
 return (
@@ -30,7 +31,7 @@ return (
         className="flex flex-col items-center pt-[2rem] pl-[42%]"
       >
         <h1 className="text-[3rem]">{`Cohort ${cohortNumber}`}</h1>
-        <p>{`Welcome ${instructorsFirstName}`}</p>
+        <p>{`Welcome ${userFirstName}`}</p>
       </div>
       <div
         id="date"

@@ -52,13 +52,13 @@ export const LandingPageProvider = ({ children }) => {
 
   let daysMissed = 0;
   let cohortNumber = 0;
-  let studentsFirstName = "";
-  let studentsLastName = "";
+  let userFirstName = "";
+  let userLastName = "";
   let username = "";
 
   if (currentUser[0]) {
-    studentsFirstName = currentUser[0].firstname;
-    studentsLastName = currentUser[0].lastname;
+    userFirstName = currentUser[0].firstname;
+    userLastName = currentUser[0].lastname;
     username = currentUser[0].username;
   }
   if (currentStudent[0]) {
@@ -166,8 +166,8 @@ export const LandingPageProvider = ({ children }) => {
         localURL,
         daysMissed,
         cohortNumber,
-        studentsFirstName,
-        studentsLastName,
+        userFirstName,
+        userLastName,
         username,
         currentStudent
       }}
