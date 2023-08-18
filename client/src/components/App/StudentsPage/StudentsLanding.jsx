@@ -27,40 +27,44 @@ const StudentsLanding = () => {
     cohortNumber,
     daysMissed,
     studentsFirstName,
-    localURL
+    localURL,
+    currentStudent
   } = useContext(LandingPageContext);
   
 
   ChartJS.register(ArcElement, Tooltip, Legend);
   ChartJS.register(BarElement, CategoryScale, LinearScale, Legend);
   ChartJS.defaults.color = "#000000";
-  
+
+  let studentid;
+  if(currentStudent[0]) {
+    studentid = currentStudent[0].studentid
+  }
   const [grade, setGrade] = useState([]);
   const getGradeData = async () => {
     try {
       let response = await fetch(
-        `${localURL}/assignments`
+        `${localURL}/grades`
       );
       if (!response.ok) {
         throw new Error(`grade not found, Status: ${response.status}`);
       }
-      setGrade(await response.json());
+      const gradeData = await response.json()
+      setGrade(gradeData[studentid].score);
     } catch (error) {
       console.error("There was a problem finding this students grade:", error.message);
     }
   };
   useEffect(() => {
     getGradeData();
-    console.log(grade)
   }, []);
   
-  const uncompleted = 100 - averageGrade;
-  const showedUp = 90;
-  const skipped = 10;
+  const uncompleted = 100 - grade;
+  const courseLength = 117;
   const attendanceChart = {
     datasets: [
       {
-        data: [showedUp, skipped],
+        data: [courseLength, daysMissed],
         backgroundColor: isDarkMode
           ? ["#1A3D36", "#F0BE5E"]
           : ["#63B9AA", "#280137"],
@@ -72,7 +76,7 @@ const StudentsLanding = () => {
   const gpaChart = {
     datasets: [
       {
-        data: [averageGrade, uncompleted],
+        data: [grade, uncompleted],
         backgroundColor: isDarkMode
           ? ["#1A3D36", "#F0BE5E"]
           : ["#63B9AA", "#280137"],
@@ -175,7 +179,7 @@ const StudentsLanding = () => {
           </div>
         </div>
         <div id="GPA" className="flex flex-col items-center gap-[1rem]">
-          <p>{`Current Grade Average : ${GPA}%`}</p>
+          <p>{`Current Grade Average : ${grade}%`}</p>
           <div>
             <Doughnut
               data={gpaChart}
