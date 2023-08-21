@@ -16,6 +16,7 @@ import AdminLandingPage from "./AdminPage/AdminLandingPage";
 import InstructorPage from "./InstructorPage/InstructorPage";
 import InstructorLanding from "./InstructorPage/InstructorLanding";
 import Students from "./NavMenu/Students";
+import InstructorAssignments from "./NavMenu/InstructorAssignments";
 
 const App = () => {
   return (
@@ -39,7 +40,10 @@ const App = () => {
                     path="instructorHome"
                     element={<InstructorLanding />}
                   />
-                  <Route path="Assignments" element={<Assignments />} />
+                  <Route
+                    path="Assignments"
+                    element={<InstructorAssignments />}
+                  />
                   <Route path="Calendar" element={<Calendar />} />
                   <Route path="Grades" element={<Grades />} />
                   <Route path="Messages" element={<Messages />} />
