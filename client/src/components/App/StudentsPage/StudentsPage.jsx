@@ -67,7 +67,7 @@ const StudentsPage = () => {
             ) : (
               <img src={LogoLM} alt="Insight Logo" />
             )}
-            <Link to="/">
+            <Link to="studentHome">
               <h1 className="font-bold cursor-pointer text-[2rem] font-title">
                 Insight
               </h1>

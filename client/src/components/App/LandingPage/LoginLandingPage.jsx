@@ -52,7 +52,7 @@ const LoginLandingPage = () => {
   const handleToggle = () => {
     setIsDarkMode(!isDarkMode);
   };
-  
+
   return (
     <>
       <div
@@ -104,17 +104,15 @@ const LoginLandingPage = () => {
                 ) : (
                   <img src={LogoLM} alt="" id="Logo" />
                 )}
-                <Link to="students/studentHome">
-                  <h1
-                    className={
-                      isDarkMode
-                        ? "font-title text-white font-black text-[55px] cursor-pointer"
-                        : "font-title text-black font-black text-[55px] cursor-pointer"
-                    }
-                  >
-                    Insight
-                  </h1>
-                </Link>
+                <h1
+                  className={
+                    isDarkMode
+                      ? "font-title text-white font-black text-[55px] cursor-pointer"
+                      : "font-title text-black font-black text-[55px] cursor-pointer"
+                  }
+                >
+                  Insight
+                </h1>
               </div>
               <form
                 className="flex flex-col gap-[1.5rem] w-full items-center pb-[2rem]"
