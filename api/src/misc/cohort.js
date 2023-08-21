@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const results = await db.query(`SELECT * FROM cohorts WHERE id = ${id}`);
+    const results = await db.query(`SELECT * FROM cohorts WHERE cohortId = ${id}`);
     res.status(200).json(results.rows);
   } catch (err) {
     res.status(500).send(err.message);
@@ -49,7 +49,7 @@ router.put("/:id", async (req, res) => {
   const { instructorId, start_date, end_date, nps } = req.body;
   try {
     const results = await db.query(
-      `UPDATE cohorts SET instructorId = (${instructorId}), start_date = ('${start_date}'), end_date = ('${end_date}'), nps = (${nps}) WHERE id = ${id} RETURNING *`
+      `UPDATE cohorts SET instructorId = (${instructorId}), start_date = ('${start_date}'), end_date = ('${end_date}'), nps = (${nps}) WHERE cohortId = ${id} RETURNING *`
     );
     if (results.rowCount === 0) {
       res.status(404).send("Cannot Find Cohort");
@@ -65,7 +65,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const results = await db.query(`DELETE FROM cohorts WHERE id = ${id}`);
+    const results = await db.query(`DELETE FROM cohorts WHERE cohortId = ${id}`);
     if (results.rowCount === 0) {
       res.status(404).send("Cannot Find Cohort");
     } else {

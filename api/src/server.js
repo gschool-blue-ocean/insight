@@ -9,13 +9,13 @@ import os from "os";
 import studentRoutes from "./roles/studentRoutes.js";
 import assignmentRoutes from "./misc/assignments.js";
 import attendanceRoutes from "./misc/attendance.js";
-import gradeRoutes from "./misc/avg_grades.js";
 import instructorRoutes from "./roles/instructorRoutes.js";
 import userRoutes from "./roles/userRoutes.js";
 import cohortRoutes from "./misc/cohort.js";
 import adminRoutes from "./roles/adminRoutes.js";
 import loginRoute from "./misc/loginRoute.js";
 import logoutRoutes from './misc/logoutRoutes.js'
+import students_assignmentsRoutes from './misc/students_assignments.js'
 
 //env config pathing
 dotenv.config({ path: ".env" });
@@ -60,9 +60,9 @@ if (cluster.isPrimary) { //if prim see total cpus aval on system
   app.use("/users", userRoutes);
   app.use("/assignments", assignmentRoutes);
   app.use("/attendance", attendanceRoutes);
-  app.use("/grades", gradeRoutes);
   app.use("/cohorts", cohortRoutes);
   app.use("/login", loginRoute);
+  app.use('/students_assignments', students_assignmentsRoutes)
 
   // ... Existing code for the clustering ...
   app.get("/status", (req, res) => {
