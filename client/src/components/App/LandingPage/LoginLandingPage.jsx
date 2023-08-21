@@ -107,10 +107,10 @@ const LoginLandingPage = () => {
                 <h1
                   className={
                     isDarkMode
-                      ? "font-title text-white font-black text-[55px]"
-                      : "font-title text-black font-black text-[55px]"
+                    ? "font-title text-white font-black text-[55px]"
+                    : "font-title text-black font-black text-[55px]"
                   }
-                >
+                  >
                   Insight
                 </h1>
               </div>
