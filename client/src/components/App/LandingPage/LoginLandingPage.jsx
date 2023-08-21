@@ -107,8 +107,8 @@ const LoginLandingPage = () => {
                 <h1
                   className={
                     isDarkMode
-                      ? "font-title text-white font-black text-[55px] cursor-pointer"
-                      : "font-title text-black font-black text-[55px] cursor-pointer"
+                      ? "font-title text-white font-black text-[55px]"
+                      : "font-title text-black font-black text-[55px]"
                   }
                 >
                   Insight
