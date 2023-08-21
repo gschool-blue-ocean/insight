@@ -15,6 +15,7 @@ import AdminPage from "./AdminPage/AdminPage";
 import AdminLandingPage from "./AdminPage/AdminLandingPage";
 import InstructorPage from "./InstructorPage/InstructorPage";
 import InstructorLanding from "./InstructorPage/InstructorLanding";
+import Students from "./NavMenu/Students";
 
 const App = () => {
   return (
@@ -42,6 +43,7 @@ const App = () => {
                   <Route path="Calendar" element={<Calendar />} />
                   <Route path="Grades" element={<Grades />} />
                   <Route path="Messages" element={<Messages />} />
+                  <Route path="Students" element={<Students />} />
                 </Route>
                 {/* ADMIN PAGES */}
                 <Route path="/Admin" element={<AdminPage />}>

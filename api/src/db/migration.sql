@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS cohorts CASCADE;
 DROP TABLE IF EXISTS instructors CASCADE;
 DROP TABLE IF EXISTS students CASCADE;
 DROP TABLE IF EXISTS assignments;
-DROP TABLE IF EXISTS avg_grades;
+DROP TABLE IF EXISTS students_assignments;
 DROP TABLE IF EXISTS admin;
 DROP TABLE IF EXISTS auth;
 
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS instructors (
     instructorId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     userId INTEGER,
-    FOREIGN KEY (userId) REFERENCES users (userId) ON DELETE CASCADE
+    FOREIGN KEY (userId) REFERENCES users (userId) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS cohorts (
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS cohorts (
     start_date DATE,
     end_date DATE,
     nps INTEGER,
-    FOREIGN KEY (instructorId) REFERENCES instructors (instructorId) ON DELETE CASCADE
+    FOREIGN KEY (instructorId) REFERENCES instructors (instructorId) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS students (
@@ -36,8 +36,10 @@ CREATE TABLE IF NOT EXISTS students (
     userId INTEGER,
     nps_rating INTEGER,
     days_absent INTEGER,
-    FOREIGN KEY (cohortId) REFERENCES cohorts (cohortId) ON DELETE CASCADE,
-    FOREIGN KEY (userId) REFERENCES users (userId) ON DELETE CASCADE
+    checkin_count INTEGER,
+    avg_grade INTEGER,
+    FOREIGN KEY (cohortId) REFERENCES cohorts (cohortId) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (userId) REFERENCES users (userId) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS assignments (
@@ -47,28 +49,31 @@ CREATE TABLE IF NOT EXISTS assignments (
     description TEXT,
     cohortId INTEGER,
     instructor_comments VARCHAR(256),
-    FOREIGN KEY (cohortId) REFERENCES cohorts (cohortId) ON DELETE CASCADE
+    FOREIGN KEY (cohortId) REFERENCES cohorts (cohortId) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS avg_grades (
-    gradeId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    score INTEGER,
-    studentId INTEGER,
-    FOREIGN KEY (studentId) REFERENCES students (studentId) ON DELETE CASCADE
+CREATE TABLE IF NOT EXISTS students_assignments (
+    studentId INTEGER REFERENCES students (studentId) ON UPDATE CASCADE ON DELETE CASCADE,
+    assignmentId INTEGER REFERENCES assignments (assignmentId) ON UPDATE CASCADE ON DELETE CASCADE,
+    is_submitted BOOLEAN DEFAULT FALSE,
+    grade INTEGER CHECK (
+        grade >= 0
+        AND grade <= 100
+    ),
+    CONSTRAINT students_assignments_pkey PRIMARY KEY (studentId, assignmentId)
 );
-
 
 CREATE TABLE IF NOT EXISTS admin (
     adminId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     userId INTEGER,
-    FOREIGN KEY (userId) REFERENCES users (userId) ON DELETE CASCADE
+    FOREIGN KEY (userId) REFERENCES users (userId) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS auth (
     passwordId INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     password VARCHAR(100),
     userId INTEGER,
-    token TEXT, 
+    token TEXT,
     expiration_date DATE,
-    FOREIGN KEY (userId) REFERENCES users (userId) ON DELETE CASCADE
+    FOREIGN KEY (userId) REFERENCES users (userId) ON UPDATE CASCADE ON DELETE CASCADE
 );

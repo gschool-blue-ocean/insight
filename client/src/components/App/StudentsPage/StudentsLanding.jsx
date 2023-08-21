@@ -26,7 +26,7 @@ const StudentsLanding = () => {
     dayOfWeek,
     cohortNumber,
     daysMissed,
-    studentsFirstName,
+    userFirstName,
     localURL,
     currentStudent
 
@@ -126,7 +126,7 @@ const StudentsLanding = () => {
             className="flex flex-col items-center pt-[2rem]"
           >
             <h1 className="text-[3rem]">{`Cohort ${cohortNumber}`}</h1>
-            <p>{`Welcome ${studentsFirstName}`}</p>
+            <p>{`Welcome ${userFirstName}`}</p>
           </div>
           <div
             id="date"
