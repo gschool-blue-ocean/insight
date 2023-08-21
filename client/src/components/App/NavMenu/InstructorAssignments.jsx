@@ -10,11 +10,9 @@ const InstructorAssignments = () => {
   const getAssignmentData = async () => {
     try {
       let response = await fetch("/assignments");
-
       if (!response.ok) {
         throw new Error(`assignments not found, Status: ${response.status}`);
       }
-
       setAssignments(await response.json());
     } catch (error) {
       console.error(
