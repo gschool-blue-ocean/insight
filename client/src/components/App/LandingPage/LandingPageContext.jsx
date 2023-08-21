@@ -128,9 +128,9 @@ export const LandingPageProvider = ({ children }) => {
     setAverageGrade(roundedGrade);
   };
   
+  const startDate = new Date(2023, 7, 16);
+  const currentDate = new Date();
   const changeCountdown = () => {
-    const startDate = new Date(2023, 7, 16);
-    const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0);
     const endDate = new Date(startDate);
     endDate.setDate(startDate.getDate() + 117);

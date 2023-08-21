@@ -19,7 +19,6 @@ router.post("/", async (req, res) => {
   } else {
     try {
       const data = result.rows[0];
-      console.log(data);
       if (await bcrypt.compare(password, data.password)) {
         const accessToken = generateAccessToken(data);
         const refreshToken = generateRefreshToken(data);

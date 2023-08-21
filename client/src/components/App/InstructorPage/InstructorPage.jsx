@@ -31,6 +31,7 @@ const InstructorPage = () => {
     userFirstName,
     userLastName,
     setIsDarkMode,
+
   } = useContext(LandingPageContext);
 
   //testdata
@@ -41,9 +42,6 @@ const InstructorPage = () => {
 
   const openProfile = () => {
     setIsProfileOpen(!isProfileOpen);
-  };
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
   };
 
   return (
@@ -128,6 +126,98 @@ const InstructorPage = () => {
         ) : null}
         <div
           id="contentContainer"
+          className="flex justify-between pt-[2%] h-[80%] font-Sig"
+        >
+          <div
+            id="navMenu"
+            className=" flex flex-col h-full mr-[1rem] pt-[2rem] w-[10rem]"
+          >
+            <Link to="Assignments">
+              <div
+                id="assigmentsContainer"
+                className={
+                  isDarkMode
+                    ? "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM hover:bg-opacity-[0.75]"
+                    : "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-[#afc9c2] hover:bg-opacity-[0.75]"
+                }
+              >
+                {isDarkMode ? (
+                  <img src={assignmentDM} alt="assignment icon" />
+                ) : (
+                  <img src={assignmentLM} alt="assignment icon" />
+                )}
+                <h2 className="text-[1.25rem] text-center ">Assignments</h2>
+              </div>
+            </Link>
+
+            <Link to="Messages">
+              <div
+                id="messagesContainer"
+                className={
+                  isDarkMode
+                    ? "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM hover:bg-opacity-[0.75]"
+                    : "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-[#afc9c2] hover:bg-opacity-[0.75]"
+                }
+              >
+                {isDarkMode ? (
+                  <img src={messagesDM} alt="messages icon" />
+                ) : (
+                  <img src={messagesLM} alt="chat bubble icon" />
+                )}
+                <h2 className="text-[1.25rem] text-center">Messages</h2>
+              </div>
+            </Link>
+            <Link to="Calendar">
+              <div
+                id="calendarContainer"
+                className={
+                  isDarkMode
+                    ? "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM hover:bg-opacity-[0.75]"
+                    : "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-[#afc9c2] hover:bg-opacity-[0.75]"
+                }
+              >
+                {isDarkMode ? (
+                  <img src={calendarDM} alt="calendar icon" />
+                ) : (
+                  <img src={calendarLM} alt="calendar icon" />
+                )}
+                <h2 className="text-[1.25rem]  text-center">Calendar</h2>
+              </div>
+            </Link>
+            <Link to="Grades">
+              <div
+                id="gradesContainer"
+                className={
+                  isDarkMode
+                    ? "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM hover:bg-opacity-[0.75]"
+                    : "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-[#afc9c2] hover:bg-opacity-[0.75]"
+                }
+              >
+                {isDarkMode ? (
+                  <img src={gradesDM} alt="gradebook icon" />
+                ) : (
+                  <img src={gradesLM} alt="gradebook icon" />
+                )}
+                <h2 className="text-[1.25rem]  text-center">Grades</h2>
+              </div>
+            </Link>
+            <Link to="Students">
+              <div
+                id="studentsContainer"
+                className={
+                  isDarkMode
+                    ? "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM hover:bg-opacity-[0.75]"
+                    : "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-[#afc9c2] hover:bg-opacity-[0.75]"
+                }
+              >
+                {isDarkMode ? (
+                  <img src={studentsDM} alt="student icon" />
+                ) : (
+                  <img src={studentsLM} alt="student icon" />
+                )}
+                <h2 className="text-[1.25rem] text-center">Students</h2>
+              </div>
+            </Link>
           className="flex justify-between pt-[2%] font-Sig h-[80%]"
         >
           <div
@@ -210,6 +300,8 @@ const InstructorPage = () => {
               id="workHub"
               className={
                 isDarkMode
+                  ? "bg-ContentBGDM bg-opacity-[0.75] h-full w-[90%] rounded-xl flex flex-col max-w-[1500px] mr-[11rem]"
+                  : "bg-[#afc9c2] bg-opacity-[0.9] h-full w-[90%] rounded-xl flex flex-col max-w-[1500px] mr-[11rem]"
                   ? "bg-ContentBGDM bg-opacity-[0.75]  w-[70%] h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px]"
                   : "bg-[#afc9c2] bg-opacity-[0.9] w-[70%]  h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px]"
               }
@@ -222,8 +314,8 @@ const InstructorPage = () => {
           id="footer"
           className={
             isDarkMode
-              ? "mt-[10rem] h-[1.2rem] flex justify-center w-full font-robot bg-DGLogin bg-opacity-[0.95]"
-              : "mt-[10rem] h-[1.2rem] flex justify-center w-full font-robot bg-[#afc9c2] bg-opacity-[0.9]"
+              ? " h-[1.2rem]  p-[1rem] fixed bottom-0 flex justify-center items-center w-full font-robot bg-DGLogin bg-opacity-[0.75]"
+              : " h-[1.2rem] p-[1rem] fixed bottom-0 flex justify-center items-center w-full font-robot bg-[#afc9c2] bg-opacity-[0.75]"
           }
         >
           <div className="flex flex-col items-start">

@@ -69,7 +69,7 @@ const Assignments = () => {
               <tr>
                 <th className="py-[1rem]">Title</th>
                 <th>Submitted</th>
-                <th>Comments</th>
+                <th>Instructor Feedback</th>
               </tr>
             </thead>
             <tbody>
