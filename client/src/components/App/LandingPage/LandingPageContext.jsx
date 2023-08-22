@@ -11,8 +11,10 @@ export const LandingPageProvider = ({ children }) => {
   const { currentProfile } = useContext(AuthContext);
   const [currentStudent, setCurrentStudent] = useState({});
   const [currentUser, setCurrentUser] = useState({});
+  const [studentAssignments, setStudentAssignments] = useState([])
+  const [isCohorts, setCurrentCohort] = useState([])
+  const [saData, setSaData] = useState([])
 
-const [isCohorts, setCurrentCohort] = useState([])
 
   const getUserData = async () => {
     try {
@@ -58,7 +60,7 @@ const [isCohorts, setCurrentCohort] = useState([])
       let res = await fetch(`${localURL}/cohorts/`)
       let cohortData = res.json()
       setCurrentCohort(cohortData);
-      console.log(cohortData);
+      // console.log(cohortData);
       if (!res.ok) {
         throw new Error(`Cohort not found, status: ${res.status}`);
       }
@@ -70,11 +72,15 @@ const [isCohorts, setCurrentCohort] = useState([])
     getCohort();
   }, []);
 
+
+  
+
   let daysMissed = 0;
   let cohortNumber = 0;
   let userFirstName = "";
   let userLastName = "";
   let username = "";
+  let studentId
 
   if (currentUser[0]) {
     userFirstName = currentUser[0].firstname;
@@ -88,7 +94,44 @@ const [isCohorts, setCurrentCohort] = useState([])
       daysMissed = currentStudent[0].days_absent;
     }
     cohortNumber = currentStudent[0].cohortid;
+    studentId = currentStudent[0].studentid
   }
+
+  const getAssignments = async () => {
+    try {
+      let res = await fetch(`${localURL}/assignments/${cohortNumber}`)
+      let assignments = await res.json()
+      setStudentAssignments(assignments)
+      console.log(assignments)
+      if (!res.ok) {
+        throw new Error('Response not ok')
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+  useEffect(() => {
+    getAssignments();
+  }, [currentStudent]);
+
+
+  const getSaData = async () => {
+    try {
+      let res = await fetch(`${localURL}/students_assignments/${studentId}`)
+      let sa = await res.json()
+      setSaData(sa)
+      console.log(sa)
+      if (!res.ok) {
+        throw new Error('Response not ok')
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+  useEffect(() => {
+    getSaData();
+  }, [currentStudent]);
+
   const localURL = "http://localhost:10000";
   //dates obj
   const todayDate = new Date();
@@ -189,7 +232,9 @@ const [isCohorts, setCurrentCohort] = useState([])
         userFirstName,
         userLastName,
         username,
-        currentStudent
+        currentStudent, 
+        studentAssignments,
+        saData
       }}
     >
       {children}
