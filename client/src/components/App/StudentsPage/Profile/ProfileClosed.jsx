@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import LandingPageContext from "../../LandingPage/LandingPageContext";
 import toggleDM from "/assets/toggle/toggleOnOffDM.svg";
 import toggleLM from "/assets/toggle/toggleOnOffLM.svg";
+import toggleOFF from "/assets/toggle/toggleOFF.svg";
 import messagesDM from "/assets/messages/chatLineDMmenu.svg";
 import messagesLM from "/assets/messages/chatLineLMmenu.svg";
 const ProfileClosed = () => {
@@ -23,7 +24,7 @@ const ProfileClosed = () => {
           />
         ) : (
           <img
-            src={toggleLM}
+            src={toggleOFF}
             alt="toggle icon"
             onClick={toggleTheme}
             className="cursor-pointer"

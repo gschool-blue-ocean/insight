@@ -12,6 +12,8 @@ export const LandingPageProvider = ({ children }) => {
   const [currentStudent, setCurrentStudent] = useState({});
   const [currentUser, setCurrentUser] = useState({});
 
+const [isCohorts, setCurrentCohort] = useState([])
+
   const getUserData = async () => {
     try {
       let response = await fetch(`${localURL}/users/${currentProfile.userid}`);
@@ -49,6 +51,24 @@ export const LandingPageProvider = ({ children }) => {
   useEffect(() => {
     getStudentData();
   }, [currentProfile]);
+
+//grab all cohorts
+  const getCohort = async () => {
+    try {
+      let res = await fetch(`${localURL}/cohorts/`)
+      let cohortData = res.json()
+      setCurrentCohort(cohortData);
+      console.log(cohortData);
+      if (!res.ok) {
+        throw new Error(`Cohort not found, status: ${res.status}`);
+      }
+    } catch (error) {
+      console.error("There was a problem finding the Cohorts:", error.message);
+    }
+  }
+  useEffect(() => {
+    getCohort();
+  }, []);
 
   let daysMissed = 0;
   let cohortNumber = 0;
