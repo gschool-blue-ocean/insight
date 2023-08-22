@@ -7,8 +7,9 @@ const Students = () => {
 
   const getUserData = async () => {
     try {
-      let response = await fetch("/users/student");
+      let response = await fetch("http://localhost:10000/users/student");
       let data = await response.json();
+      console.log(data)
       setStudents(data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -76,8 +77,8 @@ const Students = () => {
                       : "mt-[2rem] border-b-[1px]"
                   }
                 >
-                  <td className="text-center py-[0.7rem]">{item.firstName}</td>
-                  <td className="text-center">{item.lastName}</td>
+                  <td className="text-center py-[0.7rem]">{item.firstname}</td>
+                  <td className="text-center">{item.lastname}</td>
                 </tr>
               ))}
             </tbody>
