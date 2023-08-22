@@ -39,29 +39,28 @@ VALUES
     (2, DATE '2024-02-15', DATE '2024-07-31', null); 
 
 
-INSERT INTO students (cohortId, userId, nps_rating, days_absent, avg_grade)
+INSERT INTO students (cohortId, userId, nps_rating, days_absent, checkin_count, avg_grade)
 VALUES
-
-    (1, 3, 3, null, null),
-    (1, 4, 3, null, null),  
-    (1, 5, 3, null, null), 
-    (1, 6, 3, 2, null), 
-    (1, 7, 3, null, null), 
-    (2, 8, 3, 5, null), 
-    (2, 9, 3, null, null), 
-    (2, 10, 3, null, null), 
-    (2, 11, 3, null, null), 
-    (2, 12, 3, null, null), 
-    (3, 13, 4, null, null),
-    (3, 14, 3, 1, null), 
-    (3, 15, 3, null, null), 
-    (3, 16, 3, null, null), 
-    (3, 17, 3, 2, null), 
-    (4, 18, 3, null, null), 
-    (4, 19, 3, 2, null), 
-    (4, 23, 4, null, null), 
-    (4, 21, 3, null, null),
-    (4, 22, 5, 3, null);
+    (1, 3, 3, 0, 0, 0),
+    (1, 4, 3, 0, 0, 0),  
+    (1, 5, 3, 0, 0, 0), 
+    (1, 6, 3, 2, 0, 0), 
+    (1, 7, 3, 0, 0, 0), 
+    (2, 8, 3, 5, 0, 0), 
+    (2, 9, 3, 0, 0, 0), 
+    (2, 10, 3, 0, 0, 0), 
+    (2, 11, 3, 0, 0, 0), 
+    (2, 12, 3, 0, 0, 0), 
+    (3, 13, 4, 0, 0, 0),
+    (3, 14, 3, 1, 0, 0), 
+    (3, 15, 3, 0, 0, 0), 
+    (3, 16, 3, 0, 0, 0), 
+    (3, 17, 3, 2, 0, 0), 
+    (4, 18, 3, 0, 0, 0), 
+    (4, 19, 3, 2, 0, 0), 
+    (4, 23, 4, 0, 0, 0), 
+    (4, 21, 3, 0, 0, 0),
+    (4, 22, 5, 3, 0, 0);
 
 INSERT INTO assignments (title, due_date, description, cohortId, instructor_comments)
 VALUES
