@@ -3,8 +3,20 @@ import LandingPageContext from "../LandingPage/LandingPageContext";
 
 const Students = () => {
   const { isDarkMode } = useContext(LandingPageContext);
-
   const [students, setStudents] = useState([]);
+
+  const getUserData = async () => {
+    try {
+      let response = await fetch("/users/student");
+      let data = await response.json();
+      setStudents(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  useEffect(() => {
+    getUserData();
+  }, []);
 
   return (
     <>
@@ -48,7 +60,6 @@ const Students = () => {
               <tr>
                 <th className="py-[1rem]">First Name</th>
                 <th>Last Name</th>
-                <th>Days Absent</th>
               </tr>
             </thead>
             <tbody>
@@ -65,11 +76,8 @@ const Students = () => {
                       : "mt-[2rem] border-b-[1px]"
                   }
                 >
-                  <td className="text-center py-[0.7rem]">{item.title}</td>
-                  <td className="text-center">{item.grade}</td>
-                  <td className={`text-center max-h-[20px] max-w-[10rem]`}>
-                    {item.comments}
-                  </td>
+                  <td className="text-center py-[0.7rem]">{item.firstName}</td>
+                  <td className="text-center">{item.lastName}</td>
                 </tr>
               ))}
             </tbody>
