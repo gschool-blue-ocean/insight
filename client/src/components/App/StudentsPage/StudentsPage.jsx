@@ -42,18 +42,32 @@ const StudentsPage = () => {
         id="pageContainer"
         className={
           isDarkMode
-            ? "h-screen text-white bg-center bg-cover bg-DGLogin"
-            : "h-screen text-black bg-center bg-cover bg-LGLogin"
+            ? "h-screen text-white bg-center bg-cover"
+            : "h-screen text-black bg-center bg-cover"
         }
+        style={{
+          backgroundImage: `url('/images/reversecity.jpg')`,
+          backgroundBlendMode: isDarkMode ? "multiply" : "screen",
+          backgroundColor: isDarkMode
+            ? "rgba(26, 61, 54, 0.9)"
+            : "rgba(138, 145, 143, 0.9)",
+        }}
       >
-        <div id="header" className="flex justify-between">
+        <div
+          id="header"
+          className={
+            isDarkMode
+              ? "flex justify-between bg-DGLogin bg-opacity-[0.95]"
+              : "flex justify-between bg-[#afc9c2] bg-opacity-[0.9]"
+          }
+        >
           <div id="title" className="flex items-center pl-[2rem]">
             {isDarkMode ? (
               <img src={LogoDM} alt="Insight Logo" />
             ) : (
               <img src={LogoLM} alt="Insight Logo" />
             )}
-            <Link to="/">
+            <Link to="studentHome">
               <h1 className="font-bold cursor-pointer text-[2rem] font-title">
                 Insight
               </h1>
@@ -113,7 +127,11 @@ const StudentsPage = () => {
             <Link to="Assignments">
               <div
                 id="assigmentsContainer"
-                className="flex cursor-pointer flex-col p-[2rem] gap-[1rem] hover:bg-ContentBGDM"
+                className={
+                  isDarkMode
+                    ? "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM hover:bg-opacity-[0.75]"
+                    : "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-[#afc9c2] hover:bg-opacity-[0.75]"
+                }
               >
                 {isDarkMode ? (
                   <img src={assignmentDM} alt="assignment icon" />
@@ -127,7 +145,11 @@ const StudentsPage = () => {
             <Link to="Messages">
               <div
                 id="messagesContainer"
-                className="flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM"
+                className={
+                  isDarkMode
+                    ? "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM hover:bg-opacity-[0.75]"
+                    : "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-[#afc9c2] hover:bg-opacity-[0.75]"
+                }
               >
                 {isDarkMode ? (
                   <img src={messagesDM} alt="messages icon" />
@@ -140,7 +162,11 @@ const StudentsPage = () => {
             <Link to="Calendar">
               <div
                 id="calendarContainer"
-                className="flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM"
+                className={
+                  isDarkMode
+                    ? "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM hover:bg-opacity-[0.75]"
+                    : "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-[#afc9c2] hover:bg-opacity-[0.75]"
+                }
               >
                 {isDarkMode ? (
                   <img src={calendarDM} alt="calendar icon" />
@@ -153,7 +179,11 @@ const StudentsPage = () => {
             <Link to="Grades">
               <div
                 id="gradesContainer"
-                className=" cursor-pointer flex flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM"
+                className={
+                  isDarkMode
+                    ? "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM hover:bg-opacity-[0.75]"
+                    : "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-[#afc9c2] hover:bg-opacity-[0.75]"
+                }
               >
                 {isDarkMode ? (
                   <img src={gradesDM} alt="gradebook icon" />
@@ -169,42 +199,91 @@ const StudentsPage = () => {
               id="workHub"
               className={
                 isDarkMode
-                  ? "bg-ContentBGDM h-full w-[90%] rounded-xl flex flex-col max-w-[1500px] mr-[11rem]"
-                  : "bg-BGboxLM h-full w-[90%] rounded-xl flex flex-col max-w-[1500px] mr-[11rem]"
+                  ? "bg-ContentBGDM bg-opacity-[0.75] h-full w-[90%] rounded-xl flex flex-col max-w-[1500px] mr-[11rem]"
+                  : "bg-[#afc9c2] bg-opacity-[0.9] h-full w-[90%] rounded-xl flex flex-col max-w-[1500px] mr-[11rem]"
               }
             >
               <Outlet />
             </div>
           </div>
         </div>
-        <div className="mt-[10rem] h-[1rem] flex justify-center font-robot ">
+        <div
+          id="footer"
+          className={
+            isDarkMode
+              ? " h-[1.2rem]  p-[1rem] fixed bottom-0 flex justify-center items-center w-full font-robot bg-DGLogin bg-opacity-[0.75]"
+              : " h-[1.2rem] p-[1rem] fixed bottom-0 flex justify-center items-center w-full font-robot bg-[#afc9c2] bg-opacity-[0.75]"
+          }
+        >
           <div className="flex flex-col items-start">
             <ul className="inline-block w-full text-xs">
-              <li className="text-black inline-block mr-1 hover:text-[#5a7a64] pl-1 after:content-['|'] cursor-pointer">
+              <li
+                className={
+                  isDarkMode
+                    ? "text-black inline-block mr-1 hover:text-[#5a7a64] pl-1 after:content-['|'] cursor-pointer"
+                    : "text-black inline-block mr-1 hover:text-LPLogin pl-1 after:content-['|'] cursor-pointer"
+                }
+              >
                 {" "}
                 Privacy Policy{" "}
               </li>
-              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1   after:content-['|'] cursor-pointer">
+              <li
+                className={
+                  isDarkMode
+                    ? "text-black inline-block mr-1 hover:text-[#5a7a64] pl-1 after:content-['|'] cursor-pointer"
+                    : "text-black inline-block mr-1 hover:text-LPLogin pl-1 after:content-['|'] cursor-pointer"
+                }
+              >
                 {" "}
                 Manage My Privacy{" "}
               </li>
-              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1 after:content-['|'] cursor-pointer">
+              <li
+                className={
+                  isDarkMode
+                    ? "text-black inline-block mr-1 hover:text-[#5a7a64] pl-1 after:content-['|'] cursor-pointer"
+                    : "text-black inline-block mr-1 hover:text-LPLogin pl-1 after:content-['|'] cursor-pointer"
+                }
+              >
                 {" "}
                 Do Not Sell or Share My Data{" "}
               </li>
-              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1   after:content-['|'] cursor-pointer">
+              <li
+                className={
+                  isDarkMode
+                    ? "text-black inline-block mr-1 hover:text-[#5a7a64] pl-1 after:content-['|'] cursor-pointer"
+                    : "text-black inline-block mr-1 hover:text-LPLogin pl-1 after:content-['|'] cursor-pointer"
+                }
+              >
                 {" "}
                 Legal{" "}
               </li>
-              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1 after:content-['|'] cursor-pointer">
+              <li
+                className={
+                  isDarkMode
+                    ? "text-black inline-block mr-1 hover:text-[#5a7a64] pl-1 after:content-['|'] cursor-pointer"
+                    : "text-black inline-block mr-1 hover:text-LPLogin pl-1 after:content-['|'] cursor-pointer"
+                }
+              >
                 {" "}
                 Accessibility{" "}
               </li>
-              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1 pl-1 after:content-['|'] cursor-pointer">
+              <li
+                className={
+                  isDarkMode
+                    ? "text-black inline-block mr-1 hover:text-[#5a7a64] pl-1 after:content-['|'] cursor-pointer"
+                    : "text-black inline-block mr-1 hover:text-LPLogin pl-1 after:content-['|'] cursor-pointer"
+                }
+              >
                 {" "}
                 Contact{" "}
               </li>
-              <li className="text-black  hover:text-[#5a7a64] inline-block mr-1 cursor-pointer">
+              <li
+                className={
+                  isDarkMode
+                    ? "text-black inline-block mr-1 hover:text-[#5a7a64] pl-1 after:content-['|'] cursor-pointer"
+                    : "text-black inline-block mr-1 hover:text-LPLogin pl-1 after:content-['|'] cursor-pointer"
+                }
+              >
                 Copyright © 2023 Insight Corporation
               </li>
             </ul>

@@ -50,6 +50,7 @@ const StudentsLanding = () => {
         throw new Error(`grade not found, Status: ${response.status}`);
       }
       const gradeData = await response.json()
+      
       setGrade(gradeData[studentid].score);
     } catch (error) {
       console.error("There was a problem finding this students grade:", error.message);
@@ -58,7 +59,7 @@ const StudentsLanding = () => {
   useEffect(() => {
     getGradeData();
   }, []);
-  
+
   const uncompleted = 100 - grade;
   const courseLength = 117;
   const attendanceChart = {

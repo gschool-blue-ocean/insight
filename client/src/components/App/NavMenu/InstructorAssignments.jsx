@@ -1,35 +1,42 @@
 import React, { useContext, useEffect, useState } from "react";
 import LandingPageContext from "../LandingPage/LandingPageContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-const Students = () => {
+const InstructorAssignments = () => {
   const { isDarkMode } = useContext(LandingPageContext);
-  const [students, setStudents] = useState([]);
 
-  const getUserData = async () => {
+  const [assignments, setAssignments] = useState([]);
+  const getAssignmentData = async () => {
     try {
-      let response = await fetch("/users/student");
-      let data = await response.json();
-      setStudents(data);
+      let response = await fetch("/assignments");
+      if (!response.ok) {
+        throw new Error(`assignments not found, Status: ${response.status}`);
+      }
+      setAssignments(await response.json());
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error(
+        "There was a problem finding these assignments:",
+        error.message
+      );
     }
   };
   useEffect(() => {
-    getUserData();
+    getAssignmentData();
   }, []);
 
   return (
     <>
       <div
-        id="studentsContainer"
+        id="AssignmentContainer"
         className="flex flex-col items-center h-full font-robot pb-[4rem]"
       >
         <div
-          id="studentsHeader"
+          id="assignmentHeader"
           className={
             isDarkMode
-              ? "font-Sig text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-white"
-              : "font-Sig text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-black"
+              ? "font-robot text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-white"
+              : "font-robot text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-black"
           }
         >
           <p
@@ -39,7 +46,7 @@ const Students = () => {
                 : "font-bold text-[1.75rem] pb-[1.5rem] border-b-2 border-black w-[95%] flex justify-center"
             }
           >
-            Students
+            Assignments
           </p>
         </div>
         <div
@@ -58,12 +65,13 @@ const Students = () => {
               }
             >
               <tr>
-                <th className="py-[1rem]">First Name</th>
-                <th>Last Name</th>
+                <th className="py-[1rem]">Title</th>
+                <th>Submitted</th>
+                <th>Instructor Feedback</th>
               </tr>
             </thead>
             <tbody>
-              {students.map((item, index) => (
+              {assignments.map((item, index) => (
                 <tr
                   key={index}
                   className={
@@ -76,8 +84,29 @@ const Students = () => {
                       : "mt-[2rem] border-b-[1px]"
                   }
                 >
-                  <td className="text-center py-[0.7rem]">{item.firstName}</td>
-                  <td className="text-center">{item.lastName}</td>
+                  <td className="text-center py-[0.7rem]">{item.title}</td>
+                  <td className="text-center">
+                    <label htmlFor="checkbox1">
+                      <input
+                        type="checkbox"
+                        checked={item.submitted}
+                        className="w-5 h-5 appearance-none"
+                        id="checkbox1"
+                        readOnly
+                      />
+                      <FontAwesomeIcon
+                        className={
+                          isDarkMode
+                            ? "text-[2rem] h-5 w-5 text-DOLogin"
+                            : "text-[2rem] h-5 w-5 text-LPLogin"
+                        }
+                        icon={faCheck}
+                      />
+                    </label>
+                  </td>
+                  <td className={`text-center max-h-[20px] max-w-[10rem]`}>
+                    {item.comments}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -87,5 +116,4 @@ const Students = () => {
     </>
   );
 };
-
-export default Students;
+export default InstructorAssignments;

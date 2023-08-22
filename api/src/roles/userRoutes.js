@@ -14,6 +14,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/student", async (req, res) => {
+  try {
+    const results = await db.query(
+      `SELECT firstname, lastname FROM users WHERE role = 'student'`
+    );
+    res.status(200).json(results.rows);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -72,7 +83,5 @@ router.delete("/:id", async (req, res) => {
     res.status(500).send(err.message);
   }
 });
-
-
 
 export default router;
