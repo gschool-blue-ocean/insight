@@ -1,29 +1,53 @@
 import React, { useContext, useEffect, useState } from "react";
 import LandingPageContext from "../LandingPage/LandingPageContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const InstructorAssignments = () => {
   const { isDarkMode } = useContext(LandingPageContext);
 
   const [assignments, setAssignments] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newAssignment, setNewAssignment] = useState({
+    title: "",
+    description: "",
+    dueDate: null,
+  });
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setNewAssignment((prevAssignment) => ({
+      ...prevAssignment,
+      [name]: value,
+    }));
+  };
+
   const getAssignmentData = async () => {
     try {
       let response = await fetch("/assignments");
-      if (!response.ok) {
-        throw new Error(`assignments not found, Status: ${response.status}`);
-      }
-      setAssignments(await response.json());
+      let data = await response.json();
+      setAssignments(data);
     } catch (error) {
-      console.error(
-        "There was a problem finding these assignments:",
-        error.message
-      );
+      console.error("Error fetching data:", error);
     }
   };
   useEffect(() => {
     getAssignmentData();
   }, []);
+
+  const handleAssignmentSubmit = (event) => {
+    event.preventDefault();
+    if (newAssignment.title && newAssignment.dueDate) {
+      setAssignmentDetails(newAssignment);
+      closeModal();
+    }
+  };
 
   return (
     <>
@@ -42,12 +66,94 @@ const InstructorAssignments = () => {
           <p
             className={
               isDarkMode
-                ? "font-bold text-[1.75rem] pb-[1.5rem] border-b-2 w-[95%] flex justify-center"
-                : "font-bold text-[1.75rem] pb-[1.5rem] border-b-2 border-black w-[95%] flex justify-center"
+                ? "font-bold text-[1.75rem] py-4 pb-[1.5rem] border-b-2 w-[95%] flex justify-center"
+                : "font-bold text-[1.75rem] py-4 pb-[1.5rem] border-b-2 border-black w-[95%] flex justify-center"
             }
           >
             Assignments
           </p>
+          <button
+            className="mt-2 p-2 text-1xl text-white bg-[#31503b] rounded-[10rem]"
+            onClick={openModal}
+          >
+            Add Assignment
+          </button>
+          {isModalOpen && (
+            <div className="fixed inset-0 flex items-center justify-center modal-overlay">
+              <div className="w-full p-4 bg-white rounded shadow-lg modal sm:w-96">
+                <h2 className="mb-4 text-xl font-semibold text-black">
+                  Add Assignment
+                </h2>
+                <form onSubmit={handleAssignmentSubmit}>
+                  <div className="mb-4">
+                    <label
+                      htmlFor="title"
+                      className="block mb-1 font-medium text-black"
+                    >
+                      Assignment Title:
+                    </label>
+                    <input
+                      type="text"
+                      id="title"
+                      name="title"
+                      value={newAssignment.title}
+                      onChange={handleInputChange}
+                      className="w-full p-2 text-black border border-gray-300 rounded"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor="description"
+                      className="block mb-1 font-medium text-black"
+                    >
+                      Description:
+                    </label>
+                    <textarea
+                      id="description"
+                      name="description"
+                      value={newAssignment.description}
+                      onChange={handleInputChange}
+                      className="w-full p-2 text-black border border-gray-300 rounded"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor="dueDate"
+                      className="block mb-1 font-medium text-black"
+                    >
+                      Due Date:
+                    </label>
+                    <input
+                      type="date"
+                      id="dueDate"
+                      name="dueDate"
+                      value={newAssignment.dueDate}
+                      onChange={handleInputChange}
+                      className="w-full p-2 text-black border border-gray-300 rounded"
+                      required
+                    />
+                  </div>
+                  <div className="flex justify-end">
+                    <button
+                      type="submit"
+                      className="px-4 py-2 mr-2 text-white bg-[#31503b] rounded"
+                    >
+                      Submit Assignment
+                    </button>
+                    <button
+                      type="button"
+                      onClick={closeModal}
+                      className="px-4 py-2 text-gray-700 bg-gray-300 rounded"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
         </div>
         <div
           className={
@@ -66,7 +172,7 @@ const InstructorAssignments = () => {
             >
               <tr>
                 <th className="py-[1rem]">Title</th>
-                <th>Submitted</th>
+                <th>Description</th>
                 <th>Instructor Feedback</th>
               </tr>
             </thead>
@@ -85,27 +191,9 @@ const InstructorAssignments = () => {
                   }
                 >
                   <td className="text-center py-[0.7rem]">{item.title}</td>
-                  <td className="text-center">
-                    <label htmlFor="checkbox1">
-                      <input
-                        type="checkbox"
-                        checked={item.submitted}
-                        className="w-5 h-5 appearance-none"
-                        id="checkbox1"
-                        readOnly
-                      />
-                      <FontAwesomeIcon
-                        className={
-                          isDarkMode
-                            ? "text-[2rem] h-5 w-5 text-DOLogin"
-                            : "text-[2rem] h-5 w-5 text-LPLogin"
-                        }
-                        icon={faCheck}
-                      />
-                    </label>
-                  </td>
+                  <td className="text-center">{item.description}</td>
                   <td className={`text-center max-h-[20px] max-w-[10rem]`}>
-                    {item.comments}
+                    {item.instructor_comments}
                   </td>
                 </tr>
               ))}
@@ -116,4 +204,5 @@ const InstructorAssignments = () => {
     </>
   );
 };
+
 export default InstructorAssignments;

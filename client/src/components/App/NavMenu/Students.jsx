@@ -76,8 +76,8 @@ const Students = () => {
                       : "mt-[2rem] border-b-[1px]"
                   }
                 >
-                  <td className="text-center py-[0.7rem]">{item.firstName}</td>
-                  <td className="text-center">{item.lastName}</td>
+                  <td className="text-center">{item.lastname}</td>
+                  <td className="text-center py-[0.7rem]">{item.firstname}</td>
                 </tr>
               ))}
             </tbody>

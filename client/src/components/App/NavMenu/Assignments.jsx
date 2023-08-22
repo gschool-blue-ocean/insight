@@ -1,16 +1,15 @@
-import React, { useContext, useEffect,useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LandingPageContext from "../LandingPage/LandingPageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 const Assignments = () => {
-  const { isDarkMode,localURL,cohortNumber} = useContext(LandingPageContext);
-  
+  const { isDarkMode, localURL, cohortNumber } = useContext(LandingPageContext);
+
   const [assignments, setAssignments] = useState([]);
+
   const getAssignmentData = async () => {
     try {
-      let response = await fetch(
-        `${localURL}/assignments/${cohortNumber}`
-      );
+      let response = await fetch(`${localURL}/assignments/${cohortNumber}`);
 
       if (!response.ok) {
         throw new Error(`assignments not found, Status: ${response.status}`);
@@ -18,15 +17,17 @@ const Assignments = () => {
 
       setAssignments(await response.json());
     } catch (error) {
-      console.error("There was a problem finding these assignments:", error.message);
+      console.error(
+        "There was a problem finding these assignments:",
+        error.message
+      );
     }
   };
   useEffect(() => {
     getAssignmentData();
-    console.log(cohortNumber)
+    console.log(cohortNumber);
   }, []);
-  
-  
+
   return (
     <>
       <div
@@ -106,9 +107,7 @@ const Assignments = () => {
                       />
                     </label>
                   </td>
-                  <td
-                    className={`text-center max-h-[20px] max-w-[10rem]`}
-                  >
+                  <td className={`text-center max-h-[20px] max-w-[10rem]`}>
                     {item.comments}
                   </td>
                 </tr>
