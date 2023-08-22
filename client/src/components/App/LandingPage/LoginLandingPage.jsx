@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import LandingPageContext from "./LandingPageContext";
 import LogoDM from "/assets/Logo/LogoDM.svg";
 import LogoLM from "/assets/Logo/LogoLM.svg";
+import toggleOff from "/assets/toggle/toggleOFF.svg";
 import toggleDM from "/assets/toggle/toggleOnOffDM.svg";
 import toggleLM from "/assets/toggle/toggleOnOffLM.svg";
 import React, { useState, useContext } from "react";
@@ -87,7 +88,7 @@ const LoginLandingPage = () => {
                 />
               ) : (
                 <img
-                  src={toggleLM}
+                  src={toggleOff}
                   alt="das toggle"
                   onClick={handleToggle}
                   className="cursor-pointer"
@@ -107,10 +108,10 @@ const LoginLandingPage = () => {
                 <h1
                   className={
                     isDarkMode
-                    ? "font-title text-white font-black text-[55px]"
-                    : "font-title text-black font-black text-[55px]"
+                      ? "font-title text-white font-black text-[55px]"
+                      : "font-title text-black font-black text-[55px]"
                   }
-                  >
+                >
                   Insight
                 </h1>
               </div>
