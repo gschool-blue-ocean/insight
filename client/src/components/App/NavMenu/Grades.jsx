@@ -3,14 +3,18 @@ import LandingPageContext from "../LandingPage/LandingPageContext";
 const Grades = () => {
   const { isDarkMode, studentAssignments, saData} = useContext(LandingPageContext);
 
-  const assignmentResults = studentAssignments.map((studentAssignment) => {
-    const saDataItem = saData.find((sa) => sa.assignmentId === studentAssignment.id);
-    return {
-      title: studentAssignment.title,
-      score: saDataItem ? saDataItem.grade : 'Score not found'
-    };
-  });
 
+  const assignmentResults = [];
+
+  for (const studentAssignment of studentAssignments) {
+    const saDataItem = saData.find((sa) => sa.assignmentid === studentAssignment.assignmentid);
+    const score = saDataItem.grade
+    assignmentResults.push({
+      title: studentAssignment.title,
+      score: score
+    });
+  }
+  
 
 
   return (

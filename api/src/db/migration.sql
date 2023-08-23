@@ -48,7 +48,6 @@ CREATE TABLE IF NOT EXISTS assignments (
     due_date DATE,
     description TEXT,
     cohortId INTEGER,
-    instructor_comments VARCHAR(256),
     FOREIGN KEY (cohortId) REFERENCES cohorts (cohortId) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
@@ -56,10 +55,12 @@ CREATE TABLE IF NOT EXISTS students_assignments (
     studentId INTEGER REFERENCES students (studentId) ON UPDATE CASCADE ON DELETE CASCADE,
     assignmentId INTEGER REFERENCES assignments (assignmentId) ON UPDATE CASCADE ON DELETE CASCADE,
     is_submitted BOOLEAN DEFAULT FALSE,
+    
     grade INTEGER CHECK (
         grade >= 0
         AND grade <= 100
     ),
+    instructor_comments VARCHAR(256),
     CONSTRAINT students_assignments_pkey PRIMARY KEY (studentId, assignmentId)
 );
 
