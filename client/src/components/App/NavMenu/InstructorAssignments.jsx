@@ -40,11 +40,25 @@ const InstructorAssignments = () => {
     getAssignmentData();
   }, []);
 
-  const handleAssignmentSubmit = (event) => {
+  const handleAssignmentSubmit = async (event) => {
     event.preventDefault();
-    if (newAssignment.title && newAssignment.dueDate) {
-      setAssignmentDetails(newAssignment);
-      closeModal();
+    try {
+      const response = await fetch("http://localhost:10000/assignments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newAssignment),
+      });
+
+      if (response.ok) {
+        closeModal();
+        console.log("Assignment added successfully");
+      } else {
+        console.error("Failed to add assignment:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error while adding assignment:", error.message);
     }
   };
 
@@ -130,6 +144,23 @@ const InstructorAssignments = () => {
                     id="dueDate"
                     name="dueDate"
                     value={newAssignment.dueDate}
+                    onChange={handleInputChange}
+                    className="w-full p-2 text-black border border-gray-300 rounded"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="cohortId"
+                    className="block mb-1 font-medium text-black"
+                  >
+                    Cohort ID:
+                  </label>
+                  <input
+                    type="text"
+                    id="cohortId"
+                    name="cohortId"
+                    value={newAssignment.cohortId}
                     onChange={handleInputChange}
                     className="w-full p-2 text-black border border-gray-300 rounded"
                     required
