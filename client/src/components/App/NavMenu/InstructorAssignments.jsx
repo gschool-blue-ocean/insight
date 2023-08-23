@@ -80,8 +80,8 @@ const InstructorAssignments = () => {
           <p
             className={
               isDarkMode
-                ? "font-bold text-[1.75rem] py-4 pb-[1.5rem] border-b-2 w-[95%] flex justify-center"
-                : "font-bold text-[1.75rem] py-4 pb-[1.5rem] border-b-2 border-black w-[95%] flex justify-center"
+                ? "font-bold text-[3rem] py-4 pb-[1.5rem] border-b-2 w-[95%] flex justify-center"
+                : "font-bold text-[3rem] py-4 pb-[1.5rem] border-b-2 border-black w-[95%] flex justify-center"
             }
           >
             Assignments
@@ -197,8 +197,8 @@ const InstructorAssignments = () => {
             <thead
               className={
                 isDarkMode
-                  ? "text-[#DCD3EB] text-[1.25rem]"
-                  : "text-DGrayLogin text-[1.25rem]"
+                  ? "text-[#DCD3EB] text-[2rem]"
+                  : "text-DGrayLogin text-[2rem]"
               }
             >
               <tr>
@@ -213,15 +213,19 @@ const InstructorAssignments = () => {
                   className={
                     isDarkMode
                       ? index % 2 === 0
-                        ? "bg-DGLogin mt-[2rem] border-b-[1px]"
+                        ? "bg-DGLogin mt-[2rem] font-robot border-b-[1px]"
                         : "mt-[2rem] border-b-[1px]"
                       : index % 2 === 0
-                      ? "bg-LGLogin mt-[2rem] border-b-[1px]"
+                      ? "bg-LGLogin mt-[2rem] font-robot border-b-[1px]"
                       : "mt-[2rem] border-b-[1px]"
                   }
                 >
-                  <td className="text-center py-[0.7rem]">{item.title}</td>
-                  <td className="text-center">{item.description}</td>
+                  <td className="text-center text-[20px] py-[0.7rem]">
+                    {item.title}
+                  </td>
+                  <td className="text-center text-[20px]">
+                    {item.description}
+                  </td>
                 </tr>
               ))}
             </tbody>
