@@ -49,7 +49,7 @@ router.put("/", async (req, res) => {
   const { studentId, assignmentId, is_submitted, grade, instructor_comments } = req.body;
   try {
     const results = await db.query(
-      `UPDATE students_assignments SET studentId = $1, assignmentId = $2, is_submitted = $3, grade = $4, instructor_comments = $5 WHERE studentId = $6 AND assignmentId = $7 RETURNING *`, [studentId, assignmentId, is_submitted, grade, instructor_comments]
+      `UPDATE students_assignments SET studentId = $1, assignmentId = $2, is_submitted = $3, grade = $4, instructor_comments = $5 WHERE studentId = $1 AND assignmentId = $2 RETURNING *`, [studentId, assignmentId, is_submitted, grade, instructor_comments]
     );
     if (results.rowCount === 0) {
       res.status(404).send("Cannot Find User");
