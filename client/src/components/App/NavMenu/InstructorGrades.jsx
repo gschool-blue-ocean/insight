@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import LandingPageContext from "../LandingPage/LandingPageContext";
 const InstructorGrades = () => {
   const { isDarkMode } = useContext(LandingPageContext);
-
   const [students, setStudents] = useState([]);
   const [abscences, setAbscences] = useState([]);
 

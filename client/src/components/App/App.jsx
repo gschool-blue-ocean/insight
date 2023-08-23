@@ -56,6 +56,7 @@ const App = () => {
                   />
                   <Route path="Calendar" element={<Calendar />} />
                   <Route path="Messages" element={<Messages />} />
+                  <Route path="Grades" element={<InstructorGrades />} />
                   <Route path="Students" element={<Students />} />
                 </Route>
                 {/* ADMIN PAGES */}
