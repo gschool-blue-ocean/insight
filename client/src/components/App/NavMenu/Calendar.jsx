@@ -9,7 +9,7 @@ const Calendar = () => {
   useEffect(() => {
     async function fetchAssignments() {
       try {
-        const response = await fetch("http://localhost:10000/assignments");
+        const response = await fetch("http://localhost:10000/assignments/1");
         const data = await response.json();
         setAssignments(data);
       } catch (error) {
@@ -78,42 +78,35 @@ const Calendar = () => {
           } ${
             selectedDate.getDate() === dayNumber &&
             selectedDate.getMonth() === date.getMonth()
-              ? "bg-[#f0bd5eeb] text-[#31503b]"
+              ? "bg-[#f0bd5eeb] text-[#1d1e1d]"
               : ""
           } ${
             selectedDay &&
             selectedDay.getDate() === dayNumber &&
             selectedDay.getMonth() === date.getMonth()
-              ? "bg-[#f0bd5eb3] text-[#31503b]"
+              ? "bg-[#f0bd5eb3] text-[#1d1e1d]"
               : ""
           }`}
           onClick={() => isCurrentMonth && handleDateClick(date)}
         >
-          {isCurrentMonth ? dayNumber : ""}
-          {/* Display assignment data */}
+          {dayNumber > 0 && dayNumber <= daysInMonth ? (
+            <div className="text-[#2f4a36]">{dayNumber}</div>
+          ) : (
+            <div className="text-[#717672]">
+              {dayNumber <= 0
+                ? daysInMonth + dayNumber
+                : dayNumber - daysInMonth}
+            </div>
+          )}
           {assignments.map((assignment) => {
-            const startDate = new Date(assignment.start);
-            const endDate = new Date(assignment.stop);
-
+            const dueDate = new Date(assignment.due_date);
             if (
-              date >= startDate &&
-              date <= endDate &&
-              date.getMonth() === startDate.getMonth() && // Check if month matches
-              isCurrentMonth // Additional check to ensure the assignment is in the current month
+              isCurrentMonth &&
+              dueDate.getDate() === dayNumber &&
+              dueDate.getMonth() === date.getMonth()
             ) {
-              const daysSpanned = Math.ceil(
-                (endDate - startDate) / (1000 * 60 * 60 * 24)
-              );
-              const isStartDay = date.getTime() === startDate.getTime();
-              const isEndDay = date.getTime() === endDate.getTime();
-
               return (
-                <div
-                  key={assignment.id}
-                  className={`assignment ${isStartDay && "assignment-start"} ${
-                    isEndDay && "assignment-end"
-                  }`}
-                >
+                <div key={assignment.id} className="text-[#1c1d1d]">
                   {assignment.title}
                 </div>
               );
@@ -132,14 +125,26 @@ const Calendar = () => {
   }
 
   return (
-    <div className="p-4 m-8 overflow-y-auto rounded shadow font-robot">
-      <h1 className="text-xl font-bold text-left text-[#e1f9ee]">
+    <div className="h-full p-4 m-8 overflow-y-auto rounded shadow font-robot">
+      <h1 className="text-[26px] font-bold text-left text-[#e1f9ee]">
         Assignment Due Date Tracker
       </h1>
       <div className="flex items-center justify-between mb-2">
-        <button onClick={handlePrevMonth}>Previous</button>
-        <h2 className="text-xl font-semibold text-center">{monthYearString}</h2>
-        <button onClick={handleNextMonth}>Next</button>
+        <button
+          className="p-4 border-2 border-[#33483c] rounded-xl"
+          onClick={handlePrevMonth}
+        >
+          Previous
+        </button>
+        <h2 className="text-[30px] font-semibold text-center">
+          {monthYearString}
+        </h2>
+        <button
+          className="p-4 border-2 border-[#33483c] rounded-xl"
+          onClick={handleNextMonth}
+        >
+          Next
+        </button>
       </div>
       {calendarGrid}
     </div>

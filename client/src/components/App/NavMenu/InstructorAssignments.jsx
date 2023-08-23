@@ -8,7 +8,8 @@ const InstructorAssignments = () => {
   const [newAssignment, setNewAssignment] = useState({
     title: "",
     description: "",
-    dueDate: null,
+    due_date: "",
+    cohortid: "",
   });
 
   const openModal = () => {
@@ -20,6 +21,7 @@ const InstructorAssignments = () => {
   };
 
   const handleInputChange = (event) => {
+    console.log(event.target.name, event.target.value);
     const { name, value } = event.target;
     setNewAssignment((prevAssignment) => ({
       ...prevAssignment,
@@ -52,7 +54,6 @@ const InstructorAssignments = () => {
       });
 
       if (response.ok) {
-        closeModal();
         console.log("Assignment added successfully");
       } else {
         console.error("Failed to add assignment:", response.statusText);
@@ -143,7 +144,7 @@ const InstructorAssignments = () => {
                     type="date"
                     id="dueDate"
                     name="dueDate"
-                    value={newAssignment.dueDate}
+                    value={newAssignment.duedate}
                     onChange={handleInputChange}
                     className="w-full p-2 text-black border border-gray-300 rounded"
                     required
