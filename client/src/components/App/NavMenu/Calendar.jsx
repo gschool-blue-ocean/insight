@@ -1,9 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { format } from "date-fns"; // Using date-fns for date formatting
 
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState(null);
+  const [assignments, setAssignments] = useState([]);
+
+  useEffect(() => {
+    async function fetchAssignments() {
+      try {
+        const response = await fetch("/assignments");
+        const data = await response.json();
+        setAssignments(data);
+      } catch (error) {
+        console.error("Error fetching assignments:", error);
+      }
+    }
+
+    fetchAssignments();
+  }, []);
 
   const handlePrevMonth = () => {
     setSelectedDate(
@@ -75,9 +90,40 @@ const Calendar = () => {
           onClick={() => isCurrentMonth && handleDateClick(date)}
         >
           {isCurrentMonth ? dayNumber : ""}
+          {/* Display assignment data */}
+          {assignments.map((assignment) => {
+            const startDate = new Date(assignment.start);
+            const endDate = new Date(assignment.stop);
+
+            if (
+              date >= startDate &&
+              date <= endDate &&
+              date.getMonth() === startDate.getMonth() && // Check if month matches
+              isCurrentMonth // Additional check to ensure the assignment is in the current month
+            ) {
+              const daysSpanned = Math.ceil(
+                (endDate - startDate) / (1000 * 60 * 60 * 24)
+              );
+              const isStartDay = date.getTime() === startDate.getTime();
+              const isEndDay = date.getTime() === endDate.getTime();
+
+              return (
+                <div
+                  key={assignment.id}
+                  className={`assignment ${isStartDay && "assignment-start"} ${
+                    isEndDay && "assignment-end"
+                  }`}
+                >
+                  {assignment.title}
+                </div>
+              );
+            }
+            return null;
+          })}
         </div>
       );
     }
+
     calendarGrid.push(
       <div key={i} className="grid grid-cols-7 gap-1">
         {week}
