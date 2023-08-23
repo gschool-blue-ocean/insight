@@ -18,7 +18,6 @@ const StudentsLanding = () => {
     monthNames,
     daysOfWeek,
     isDarkMode,
-    averageGrade,
     countdown,
     year,
     month,
@@ -27,9 +26,8 @@ const StudentsLanding = () => {
     cohortNumber,
     daysMissed,
     userFirstName,
-    localURL,
-    currentStudent
-
+    currentStudent,
+    saData,
   } = useContext(LandingPageContext);
 
   ChartJS.register(ArcElement, Tooltip, Legend);
@@ -37,30 +35,21 @@ const StudentsLanding = () => {
   ChartJS.defaults.color = "#000000";
 
   let studentid;
-  if(currentStudent[0]) {
-    studentid = currentStudent[0].studentid
+  if (currentStudent[0]) {
+    studentid = currentStudent[0].studentid;
   }
-  const [grade, setGrade] = useState([]);
-  const getGradeData = async () => {
-    try {
-      let response = await fetch(
-        `${localURL}/grades`
-      );
-      if (!response.ok) {
-        throw new Error(`grade not found, Status: ${response.status}`);
-      }
-      const gradeData = await response.json()
-      
-      setGrade(gradeData[studentid].score);
-    } catch (error) {
-      console.error("There was a problem finding this students grade:", error.message);
-    }
-  };
-  useEffect(() => {
-    getGradeData();
-  }, []);
 
-  const uncompleted = 100 - grade;
+  const calculateAverage = (arr) => {
+    let total = 0;
+    for (let assignment of arr) {
+      total += assignment.grade;
+    }
+    return total / arr.length;
+  };
+  const averageGrade = calculateAverage(saData);
+  console.log(averageGrade);
+
+  const uncompleted = 100 - averageGrade;
   const courseLength = 117;
   const attendanceChart = {
     datasets: [
@@ -77,7 +66,7 @@ const StudentsLanding = () => {
   const gpaChart = {
     datasets: [
       {
-        data: [grade, uncompleted],
+        data: [averageGrade, uncompleted],
         backgroundColor: isDarkMode
           ? ["#1A3D36", "#F0BE5E"]
           : ["#63B9AA", "#280137"],
@@ -101,10 +90,6 @@ const StudentsLanding = () => {
       maintainAspectRatio: true,
     },
   };
-
-  //testdata
-
-  let GPA = averageGrade;
 
   return (
     <>
@@ -132,7 +117,9 @@ const StudentsLanding = () => {
             id="date"
             className="flex items-start pt-[1rem] pr-[1rem] gap-[1rem]"
           >
-            <p>{`${daysOfWeek[dayOfWeek - 1]} ${monthNames[month]} ${day}, ${year}`}</p>
+            <p>{`${daysOfWeek[dayOfWeek - 1]} ${
+              monthNames[month]
+            } ${day}, ${year}`}</p>
             {isDarkMode ? (
               <img src={alertDM} alt="notification bell" />
             ) : (
@@ -180,7 +167,7 @@ const StudentsLanding = () => {
           </div>
         </div>
         <div id="GPA" className="flex flex-col items-center gap-[1rem]">
-          <p>{`Current Grade Average : ${grade}%`}</p>
+          <p>{`Current Grade Average : ${averageGrade}%`}</p>
           <div>
             <Doughnut
               data={gpaChart}
