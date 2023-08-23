@@ -14,11 +14,11 @@ const InstructorLanding = () => {
     month,
     day,
     dayOfWeek,
+    cohortNumber,
   } = useContext(LandingPageContext);
 
   //testdata
   let daysMissed = 4;
-  let cohortNumber = 22;
   let GPA = averageGrade;
 
   return (

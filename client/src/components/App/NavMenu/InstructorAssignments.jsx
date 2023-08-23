@@ -3,7 +3,6 @@ import LandingPageContext from "../LandingPage/LandingPageContext";
 
 const InstructorAssignments = () => {
   const { isDarkMode } = useContext(LandingPageContext);
-
   const [assignments, setAssignments] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newAssignment, setNewAssignment] = useState({
@@ -30,7 +29,7 @@ const InstructorAssignments = () => {
 
   const getAssignmentData = async () => {
     try {
-      let response = await fetch("/assignments");
+      let response = await fetch("http://localhost:10000/assignments/1");
       let data = await response.json();
       setAssignments(data);
     } catch (error) {
@@ -173,7 +172,6 @@ const InstructorAssignments = () => {
               <tr>
                 <th className="py-[1rem]">Title</th>
                 <th>Description</th>
-                <th>Instructor Feedback</th>
               </tr>
             </thead>
             <tbody>
@@ -192,9 +190,6 @@ const InstructorAssignments = () => {
                 >
                   <td className="text-center py-[0.7rem]">{item.title}</td>
                   <td className="text-center">{item.description}</td>
-                  <td className={`text-center max-h-[20px] max-w-[10rem]`}>
-                    {item.instructor_comments}
-                  </td>
                 </tr>
               ))}
             </tbody>

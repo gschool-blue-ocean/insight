@@ -9,7 +9,7 @@ const Calendar = () => {
   useEffect(() => {
     async function fetchAssignments() {
       try {
-        const response = await fetch("/assignments");
+        const response = await fetch("http://localhost:10000/assignments");
         const data = await response.json();
         setAssignments(data);
       } catch (error) {
