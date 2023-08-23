@@ -93,8 +93,8 @@ const InstructorGrades = () => {
             <thead
               className={
                 isDarkMode
-                  ? "text-[#DCD3EB] text-[2rem]"
-                  : "text-DGrayLogin text-[2rem]"
+                  ? "text-[#e9d9c2] text-[1.6rem] mb-4"
+                  : "text-DGrayLogin text-[1.6rem] mb-4"
               }
             >
               <tr>
