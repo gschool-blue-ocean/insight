@@ -1,21 +1,21 @@
 import React, { useContext } from "react";
 import LandingPageContext from "../LandingPage/LandingPageContext";
 const Grades = () => {
-  const { isDarkMode, studentAssignments, saData} = useContext(LandingPageContext);
-
+  const { isDarkMode, studentAssignments, saData } =
+    useContext(LandingPageContext);
 
   const assignmentResults = [];
 
   for (const studentAssignment of studentAssignments) {
-    const saDataItem = saData.find((sa) => sa.assignmentid === studentAssignment.assignmentid);
-    const score = saDataItem.grade
+    const saDataItem = saData.find(
+      (sa) => sa.assignmentid === studentAssignment.assignmentid
+    );
+    const score = saDataItem.grade;
     assignmentResults.push({
       title: studentAssignment.title,
-      score: score
+      score: score,
     });
   }
-  
-
 
   return (
     <>
