@@ -1,8 +1,22 @@
 import React, { useContext } from "react";
 import LandingPageContext from "../LandingPage/LandingPageContext";
 const Grades = () => {
-  const { isDarkMode, tableData } = useContext(LandingPageContext);
+  const { isDarkMode, studentAssignments, saData} = useContext(LandingPageContext);
+
+
+  const assignmentResults = [];
+
+  for (const studentAssignment of studentAssignments) {
+    const saDataItem = saData.find((sa) => sa.assignmentid === studentAssignment.assignmentid);
+    const score = saDataItem.grade
+    assignmentResults.push({
+      title: studentAssignment.title,
+      score: score
+    });
+  }
   
+
+
   return (
     <>
       <div
@@ -48,7 +62,7 @@ const Grades = () => {
               </tr>
             </thead>
             <tbody>
-              {tableData.map((item, index) => (
+              {assignmentResults.map((item, index) => (
                 <tr
                   key={index}
                   className={
@@ -62,10 +76,7 @@ const Grades = () => {
                   }
                 >
                   <td className="text-center py-[0.7rem]">{item.title}</td>
-                  <td className="text-center">{item.grade}</td>
-                  <td className={`text-center max-h-[20px] max-w-[10rem]`}>
-                    {item.comments}
-                  </td>
+                  <td className="text-center">{item.score}</td>
                 </tr>
               ))}
             </tbody>

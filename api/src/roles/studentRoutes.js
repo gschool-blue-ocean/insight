@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const results = await db.query(`SELECT * FROM students WHERE studentId = ${id}`);
+    const results = await db.query(`SELECT * FROM students WHERE userId = ${id}`);
     results.rowCount === 0
       ? res.status(400).send("User not found")
       : res.status(200).json(results.rows);
@@ -27,7 +27,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { cohortid, userid, nps_rating, days_absent, checkin_count, avg_grade } = req.body;
+  const { cohortid, userid, nps_rating } = req.body;
   try {
     const results = await db.query(
       `INSERT INTO students (cohortid, userid, nps_rating, days_absent, checkin_count, avg_grade) 
@@ -45,10 +45,10 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
-  const { studentid, cohortid, userid, nps_rating } = req.body;
+  const { cohortid, userid, nps_rating, days_absent, checkin_count, avg_grade } = req.body;
   try {
     const results = await db.query(
-      `UPDATE students SET cohortid = ('${cohortid}'), userid = ('${userid}'), nps_rating = ('${nps_rating}') WHERE studentId = ${id} RETURNING *`
+      `UPDATE students SET cohortid = $1, userid = $2, nps_rating = $3, days_absent = $4, checkin_count = $5, avg_grade = $6 WHERE studentId = $7 RETURNING *`, [cohortid, userid, nps_rating, days_absent, checkin_count, avg_grade, id]
     );
     if (results.rowCount === 0) {
       res.status(404).send("Cannot Find User");
