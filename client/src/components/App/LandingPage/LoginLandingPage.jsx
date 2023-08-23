@@ -24,6 +24,8 @@ const LoginLandingPage = () => {
     });
   }
 
+  const [hasPasswordError, setHasPasswordError] = useState(false)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -40,8 +42,10 @@ const LoginLandingPage = () => {
       const token = await response.json();
       loginProfile(token);
       clearForm();
+      setHasPasswordError(false)
     } catch (err) {
-      console.error(err);
+      console.error('Couldn\'t log in');
+      setHasPasswordError(true)
     }
   };
 
@@ -143,6 +147,11 @@ const LoginLandingPage = () => {
                       : "bg-LGrayLogin opacity-[0.9] w-3/5 h-[3.25rem] font-Sig font-bold rounded-[10px] text-black text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-black placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusLM-purple"
                   }
                 />
+                <div className={
+                  hasPasswordError ? 'text-red-600' : 'absolute hidden'
+                }> 
+                  Username or password is incorrect
+                </div>
                 <button
                   type="submit"
                   value="Login"
