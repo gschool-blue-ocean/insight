@@ -17,6 +17,7 @@ import InstructorPage from "./InstructorPage/InstructorPage";
 import InstructorLanding from "./InstructorPage/InstructorLanding";
 import Students from "./NavMenu/Students";
 import InstructorAssignments from "./NavMenu/InstructorAssignments";
+import InstructorGrades from "./NavMenu/InstructorGrades";
 import { io } from "socket.io-client";
 
 const socket = io("http://localhost:4000");
@@ -28,9 +29,6 @@ socket.on("connect", () => {
 socket.on("disconnect", () => {
   console.log("Disconnected from the server");
 });
-
-
-
 
 const App = () => {
   return (
@@ -59,7 +57,7 @@ const App = () => {
                     element={<InstructorAssignments />}
                   />
                   <Route path="Calendar" element={<Calendar />} />
-                  <Route path="Grades" element={<Grades />} />
+                  <Route path="Grades" element={<InstructorGrades />} />
                   <Route path="Messages" element={<Messages />} />
                   <Route path="Students" element={<Students />} />
                 </Route>
