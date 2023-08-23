@@ -102,7 +102,6 @@ export const LandingPageProvider = ({ children }) => {
       let res = await fetch(`${localURL}/assignments/${cohortNumber}`)
       let assignments = await res.json()
       setStudentAssignments(assignments)
-      console.log(assignments)
       if (!res.ok) {
         throw new Error('Response not ok')
       }
@@ -120,7 +119,6 @@ export const LandingPageProvider = ({ children }) => {
       let res = await fetch(`${localURL}/students_assignments/${studentId}`)
       let sa = await res.json()
       setSaData(sa)
-      console.log(sa)
       if (!res.ok) {
         throw new Error('Response not ok')
       }
