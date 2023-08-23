@@ -1,44 +1,133 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import LandingPageContext from "../LandingPage/LandingPageContext";
+import SuperUsersContext from "../AdminAndInstructorContext/SuperUsersContext";
 import alertDM from "/assets/alerts/alertDM.svg";
 import alertLM from "/assets/alerts/alertLM.svg";
-import {
-  Chart as ChartJS,
-  ArcElement,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-} from "chart.js";
-import { Doughnut, Pie } from "react-chartjs-2";
+import CohortName from "./CohortList";
+import { Chart as ChartJS } from "chart.js";
+import Chart from "chart.js/auto";
 
 const AdminLandingPage = () => {
+  //context for landing page
   const {
     monthNames,
     daysOfWeek,
     isDarkMode,
-    averageGrade,
     countdown,
     year,
     month,
     day,
     dayOfWeek,
-    isCohorts,
+    currentStudent,
+    localURL,
   } = useContext(LandingPageContext);
-    ChartJS.register(ArcElement, Tooltip, Legend);
-    ChartJS.register(BarElement, CategoryScale, LinearScale, Legend);
-    ChartJS.defaults.color = "#000000";
+  //context from superusers
+  const {
+    isCohorts,
+    setSelectedCohort,
+    selectedCohort,
+  } = useContext(SuperUsersContext);
 
-  const [selectedCohort, setSelectedCohort] = useState("");
-    const handleCohortChange = (event) => {
-      setSelectedCohort(event.target.value); // Update the selected cohort when the dropdown value changes
-    };
+  //CHART CONFIG FOR ADMIN AND INSTRUCTORS
+  ChartJS.defaults.color = "#000000";
 
-  //testdata
-  let daysMissed = 4;
-  let cohortNumber = 22;
-  let GPA = averageGrade;
+  const [studentData, setStudentData] = useState([]);
+
+  useEffect(() => {
+    // Fetch student data from the API
+    fetch("http://localhost:10000/students")
+      .then((response) => response.json())
+      .then((data) => {
+        // Filter students from cohort ID 1
+        const cohort1Students = data.filter(
+          (student) => student.cohortid === 1
+        );
+
+        // Extract nps_rating values
+        const npsData = cohort1Students.map((student) => ({
+          x: student.studentid, // Use student ID as the x value
+          y: student.nps_rating,
+          r: 10, // Radius of the bubble
+        }));
+
+        setStudentData(npsData);
+      })
+      .catch((error) => {
+        console.error("Error fetching student data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Create the bubble chart
+    const ctx = document.getElementById("bubbleChart");
+
+    if (studentData.length > 0) {
+      new Chart(ctx, {
+        type: "bubble",
+        data: {
+          datasets: [
+            {
+              label: "NPS Ratings",
+              data: studentData,
+              backgroundColor: "rgba(173, 150, 78, 0.6)",
+              borderColor: "rgba(173, 150, 78, 2)",
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              type: "linear",
+              position: "bottom",
+            },
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: "NPS Ratings Bubble Chart",
+              font: {
+                size: 18,
+                color: "#000000", // Change the font color here
+              },
+            },
+            legend: {
+              labels: {
+                color: "#000000", // Change legend text color here
+              },
+            },
+          },
+        },
+      });
+    }
+  }, [studentData]);
+
+  // let studentid;
+  // if (currentStudent[0]) {
+  //   studentid = currentStudent[0].studentid;
+  // }
+  // const [grade, setGrade] = useState([]);
+  // const getGradeData = async () => {
+  //   try {
+  //     let response = await fetch(`${localURL}/grades`);
+  //     if (!response.ok) {
+  //       throw new Error(`grade not found, Status: ${response.status}`);
+  //     }
+  //     const gradeData = await response.json();
+
+  //     setGrade(gradeData[studentid].score);
+  //   } catch (error) {
+  //     console.error(
+  //       "There was a problem finding this students grade:",
+  //       error.message
+  //     );
+  //   }
+  // };
+  // useEffect(() => {
+  //   getGradeData();
+  // }, []);
+
+  // const uncompleted = 100 - grade;
+  // const courseLength = 117;
 
   return (
     <>
@@ -53,16 +142,7 @@ const AdminLandingPage = () => {
             <label htmlFor="cohortSelect" className="mb-2">
               Select Cohort:
             </label>
-            <select
-              id="cohortSelect"
-              value={selectedCohort}
-              onChange={handleCohortChange}
-            >
-              GONNA NEED TO MAP HERE WITH TOTAL COHORTS
-              <option value="">Select a Cohort</option>
-              <option value="Cohort1">Cohort 1</option>
-              <option value="Cohort2">Cohort 2</option>
-            </select>
+            <CohortName />
           </div>
           <div
             id="date"
@@ -85,25 +165,17 @@ const AdminLandingPage = () => {
       >
         <div id="countdown" className="flex flex-col items-center gap-[1rem]">
           <p>Days till Graduation</p>
-          <div className="text-[8rem] font-bold border-black border-[3px] bg-DGLogin text-DOLogin rounded-md">
+          <div className="text-[8rem] font-bold border-[#77877c] border-[3px] bg-[#666f69] text-[#d2af6b] rounded-md">
             <p className="font-robot p-[1rem]">{countdown}</p>
           </div>
         </div>
         <div
           id="npsdata"
-          className="flex flex-col text-center items-center gap-[.5rem] mb-[6rem]"
+          className="flex flex-col text-center items-center mb-[20rem]"
         >
-          <p>NPS Data</p>
           <div>
-            <img
-              src="/images/NPSChart.png"
-              className="h-[580px] w-[680px]"
-            ></img>
+            <canvas id="bubbleChart" width={600} height={400} />
           </div>
-        </div>
-        <div id="GPA" className="flex flex-col items-center gap-[1rem]">
-          <p>{`Current Cohort Average : ${GPA}%`}</p>
-          <div className="bg-white h-[18rem] w-[18rem] rounded-[10rem]"></div>
         </div>
       </div>
     </>
