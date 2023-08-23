@@ -9,7 +9,7 @@ const Students = () => {
     try {
       let response = await fetch("http://localhost:10000/users/student");
       let data = await response.json();
-      console.log(data)
+      console.log(data);
       setStudents(data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -59,29 +59,35 @@ const Students = () => {
               }
             >
               <tr>
-                <th className="py-[1rem]">First Name</th>
                 <th>Last Name</th>
+                <th className="py-[1rem]">First Name</th>
               </tr>
             </thead>
             <tbody>
-              {students.map((item, index) => (
-                <tr
-                  key={index}
-                  className={
-                    isDarkMode
-                      ? index % 2 === 0
-                        ? "bg-DGLogin mt-[2rem] border-b-[1px]"
-                        : "mt-[2rem] border-b-[1px]"
-                      : index % 2 === 0
-                      ? "bg-LGLogin mt-[2rem] border-b-[1px]"
-                      : "mt-[2rem] border-b-[1px]"
-                  }
-                >
-
-                  <td className="text-center py-[0.7rem]">{item.firstname}</td>
-                  <td className="text-center">{item.lastname}</td>
-                </tr>
-              ))}
+              {students
+                .slice()
+                .sort((a, b) => a.lastname.localeCompare(b.lastname))
+                .map((item, index) => {
+                  return (
+                    <tr
+                      key={index}
+                      className={
+                        isDarkMode
+                          ? index % 2 === 0
+                            ? "bg-DGLogin mt-[2rem] border-b-[1px]"
+                            : "mt-[2rem] border-b-[1px]"
+                          : index % 2 === 0
+                          ? "bg-LGLogin mt-[2rem] border-b-[1px]"
+                          : "mt-[2rem] border-b-[1px]"
+                      }
+                    >
+                      <td className="text-center">{item.lastname}</td>
+                      <td className="text-center py-[0.7rem]">
+                        {item.firstname}
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
         </div>

@@ -1,25 +1,94 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import LandingPageContext from "../LandingPage/LandingPageContext";
 import alertDM from "/assets/alerts/alertDM.svg";
 import alertLM from "/assets/alerts/alertLM.svg";
+import { Chart as ChartJS } from "chart.js";
+import Chart from "chart.js/auto";
 
 const InstructorLanding = () => {
   const {
     monthNames,
     daysOfWeek,
     isDarkMode,
-    averageGrade,
     countdown,
     year,
     month,
     day,
     dayOfWeek,
+    cohortNumber,
   } = useContext(LandingPageContext);
 
-  //testdata
-  let daysMissed = 4;
-  let cohortNumber = 22;
-  let GPA = averageGrade;
+  ChartJS.defaults.color = "#000000";
+
+  const [studentData, setStudentData] = useState([]);
+
+  useEffect(() => {
+    // Fetch student data from the API
+    fetch("http://localhost:10000/students")
+      .then((response) => response.json())
+      .then((data) => {
+        // Filter students from cohort ID 1
+        const cohort1Students = data.filter(
+          (student) => student.cohortid === 1
+        );
+
+        // Extract nps_rating values
+        const npsData = cohort1Students.map((student) => ({
+          x: student.studentid, // Use student ID as the x value
+          y: student.nps_rating,
+          r: 10, // Radius of the bubble
+        }));
+
+        setStudentData(npsData);
+      })
+      .catch((error) => {
+        console.error("Error fetching student data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Create the bubble chart
+    const ctx = document.getElementById("bubbleChart");
+
+    if (studentData.length > 0) {
+      new Chart(ctx, {
+        type: "bubble",
+        data: {
+          datasets: [
+            {
+              label: "NPS Ratings",
+              data: studentData,
+              backgroundColor: "rgba(173, 150, 78, 0.6)",
+              borderColor: "rgba(173, 150, 78, 2)",
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              type: "linear",
+              position: "bottom",
+            },
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: "NPS Ratings Bubble Chart",
+              font: {
+                size: 18,
+                color: "#000000", // Change the font color here
+              },
+            },
+            legend: {
+              labels: {
+                color: "#000000", // Change legend text color here
+              },
+            },
+          },
+        },
+      });
+    }
+  }, [studentData]);
 
   return (
     <>
@@ -51,25 +120,17 @@ const InstructorLanding = () => {
       >
         <div id="countdown" className="flex flex-col items-center gap-[1rem]">
           <p>Days till Graduation</p>
-          <div className="text-[8rem] font-bold border-black border-[3px] bg-DGLogin text-DOLogin rounded-md">
+          <div className="text-[8rem] font-bold border-[#77877c] border-[3px] bg-[#666f69] text-[#d2af6b] rounded-md">
             <p className="font-robot p-[1rem]">{countdown}</p>
           </div>
         </div>
         <div
           id="npsdata"
-          className="flex flex-col text-center items-center gap-[.5rem] mb-[6rem]"
+          className="flex flex-col text-center items-center mb-[20rem]"
         >
-          <p>NPS Data</p>
           <div>
-            <img
-              src="/images/NPSChart.png"
-              className="h-[580px] w-[680px]"
-            ></img>
+            <canvas id="bubbleChart" width={600} height={400} />
           </div>
-        </div>
-        <div id="GPA" className="flex flex-col items-center gap-[1rem]">
-          <p>{`Current Cohort Average : ${GPA}%`}</p>
-          <div className="bg-white h-[18rem] w-[18rem] rounded-[10rem]"></div>
         </div>
       </div>
     </>

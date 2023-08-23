@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 router.get("/student", async (req, res) => {
   try {
     const results = await db.query(
-      `SELECT firstname, lastname FROM users WHERE role = 'student'`
+      `SELECT userid, firstname, lastname FROM users WHERE role = 'student'`
     );
     res.status(200).json(results.rows);
   } catch (err) {

@@ -3,7 +3,6 @@ import LandingPageContext from "../LandingPage/LandingPageContext";
 
 const InstructorAssignments = () => {
   const { isDarkMode } = useContext(LandingPageContext);
-
   const [assignments, setAssignments] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newAssignment, setNewAssignment] = useState({
@@ -30,7 +29,7 @@ const InstructorAssignments = () => {
 
   const getAssignmentData = async () => {
     try {
-      let response = await fetch("/assignments");
+      let response = await fetch("http://localhost:10000/assignments/1");
       let data = await response.json();
       setAssignments(data);
     } catch (error) {
@@ -72,89 +71,89 @@ const InstructorAssignments = () => {
           >
             Assignments
           </p>
-          <button
-            className="mt-2 p-2 text-1xl text-white bg-[#31503b] rounded-[10rem]"
-            onClick={openModal}
-          >
-            Add Assignment
-          </button>
-          {isModalOpen && (
-            <div className="fixed inset-0 flex items-center justify-center modal-overlay">
-              <div className="w-full p-4 bg-white rounded shadow-lg modal sm:w-96">
-                <h2 className="mb-4 text-xl font-semibold text-black">
-                  Add Assignment
-                </h2>
-                <form onSubmit={handleAssignmentSubmit}>
-                  <div className="mb-4">
-                    <label
-                      htmlFor="title"
-                      className="block mb-1 font-medium text-black"
-                    >
-                      Assignment Title:
-                    </label>
-                    <input
-                      type="text"
-                      id="title"
-                      name="title"
-                      value={newAssignment.title}
-                      onChange={handleInputChange}
-                      className="w-full p-2 text-black border border-gray-300 rounded"
-                      required
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label
-                      htmlFor="description"
-                      className="block mb-1 font-medium text-black"
-                    >
-                      Description:
-                    </label>
-                    <textarea
-                      id="description"
-                      name="description"
-                      value={newAssignment.description}
-                      onChange={handleInputChange}
-                      className="w-full p-2 text-black border border-gray-300 rounded"
-                      required
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label
-                      htmlFor="dueDate"
-                      className="block mb-1 font-medium text-black"
-                    >
-                      Due Date:
-                    </label>
-                    <input
-                      type="date"
-                      id="dueDate"
-                      name="dueDate"
-                      value={newAssignment.dueDate}
-                      onChange={handleInputChange}
-                      className="w-full p-2 text-black border border-gray-300 rounded"
-                      required
-                    />
-                  </div>
-                  <div className="flex justify-end">
-                    <button
-                      type="submit"
-                      className="px-4 py-2 mr-2 text-white bg-[#31503b] rounded"
-                    >
-                      Submit Assignment
-                    </button>
-                    <button
-                      type="button"
-                      onClick={closeModal}
-                      className="px-4 py-2 text-gray-700 bg-gray-300 rounded"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          )}
         </div>
+        <button
+          className="mt-2 p-2 text-[16px] text-white bg-[#4a524c] rounded-[10rem]"
+          onClick={openModal}
+        >
+          Add Assignment
+        </button>
+        {isModalOpen && (
+          <div className="fixed inset-0 flex items-center justify-center modal-overlay">
+            <div className="w-full p-4 bg-white rounded shadow-lg modal sm:w-96">
+              <h2 className="mb-4 text-xl font-semibold text-black">
+                Add Assignment
+              </h2>
+              <form onSubmit={handleAssignmentSubmit}>
+                <div className="mb-4">
+                  <label
+                    htmlFor="title"
+                    className="block mb-1 font-medium text-black"
+                  >
+                    Assignment Title:
+                  </label>
+                  <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    value={newAssignment.title}
+                    onChange={handleInputChange}
+                    className="w-full p-2 text-black border border-gray-300 rounded"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="description"
+                    className="block mb-1 font-medium text-black"
+                  >
+                    Description:
+                  </label>
+                  <textarea
+                    id="description"
+                    name="description"
+                    value={newAssignment.description}
+                    onChange={handleInputChange}
+                    className="w-full p-2 text-black border border-gray-300 rounded"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="dueDate"
+                    className="block mb-1 font-medium text-black"
+                  >
+                    Due Date:
+                  </label>
+                  <input
+                    type="date"
+                    id="dueDate"
+                    name="dueDate"
+                    value={newAssignment.dueDate}
+                    onChange={handleInputChange}
+                    className="w-full p-2 text-black border border-gray-300 rounded"
+                    required
+                  />
+                </div>
+                <div className="flex justify-end">
+                  <button
+                    type="submit"
+                    className="px-4 py-2 mr-2 text-white bg-[#31503b] rounded"
+                  >
+                    Submit Assignment
+                  </button>
+                  <button
+                    type="button"
+                    onClick={closeModal}
+                    className="px-4 py-2 text-gray-700 bg-gray-300 rounded"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
         <div
           className={
             isDarkMode
@@ -173,7 +172,6 @@ const InstructorAssignments = () => {
               <tr>
                 <th className="py-[1rem]">Title</th>
                 <th>Description</th>
-                <th>Instructor Feedback</th>
               </tr>
             </thead>
             <tbody>
@@ -192,9 +190,6 @@ const InstructorAssignments = () => {
                 >
                   <td className="text-center py-[0.7rem]">{item.title}</td>
                   <td className="text-center">{item.description}</td>
-                  <td className={`text-center max-h-[20px] max-w-[10rem]`}>
-                    {item.instructor_comments}
-                  </td>
                 </tr>
               ))}
             </tbody>
