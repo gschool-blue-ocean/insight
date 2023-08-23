@@ -121,21 +121,17 @@ const InstructorLanding = () => {
       >
         <div id="countdown" className="flex flex-col items-center gap-[1rem]">
           <p>Days till Graduation</p>
-          <div className="text-[8rem] font-bold border-black border-[3px] bg-DGLogin text-DOLogin rounded-md">
+          <div className="text-[8rem] font-bold border-[#77877c] border-[3px] bg-[#666f69] text-[#d2af6b] rounded-md">
             <p className="font-robot p-[1rem]">{countdown}</p>
           </div>
         </div>
         <div
           id="npsdata"
-          className="flex flex-col text-center items-center gap-[.5rem] mb-[18rem]"
+          className="flex flex-col text-center items-center mb-[20rem]"
         >
           <div>
             <canvas id="bubbleChart" width={600} height={400} />
           </div>
-        </div>
-        <div id="GPA" className="flex flex-col items-center gap-[1rem]">
-          <p>{`Current Cohort Average : `}</p>
-          <div className="bg-white h-[18rem] w-[18rem] rounded-[10rem]"></div>
         </div>
       </div>
     </>
