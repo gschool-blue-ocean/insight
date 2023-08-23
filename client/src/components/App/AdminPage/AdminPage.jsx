@@ -175,19 +175,6 @@ const AdminPage = () => {
                 <h2 className="text-[1.25rem]  text-center">Calendar</h2>
             </div>
               </Link>
-              <Link to="Grades">
-            <div
-              id="gradesContainer"
-              className="flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM"
-            >
-              {isDarkMode ? (
-                <img src={gradesDM} alt="gradebook icon" />
-              ) : (
-                <img src={gradesLM} alt="gradebook icon" />
-              )}
-                <h2 className="text-[1.25rem]  text-center">Grades</h2>
-            </div>
-              </Link>
             <Link to="Students">
             <div
               id="studentsContainer"

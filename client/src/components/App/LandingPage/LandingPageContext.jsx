@@ -60,7 +60,6 @@ export const LandingPageProvider = ({ children }) => {
       let res = await fetch(`${localURL}/cohorts/`)
       let cohortData = res.json()
       setCurrentCohort(cohortData);
-      // console.log(cohortData);
       if (!res.ok) {
         throw new Error(`Cohort not found, status: ${res.status}`);
       }

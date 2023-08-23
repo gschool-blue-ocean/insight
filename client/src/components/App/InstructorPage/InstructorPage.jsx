@@ -193,25 +193,6 @@ const InstructorPage = () => {
                 </h2>
               </div>
             </Link>
-            <Link to="Grades">
-              <div
-                id="gradesContainer"
-                className={
-                  isDarkMode
-                    ? "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-ContentBGDM hover:bg-opacity-[0.75]"
-                    : "flex cursor-pointer flex-col gap-[1rem] p-[2rem] hover:bg-[#afc9c2] hover:bg-opacity-[0.75]"
-                }
-              >
-                {isDarkMode ? (
-                  <img className="pl-2" src={gradesDM} alt="gradebook icon" />
-                ) : (
-                  <img className="pl-2" src={gradesLM} alt="gradebook icon" />
-                )}
-                <h2 className="text-[1rem]  text-center font-semibold">
-                  Grades
-                </h2>
-              </div>
-            </Link>
             <Link to="Students">
               <div
                 id="studentsContainer"
