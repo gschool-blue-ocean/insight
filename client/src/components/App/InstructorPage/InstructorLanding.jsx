@@ -10,7 +10,6 @@ const InstructorLanding = () => {
     monthNames,
     daysOfWeek,
     isDarkMode,
-    averageGrade,
     countdown,
     year,
     month,
