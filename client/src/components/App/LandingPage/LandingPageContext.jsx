@@ -191,7 +191,6 @@ export const LandingPageProvider = ({ children }) => {
         monthNames,
         profileMenu,
         setProfileMenu,
-        averageGrade,
         tableData,
         countdown,
         setCountdown,
