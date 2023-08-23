@@ -75,7 +75,7 @@ const Messages = () => {
 
   return (
     <div className="flex flex-col gap-2 m-2 overflow-y-auto font-robot">
-      <h1 className="p-2 text-2xl font-bold text-center">Insight Email</h1>
+      <h1 className="p-2 text-[30px] font-bold text-center">Insight Email</h1>
       {/* Inbox Sidebar */}
       <div className="w-full p-4 bg-[#2f454192] overflow-y-auto rounded-xl flex-col flex gap-6">
         <h1 className="w-[6rem] h-2 text-lg font-semibold">Inbox</h1>

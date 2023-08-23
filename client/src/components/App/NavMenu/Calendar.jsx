@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { format } from "date-fns"; // Using date-fns for date formatting
+import LandingPageContext from "../LandingPage/LandingPageContext";
 
 const Calendar = () => {
+  const { isDarkMode } = useContext(LandingPageContext);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState(null);
   const [assignments, setAssignments] = useState([]);
@@ -78,19 +80,19 @@ const Calendar = () => {
           } ${
             selectedDate.getDate() === dayNumber &&
             selectedDate.getMonth() === date.getMonth()
-              ? "bg-[#f0bd5eeb] text-[#1d1e1d]"
+              ? "bg-[#f0bd5eeb] text-[#c2c7c2]"
               : ""
           } ${
             selectedDay &&
             selectedDay.getDate() === dayNumber &&
             selectedDay.getMonth() === date.getMonth()
-              ? "bg-[#f0bd5eb3] text-[#1d1e1d]"
+              ? "bg-[#f0bd5eb3] text-[#c2c7c2]"
               : ""
           }`}
           onClick={() => isCurrentMonth && handleDateClick(date)}
         >
           {dayNumber > 0 && dayNumber <= daysInMonth ? (
-            <div className="text-[#2f4a36]">{dayNumber}</div>
+            <div className="text-[#1a2e21]">{dayNumber}</div>
           ) : (
             <div className="text-[#717672]">
               {dayNumber <= 0
@@ -126,7 +128,13 @@ const Calendar = () => {
 
   return (
     <div className="h-full p-4 m-8 overflow-y-auto rounded shadow font-robot">
-      <h1 className="text-[26px] font-bold text-left text-[#e1f9ee]">
+      <h1
+        className={
+          isDarkMode
+            ? "text-[26px] font-bold text-left text-[#e1f9ee]"
+            : "text-[26px] font-bold text-left text-[#141515]"
+        }
+      >
         Assignment Due Date Tracker
       </h1>
       <div className="flex items-center justify-between mb-2">
