@@ -33,6 +33,7 @@ const StudentsPage = () => {
     setChatLarge,
     setChatOpen,
     messages,
+    makeChatLarger,
   } = useContext(LandingPageContext);
 
   const openProfileMenu = () => {
@@ -42,10 +43,7 @@ const StudentsPage = () => {
   const openProfile = () => {
     setIsProfileOpen(!isProfileOpen);
   };
-  const makeChatLarger = () => {
-    setChatLarge(!chatLarge);
-    setChatOpen(false);
-  };
+
   return (
     <>
       <div
@@ -284,7 +282,7 @@ const StudentsPage = () => {
           {chatOpen ? (
             <div
               id="chatFunction"
-              className="ml-[3rem] bg-white border-black border-[2px] w-[10rem] flex justify-center absolute right-[5%] cursor-pointer rounded-md"
+              className="ml-[3rem] bg-DGLogin border-LGLogin border-[2px] w-[10rem] flex justify-center absolute right-[5%] cursor-pointer rounded-md"
               onClick={makeChatLarger}
             >
               <p className="text-black">Insight Chat</p>
