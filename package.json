@@ -10,9 +10,7 @@
     "ci": "npm run lint && npm run test",
     "test:client": "npm run test --prefix=client",
     "test:api": "npm run test --prefix=api",
-    "server": "nodemon ./api/src/index.js",
-    "start-client": "cd client/ && npm run build",
-    "start-server": "cd api/src/ && node server.js"
+    "server": "nodemon ./api/src/index.js"
   },
   "devDependencies": {
     "concurrently": "^7.1.0",
