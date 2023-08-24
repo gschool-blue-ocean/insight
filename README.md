@@ -33,6 +33,20 @@ Backend:
 - [`ChartJS`](https://nodejs.org/api/cluster.html) - Utilized for seamlessly creating interactive and visually appealing charts and graphs on web applications.
 - [`Sockets.io`](https://nodejs.org/api/cluster.html) - Integrated for establishing real-time, bidirectional communication between the server and clients.
 
+# Development Setup #
+
+1. Clone this repository: `git clone https://github.com/gschool-blue-ocean/insight`
+2. Install dependencies for both client and API directories : `npm install`
+3. Set up your environment variables (database connection, etc.): Create a `.env` file
+4. Start the development server: `npm start`
+
+## Project Structure ##
+
+- `/client`: Frontend code built with React and Tailwind CSS.
+- `/server`: Backend code powered by Node.js, Express, and PostgreSQL.
+
+# Galvanize
+
 ## Technical Challenges ##
 * Why, what was the plan to overcome those challenges?
 * What did you learn?
@@ -54,5 +68,8 @@ Backend:
 * What were key takeaways from stand ups, code reviews, etc
 * Writing tests
 * Link to your trello board, discuss completed tickets
+
+## what was left unfinished
+
 
 ## LINK FOR DOCUMENTATION FOR THE PROJECT
