@@ -16,6 +16,7 @@ import calendarDM from "/assets/calendar/calendarDM.svg";
 import calendarLM from "/assets/calendar/calendarLM.svg";
 import gradesDM from "/assets/grades/gradesDM.svg";
 import gradesLM from "/assets/grades/gradesLM.svg";
+import ChatBox from "../ChatBox.jsx";
 
 const StudentsPage = () => {
   const {
@@ -26,6 +27,11 @@ const StudentsPage = () => {
     setIsProfileOpen,
     userFirstName,
     userLastName,
+    chatOpen,
+    chatLarge,
+    setChatLarge,
+    setChatOpen,
+    messages,
   } = useContext(LandingPageContext);
 
   const openProfileMenu = () => {
@@ -35,7 +41,10 @@ const StudentsPage = () => {
   const openProfile = () => {
     setIsProfileOpen(!isProfileOpen);
   };
-
+  const makeChatLarger = () => {
+    setChatLarge(!chatLarge);
+    setChatOpen(false);
+  };
   return (
     <>
       <div
@@ -270,6 +279,19 @@ const StudentsPage = () => {
                 Copyright © 2023 Insight Corporation
               </li>
             </ul>
+          </div>
+          {chatOpen ? (
+            <div
+              id="chatFunction"
+              className="ml-[3rem] bg-white border-black border-[2px] w-[10rem] flex justify-center absolute right-[5%] cursor-pointer rounded-md"
+              onClick={makeChatLarger}
+            >
+              <p className="text-black">Insight Chat</p>
+            </div>
+          ) : null}
+          <div className="h-[300px] absolute right-[5%] bottom-[3rem]">
+            {" "}
+            {chatLarge ? <ChatBox /> : null}
           </div>
         </div>
       </div>
