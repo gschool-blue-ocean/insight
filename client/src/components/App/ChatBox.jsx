@@ -35,21 +35,9 @@ const Chat = () => {
     });
 
     socket.on("receive_message", (message) => {
-      console.log(message);
       setMessages((list) => [...list, message]);
     });
-
-    // return () => {
-    //   socket.disconnect();
-    // };
   }, []);
-
-  // useEffect(() => {
-  //   socket.on("receive_message", (message) => {
-  //     console.log(message);
-  //     setMessages((list) => [...list, message]);
-  //   });
-  // }, [socket]);
 
   const minimizeChat = () => {
     setChatLarge(false);

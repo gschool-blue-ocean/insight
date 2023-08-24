@@ -45,12 +45,6 @@ const ProfileOpen = () => {
             <button onClick={handleLogout}>Sign Out</button>
           </Link>
         </div>
-        <button
-          id="deleteAccount"
-          className="flex bg-[#ff24249e]  px-[0.25rem] rounded-xl  justify-center "
-        >
-          <p className="text-center">Delete Account</p>
-        </button>
       </div>
     </>
   );
