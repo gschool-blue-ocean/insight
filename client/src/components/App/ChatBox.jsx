@@ -13,17 +13,17 @@ const Chat = () => {
     socket,
   } = useContext(LandingPageContext);
 
-  const sendMessage = async () => {
-    if (currentMessage !== "") {
-      const messageData = {
-        room: "123",
-        author: chatname,
-        message: currentMessage,
-        time:
-          new Date(Date.now()).getHours() +
-          ":" +
-          new Date(Date.now()).getMinutes(),
-      };
+  // const sendMessage = async () => {
+  //   if (currentMessage !== "") {
+  //     const messageData = {
+  //       room: "123",
+  //       author: chatname,
+  //       message: currentMessage,
+  //       time:
+  //         new Date(Date.now()).getHours() +
+  //         ":" +
+  //         new Date(Date.now()).getMinutes(),
+  //     };
 
       await socket.emit("send_message", messageData);
     }

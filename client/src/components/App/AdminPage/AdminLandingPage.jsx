@@ -22,14 +22,11 @@ const AdminLandingPage = () => {
     localURL,
   } = useContext(LandingPageContext);
   //context from superusers
-  const {
-    isCohorts,
-    setSelectedCohort,
-    selectedCohort,
-  } = useContext(SuperUsersContext);
+  const { isCohorts, setSelectedCohort, selectedCohort } =
+    useContext(SuperUsersContext);
 
   //CHART CONFIG FOR ADMIN AND INSTRUCTORS
-  ChartJS.defaults.color = "#000000";
+  ChartJS.defaults.color = "#FFFFFF";
 
   const [studentData, setStudentData] = useState([]);
 
@@ -100,7 +97,8 @@ const AdminLandingPage = () => {
       });
     }
   }, [studentData]);
-
+  //CHART CONFIG FOR ADMIN AND INSTRUCTORS
+  
   // let studentid;
   // if (currentStudent[0]) {
   //   studentid = currentStudent[0].studentid;
@@ -161,9 +159,12 @@ const AdminLandingPage = () => {
       </div>
       <div
         id="analyticsContainer"
-        className="px-[2rem] py-[2rem] text-[1.25rem] flex justify-between items-end h-[80%]"
+        className="px-[2rem] py-[2rem] text-[1.25rem] flex justify-between  items-start max-h-[fit-content]"
       >
-        <div id="countdown" className="flex flex-col items-center gap-[1rem]">
+        <div
+          id="countdown"
+          className="flex flex-col items-center w-1/2 gap-[1rem]"
+        >
           <p>Days till Graduation</p>
           <div className="text-[8rem] font-bold border-[#77877c] border-[3px] bg-[#666f69] text-[#d2af6b] rounded-md">
             <p className="font-robot p-[1rem]">{countdown}</p>
@@ -171,7 +172,7 @@ const AdminLandingPage = () => {
         </div>
         <div
           id="npsdata"
-          className="flex flex-col text-center items-center mb-[20rem]"
+          className="flex flex-col text-center items-center mb-[10rem]"
         >
           <div>
             <canvas id="bubbleChart" width={600} height={400} />

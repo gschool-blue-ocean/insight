@@ -21,6 +21,9 @@ import toggleLM from "/assets/toggle/toggleOnOffLM.svg";
 import studentsLM from "/assets/students/studentsLM.svg";
 import studentsDM from "/assets/students/studentsDM.svg";
 import ChatBox from "../ChatBox.jsx";
+import BG from "client/src/images/reversecity.jpg"
+
+
 const AdminPage = () => {
   const {
     profileMenu,
@@ -59,7 +62,7 @@ const AdminPage = () => {
             : "h-screen text-black bg-center bg-cover"
         }
         style={{
-          backgroundImage: `url('/images/reversecity.jpg')`,
+          backgroundImage: `url(${BG})`,
           backgroundBlendMode: isDarkMode ? "multiply" : "screen",
           backgroundColor: isDarkMode
             ? "rgba(26, 61, 54, 0.9)"
@@ -80,7 +83,7 @@ const AdminPage = () => {
             ) : (
               <img src={LogoLM} alt="Insight Logo" />
             )}
-            <Link to="instructorHome">
+            <Link to="AdminHome">
               <h1 className="font-bold cursor-pointer text-[2rem] font-title">
                 Insight
               </h1>
@@ -137,8 +140,8 @@ const AdminPage = () => {
             id="navMenu"
             className={
               isDarkMode
-                ? "bg-DGLogin flex flex-col h-[69vh] mr-[1rem] pt-[2.5rem] w-[10rem]"
-                : "bg-[#afc9c2] flex flex-col h-[69vh] mr-[1rem] pt-[2.5rem] w-[10rem]"
+                ? " flex flex-col h-[69vh] mr-[1rem] pt-[2.5rem] w-[10rem]"
+                : " flex flex-col h-[69vh] mr-[1rem] pt-[2.5rem] w-[10rem]"
             }
           >
             <Link to="Assignments">
@@ -202,8 +205,7 @@ const AdminPage = () => {
                 isDarkMode
                   ? "bg-ContentBGDM bg-opacity-[0.75] h-full w-[90%] rounded-xl flex flex-col max-w-[1500px] mr-[11rem]"
                   : "bg-[#afc9c2] bg-opacity-[0.9] h-full w-[90%] rounded-xl flex flex-col max-w-[1500px] mr-[11rem]"
-                  ? "bg-ContentBGDM bg-opacity-[0.75]  w-[70%] h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px]"
-                  : "bg-[#afc9c2] bg-opacity-[0.9] w-[70%]  h-full rounded-xl ml-[5rem] flex flex-col max-w-[1500px]"
+            
               }
             >
               <Outlet />
