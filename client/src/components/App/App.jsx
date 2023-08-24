@@ -20,15 +20,15 @@ import InstructorGrades from "./NavMenu/InstructorGrades";
 import { io } from "socket.io-client";
 import {SuperUsersProvider} from "./AdminAndInstructorContext/SuperUsersContext";
 
-const socket = io("http://localhost:4000");
+// const socket = io("http://localhost:4000");
 
-socket.on("connect", () => {
-  console.log("Connected to the server");
-});
+// socket.on("connect", () => {
+//   console.log("Connected to the server");
+// });
 
-socket.on("disconnect", () => {
-  console.log("Disconnected from the server");
-});
+// socket.on("disconnect", () => {
+//   console.log("Disconnected from the server");
+// });
 
 const App = () => {
   return (

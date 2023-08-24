@@ -33,7 +33,7 @@ router.post("/", async (req, res) => {
   const { title, due_date, description, cohortId } = req.body;
   try {
     const results = await db.query(
-      `INSERT INTO assignments (title, due_date, description, cohortId) VALUES ( ('${title}'), ('${due_date}'), ('${description}'), (${cohortId}) ) RETURNING *`
+      `INSERT INTO assignments (title, due_date, description, cohortId) VALUES ($1, $2, $3, $4) RETURNING *`, [title, due_date, description, cohortId]
     );
     if (results.rowCount === 0) {
       res.status(404).send("Cannot Find Assignment");
@@ -67,7 +67,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const results = await db.query(`DELETE FROM assignments WHERE id = ${id}`);
+    const results = await db.query(`DELETE FROM assignments WHERE assignmentId = ${id}`);
     if (results.rowCount === 0) {
       res.status(404).send("Cannot Find Assignment");
     } else {
