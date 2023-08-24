@@ -8,7 +8,8 @@ const InstructorAssignments = () => {
   const [newAssignment, setNewAssignment] = useState({
     title: "",
     description: "",
-    dueDate: null,
+    due_date: "",
+    cohortid: "",
   });
 
   const openModal = () => {
@@ -20,6 +21,7 @@ const InstructorAssignments = () => {
   };
 
   const handleInputChange = (event) => {
+    console.log(event.target.name, event.target.value);
     const { name, value } = event.target;
     setNewAssignment((prevAssignment) => ({
       ...prevAssignment,
@@ -40,11 +42,24 @@ const InstructorAssignments = () => {
     getAssignmentData();
   }, []);
 
-  const handleAssignmentSubmit = (event) => {
+  const handleAssignmentSubmit = async (event) => {
     event.preventDefault();
-    if (newAssignment.title && newAssignment.dueDate) {
-      setAssignmentDetails(newAssignment);
-      closeModal();
+    try {
+      const response = await fetch("http://localhost:10000/assignments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newAssignment),
+      });
+
+      if (response.ok) {
+        console.log("Assignment added successfully");
+      } else {
+        console.error("Failed to add assignment:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error while adding assignment:", error.message);
     }
   };
 
@@ -65,8 +80,8 @@ const InstructorAssignments = () => {
           <p
             className={
               isDarkMode
-                ? "font-bold text-[1.75rem] py-4 pb-[1.5rem] border-b-2 w-[95%] flex justify-center"
-                : "font-bold text-[1.75rem] py-4 pb-[1.5rem] border-b-2 border-black w-[95%] flex justify-center"
+                ? "font-bold text-[3rem] py-4 pb-[1.5rem] border-b-2 w-[95%] flex justify-center"
+                : "font-bold text-[3rem] py-4 pb-[1.5rem] border-b-2 border-black w-[95%] flex justify-center"
             }
           >
             Assignments
@@ -129,7 +144,24 @@ const InstructorAssignments = () => {
                     type="date"
                     id="dueDate"
                     name="dueDate"
-                    value={newAssignment.dueDate}
+                    value={newAssignment.duedate}
+                    onChange={handleInputChange}
+                    className="w-full p-2 text-black border border-gray-300 rounded"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="cohortId"
+                    className="block mb-1 font-medium text-black"
+                  >
+                    Cohort ID:
+                  </label>
+                  <input
+                    type="text"
+                    id="cohortId"
+                    name="cohortId"
+                    value={newAssignment.cohortId}
                     onChange={handleInputChange}
                     className="w-full p-2 text-black border border-gray-300 rounded"
                     required
@@ -165,8 +197,8 @@ const InstructorAssignments = () => {
             <thead
               className={
                 isDarkMode
-                  ? "text-[#DCD3EB] text-[1.25rem]"
-                  : "text-DGrayLogin text-[1.25rem]"
+                  ? "text-[#DCD3EB] text-[2rem]"
+                  : "text-DGrayLogin text-[2rem]"
               }
             >
               <tr>
@@ -181,15 +213,19 @@ const InstructorAssignments = () => {
                   className={
                     isDarkMode
                       ? index % 2 === 0
-                        ? "bg-DGLogin mt-[2rem] border-b-[1px]"
+                        ? "bg-DGLogin mt-[2rem] font-robot border-b-[1px]"
                         : "mt-[2rem] border-b-[1px]"
                       : index % 2 === 0
-                      ? "bg-LGLogin mt-[2rem] border-b-[1px]"
+                      ? "bg-LGLogin mt-[2rem] font-robot border-b-[1px]"
                       : "mt-[2rem] border-b-[1px]"
                   }
                 >
-                  <td className="text-center py-[0.7rem]">{item.title}</td>
-                  <td className="text-center">{item.description}</td>
+                  <td className="text-center text-[20px] py-[0.7rem]">
+                    {item.title}
+                  </td>
+                  <td className="text-center text-[20px]">
+                    {item.description}
+                  </td>
                 </tr>
               ))}
             </tbody>

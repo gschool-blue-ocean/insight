@@ -18,7 +18,9 @@ const InstructorLanding = () => {
     cohortNumber,
   } = useContext(LandingPageContext);
 
-  ChartJS.defaults.color = "#000000";
+  isDarkMode
+    ? (ChartJS.defaults.color = "#ffffff")
+    : (ChartJS.defaults.color = "#000000");
 
   const [studentData, setStudentData] = useState([]);
 
@@ -76,12 +78,6 @@ const InstructorLanding = () => {
               text: "NPS Ratings Bubble Chart",
               font: {
                 size: 18,
-                color: "#000000", // Change the font color here
-              },
-            },
-            legend: {
-              labels: {
-                color: "#000000", // Change legend text color here
               },
             },
           },
@@ -98,7 +94,7 @@ const InstructorLanding = () => {
           className="flex justify-between items-center  text-center border-b-2 border-DGLogin border-opacity-[0.8] w-[90%] pb-[2rem] mb-[2rem]"
         >
           <div id="spacer"></div>
-          <h1 className="text-[3rem] pt-8 pl-[15rem]">{`Cohort ${cohortNumber}`}</h1>
+          <h1 className="text-[3rem] pt-8 pl-[15rem]">{`Cohort 1`}</h1>
           <div
             id="date"
             className="flex items-start pt-[1rem] pr-[1rem] gap-[1rem]"
@@ -126,7 +122,7 @@ const InstructorLanding = () => {
         </div>
         <div
           id="npsdata"
-          className="flex flex-col text-center items-center mb-[20rem]"
+          className="flex flex-col text-center items-center mb-[20rem] mr-[8rem]"
         >
           <div>
             <canvas id="bubbleChart" width={600} height={400} />

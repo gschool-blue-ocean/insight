@@ -1,50 +1,75 @@
-# Full-Stack React Example
+# Insight LMS - Full Stack Web Application #
+<img align="center" alt="Banner" src="./readMeResources/LoginPage.png"  width="100%" height="70%">
 
-This repo contains an example of a full-stack application with an express backend, a React frontend, and a postgres database. It's designed to be a starting point for a blue ocean project, or a reference for those wanting to get testing, CI, or docker working in their respective projects.
+## Contributors ##
+- [Isaac Summers](https://www.linkedin.com/in/isaac-w-summers/)
+- [Carl Gutierrez ](https://www.linkedin.com/in/carlanthonyg/)
+- [Autumn Sheridan](https://www.linkedin.com/in/autumn-r-sheridan/)
+-  [Brandon Stegall](https://www.linkedin.com/in/brandonstegall817/)
+-  [Nathan Vititoe]((https://www.linkedin.com/in/nathanvititoe/))
 
-## Development Setup
+## Description ##
 
-The app can be started with two steps:
+Insight is a powerful Learning Management System (LMS) designed to transform education through advanced technology. This full-stack web application is built using the PERN stack (PostgreSQL, Express, React, Node.js), delivering a seamless and interactive learning experience.
 
-1. `cp .env.example .env` - Copy over required environment variables.
-1. `npm install; npm install --prefix=api; npm install --prefix=client` - Install all dependencies.
-1. `docker-compose up` - Run Project.
+## Primary Tech Stack ##
 
-> **NOTE**: After installing a new npm dependency, you have to run `docker-compose up --build` to install the new dependencies on the container.
+Frontend:
+- <img align="center" alt="React" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" /> [React](https://reactjs.org)
+  
+- <img align="center" alt="Tailwindcss" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" /> [Tailwind CSS](https://tailwindcss.com)
 
-## npm Scripts
-
-**`root`**
-
-- `lint` - Checks code for style issues.
-- `test` - Runs `test:client` and `test:api`.
-- `ci` - Runs `lint` and `test`.
-- `test:client` - Runs frontend tests.
-- `test:api` - Runs backend tests.
-
-**`/client`**
-
-- `dev` - Hosts your assets (executed by docker-compose).
-- `build` - Builds your assets for production.
-- `test` - Runs tests.
-
-**`/server`**
-
-- `dev` - Runs the server in watch mode (executed by docker-compose).
-- `start` - Starts the production server.
-- `test` - Runs tests.
+Backend:
+ - <img align="center" alt="NodeJS" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" /> [Node.js](https://nodejs.org)
+ - <img align="center" alt="NodeJS" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" /> [Express](https://expressjs.com)
+  - <img align="center" alt="PostgresSQL" width="30px" style="padding-right:10px;" src="https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/postgresql/postgresql-original.svg" /> [PostgreSQL](https://www.postgresql.org)
 
 ## Tech used
 
-- [`vite`](https://vitejs.dev/) - Module bundler, transpiler and dev server.
-- [`vitest`](https://vitest.dev/) - Test runner.
-- [`prettier`](https://prettier.io/) - Code formatter/checker.
-- [`react-testing-library`](https://testing-library.com/docs/react-testing-library/api/) - React component test helper.
-- [`msw`](https://testing-library.com/docs/react-testing-library/api/) - Request mocking library for writing frontend tests.
-- [`supertest`](https://github.com/ladjs/supertest) - HTTP request simulator for backend testing.
-- [`docker`](https://www.docker.com/) - Containerization framework for dev and deployment.
+- [`Vite`](https://vitejs.dev/) - Module bundler, transpiler and dev server.
+- [`Docker`](https://www.docker.com/) - Containerization framework for dev and deployment.
+- [`Node Cluster Module`](https://nodejs.org/api/cluster.html) -  Utilized for enhancing application performance by distributing workloads across multiple processes for improved efficiency and response times.
+- [`loadtest`](https://nodejs.org/api/cluster.html) -  Employed for load testing and assessing the robustness of the application's node clustering implementation.
+- [`ChartJS`](https://nodejs.org/api/cluster.html) - Utilized for seamlessly creating interactive and visually appealing charts and graphs on web applications.
+- [`Sockets.io`](https://nodejs.org/api/cluster.html) - Integrated for establishing real-time, bidirectional communication between the server and clients.
 
-## Useful Docker Commands
+# Development Setup #
 
-- `docker exec <container_name_or_id> <command>` - Runs command in the context of a container.
-- `docker inspect <container_name_or_id>` - Displays info (including IP address) of a container running in docker.
+1. Clone this repository: `git clone https://github.com/gschool-blue-ocean/insight`
+2. Install dependencies for both client and API directories : `npm install`
+3. Set up your environment variables (database connection, etc.): Create a `.env` file
+4. Start the development server: `npm start`
+
+## Project Structure ##
+
+- `/client`: Frontend code built with React and Tailwind CSS.
+- `/server`: Backend code powered by Node.js, Express, and PostgreSQL.
+
+# Galvanize
+
+## Technical Challenges ##
+* Why, what was the plan to overcome those challenges?
+* What did you learn?
+
+## Challenges that were unexpected ## 
+* Why was it a challenge
+* What did you learn?
+
+## Walkthrough of the app ##
+* What were the user stories /  what was MVP (mention Minimal Viable Product)
+* INSERT SCREENSHOT / VIDEOS WALKTHROUGH IN HERE
+
+## How does the app work?
+ * What research was required?
+
+## Workflow and Key lessons from your team - specifically those related to: Agile, CI/CD, testing, working with external stakeholders, ticketing, and user stories.
+* Your git workflow, style guides, commit guides, etc
+* What did you learn from the process
+* What were key takeaways from stand ups, code reviews, etc
+* Writing tests
+* Link to your trello board, discuss completed tickets
+
+## what was left unfinished
+
+
+## LINK FOR DOCUMENTATION FOR THE PROJECT

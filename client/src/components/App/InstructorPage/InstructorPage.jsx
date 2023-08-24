@@ -33,8 +33,6 @@ const InstructorPage = () => {
     setIsDarkMode,
   } = useContext(LandingPageContext);
 
-  //testdata
-
   const openProfileMenu = () => {
     setProfileMenu(!profileMenu);
   };
@@ -131,8 +129,8 @@ const InstructorPage = () => {
             id="navMenu"
             className={
               isDarkMode
-                ? "bg-DGLogin flex flex-col h-[69vh] mr-[1rem] pt-[2.5rem] w-[10rem]"
-                : "bg-[#afc9c2] flex flex-col h-[69vh] mr-[1rem] pt-[2.5rem] w-[10rem]"
+                ? "flex flex-col h-[69vh] mr-[1rem] pt-[2.5rem] w-[10rem]"
+                : "flex flex-col h-[69vh] mr-[1rem] pt-[2.5rem] w-[10rem]"
             }
           >
             <Link to="Assignments">
