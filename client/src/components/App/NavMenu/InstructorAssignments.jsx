@@ -7,9 +7,9 @@ const InstructorAssignments = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newAssignment, setNewAssignment] = useState({
     title: "",
-    description: "",
     due_date: "",
-    cohortid: "",
+    description: "",
+    cohortId: "",
   });
 
   const openModal = () => {
@@ -21,11 +21,11 @@ const InstructorAssignments = () => {
   };
 
   const handleInputChange = (event) => {
-    console.log(event.target.name, event.target.value);
     const { name, value } = event.target;
     setNewAssignment((prevAssignment) => ({
       ...prevAssignment,
       [name]: value,
+      
     }));
   };
 
@@ -40,7 +40,7 @@ const InstructorAssignments = () => {
   };
   useEffect(() => {
     getAssignmentData();
-  }, []);
+  }, [assignments]);
 
   const handleAssignmentSubmit = async (event) => {
     event.preventDefault();
@@ -52,7 +52,7 @@ const InstructorAssignments = () => {
         },
         body: JSON.stringify(newAssignment),
       });
-
+      closeModal()
       if (response.ok) {
         console.log("Assignment added successfully");
       } else {
@@ -135,16 +135,16 @@ const InstructorAssignments = () => {
                 </div>
                 <div className="mb-4">
                   <label
-                    htmlFor="dueDate"
+                    htmlFor="due_date"
                     className="block mb-1 font-medium text-black"
                   >
                     Due Date:
                   </label>
                   <input
                     type="date"
-                    id="dueDate"
-                    name="dueDate"
-                    value={newAssignment.duedate}
+                    id="due_date"
+                    name="due_date"
+                    value={newAssignment.due_date}
                     onChange={handleInputChange}
                     className="w-full p-2 text-black border border-gray-300 rounded"
                     required

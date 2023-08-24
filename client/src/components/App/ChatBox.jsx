@@ -12,33 +12,33 @@ const Chat = () => {
     messages,
   } = useContext(LandingPageContext);
 
-  const sendMessage = async () => {
-    if (currentMessage !== "") {
-      const messageData = {
-        room: "123",
-        author: chatname,
-        message: currentMessage,
-        time:
-          new Date(Date.now()).getHours() +
-          ":" +
-          new Date(Date.now()).getMinutes(),
-      };
+  // const sendMessage = async () => {
+  //   if (currentMessage !== "") {
+  //     const messageData = {
+  //       room: "123",
+  //       author: chatname,
+  //       message: currentMessage,
+  //       time:
+  //         new Date(Date.now()).getHours() +
+  //         ":" +
+  //         new Date(Date.now()).getMinutes(),
+  //     };
 
-      await socket.emit("send_message", messageData);
-    }
-  };
+  //     await socket.emit("send_message", messageData);
+  //   }
+  // };
 
-  useEffect(() => {
-    socket.on("receive_message", (message) => {
-      messages.push(message.message);
-      console.log(messages);
-    });
-  }, [socket]);
-  const minimizeChat = () => {
-    console.log("minimized");
-    setChatLarge(false);
-    setChatOpen(true);
-  };
+  // useEffect(() => {
+  //   socket.on("receive_message", (message) => {
+  //     messages.push(message.message);
+  //     console.log(messages);
+  //   });
+  // }, [socket]);
+  // const minimizeChat = () => {
+  //   console.log("minimized");
+  //   setChatLarge(false);
+  //   setChatOpen(true);
+  // };
   console.log(messages);
   return (
     <div className="absolute right-[5%]">
