@@ -44,7 +44,7 @@ const Chat = () => {
     <div className="absolute right-[5%]">
       <div className="h-[300px] bg-[white] flex items-center rounded-t-lg flex-col">
         <p
-          className="text-DGLogin cursor-pointer h-fit w-full text-center"
+          className="w-full text-center cursor-pointer text-DGLogin h-fit"
           onClick={minimizeChat}
         >
           Insight Chat
