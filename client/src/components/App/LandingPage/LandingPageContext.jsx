@@ -13,10 +13,14 @@ export const LandingPageProvider = ({ children }) => {
   const { currentProfile } = useContext(AuthContext);
   const [currentStudent, setCurrentStudent] = useState({});
   const [currentUser, setCurrentUser] = useState({});
-  const [studentAssignments, setStudentAssignments] = useState([])
-  const [isCohorts, setCurrentCohort] = useState([])
-  const [saData, setSaData] = useState([])
-
+  const [studentAssignments, setStudentAssignments] = useState([]);
+  const [isCohorts, setCurrentCohort] = useState([]);
+  const [saData, setSaData] = useState([]);
+  const [chatname, setChatname] = useState('');
+  const [room, setRoom] = useState('')
+  const [chatOpen, setChatOpen] = useState(false);
+  const [chatLarge, setChatLarge] = useState(false);
+  const [messages, setMessages] = useState([]); 
 
   const getUserData = async () => {
     try {
@@ -56,11 +60,11 @@ export const LandingPageProvider = ({ children }) => {
     getStudentData();
   }, [currentProfile]);
 
-//grab all cohorts
+  //grab all cohorts
   const getCohort = async () => {
     try {
-      let res = await fetch(`${localURL}/cohorts/`)
-      let cohortData = res.json()
+      let res = await fetch(`${localURL}/cohorts/`);
+      let cohortData = res.json();
       setCurrentCohort(cohortData);
       // console.log(cohortData);
       if (!res.ok) {
@@ -69,13 +73,10 @@ export const LandingPageProvider = ({ children }) => {
     } catch (error) {
       console.error("There was a problem finding the Cohorts:", error.message);
     }
-  }
+  };
   useEffect(() => {
     getCohort();
   }, []);
-
-
-  
 
   let daysMissed = 0;
   let cohortNumber = 0;
@@ -259,7 +260,7 @@ export const LandingPageProvider = ({ children }) => {
         messages,
         setMessages,
         studentAssignments,
-        saData
+        saData,
       }}
     >
       {children}
