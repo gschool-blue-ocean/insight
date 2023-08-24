@@ -10,7 +10,7 @@ const Assignments = () => {
 
   for (const studentAssignment of studentAssignments) {
     const saDataItem = saData.find(
-      (sa) => sa.assignmentid === studentAssignment.assignmentid
+      (sa) => sa.assignmentid === studentAssignment.assignmentid 
     );
     const { grade, is_submitted, instructor_comments } = saDataItem;
     console.log(saDataItem);
@@ -22,7 +22,7 @@ const Assignments = () => {
     });
   }
 
-  console.log(assignmentResults[0]);
+
 
   return (
     <>
