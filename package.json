@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "lint": "prettier --check .",
+    "start-client": "cd client/ && npm run build",
+    "start-server": "cd api/src/ && node server.js",
     "test": "concurrently \"npm:test:*\"",
     "ci": "npm run lint && npm run test",
     "test:client": "npm run test --prefix=client",
