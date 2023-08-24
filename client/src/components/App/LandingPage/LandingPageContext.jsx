@@ -1,6 +1,8 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 const LandingPageContext = createContext();
 import AuthContext from "../AuthFolder/authcontext";
+import { io } from "socket.io-client";
+
 export const LandingPageProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [profileMenu, setProfileMenu] = useState(false);
@@ -13,6 +15,15 @@ export const LandingPageProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState({});
   const [studentAssignments, setStudentAssignments] = useState([])
   const [saData, setSaData] = useState([])
+
+  const [isCohorts, setCurrentCohort] = useState([]);
+
+  const [chatname, setChatname] = useState("");
+  const [room, setRoom] = useState("");
+  const [chatOpen, setChatOpen] = useState(false);
+  const [chatLarge, setChatLarge] = useState(false);
+  const [messages, setMessages] = useState([]);
+
 
   const getUserData = async () => {
     try {
@@ -165,7 +176,7 @@ export const LandingPageProvider = ({ children }) => {
     let roundedGrade = parseFloat(averageGrade.toFixed(2));
     setAverageGrade(roundedGrade);
   };
-  
+
   const startDate = new Date(2023, 7, 16);
   const currentDate = new Date();
   const changeCountdown = () => {
@@ -182,6 +193,23 @@ export const LandingPageProvider = ({ children }) => {
     changeCountdown();
   }, []);
 
+  const socket = io("http://localhost:4000");
+  const socketPasser = () => {
+    socket.on("connect", () => {
+      console.log("Connected to the server");
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Disconnected from the server");
+    });
+  };
+  socketPasser();
+  useEffect(() => {
+    if (username) {
+      setChatname(username);
+      setRoom("123");
+    }
+  }, [username]);
   return (
     <LandingPageContext.Provider
       value={{
@@ -206,9 +234,20 @@ export const LandingPageProvider = ({ children }) => {
         userFirstName,
         userLastName,
         username,
-        currentStudent, 
+        currentStudent,
+        socketPasser,
+        socket,
+        chatname,
+        setChatname,
+        chatOpen,
+        setChatOpen,
+        chatLarge,
+        setChatLarge,
+        messages,
+        setMessages,
         studentAssignments,
         saData
+
       }}
     >
       {children}
