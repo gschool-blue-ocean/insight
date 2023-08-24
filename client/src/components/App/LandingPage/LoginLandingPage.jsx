@@ -10,7 +10,8 @@ import AuthContext from "../AuthFolder/authcontext";
 import Footer from "./Footer";
 
 const LoginLandingPage = () => {
-  const { isDarkMode, setIsDarkMode } = useContext(LandingPageContext);
+  const { isDarkMode, setIsDarkMode, socket, chatname } =
+    useContext(LandingPageContext);
   const { loginProfile } = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
@@ -24,7 +25,14 @@ const LoginLandingPage = () => {
     });
   }
 
-  const [hasPasswordError, setHasPasswordError] = useState(false)
+  const [hasPasswordError, setHasPasswordError] = useState(false);
+
+  const joinRoom = () => {
+    if (chatname !== "") {
+      socket.emit("join_room");
+      console.log("room joined");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,11 +50,12 @@ const LoginLandingPage = () => {
       const token = await response.json();
       loginProfile(token);
       clearForm();
-      setHasPasswordError(false)
+      setHasPasswordError(false);
     } catch (err) {
-      console.error('Couldn\'t log in');
-      setHasPasswordError(true)
+      console.error("Couldn't log in");
+      setHasPasswordError(true);
     }
+    joinRoom();
   };
 
   const handleChange = (e) => {
@@ -147,9 +156,11 @@ const LoginLandingPage = () => {
                       : "bg-LGrayLogin opacity-[0.9] w-3/5 h-[3.25rem] font-Sig font-bold rounded-[10px] text-black text-center z-0 placeholder:z-10 placeholder:opacity-[1] placeholder:text-black placeholder:text-[1.5rem] placeholder:font-thin focus:shadow-focusLM-purple"
                   }
                 />
-                <div className={
-                  hasPasswordError ? 'text-red-600' : 'absolute hidden'
-                }> 
+                <div
+                  className={
+                    hasPasswordError ? "text-red-600" : "absolute hidden"
+                  }
+                >
                   Username or password is incorrect
                 </div>
                 <button

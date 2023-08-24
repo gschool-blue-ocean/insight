@@ -47,7 +47,6 @@ const StudentsLanding = () => {
     return total / arr.length;
   };
   const averageGrade = calculateAverage(saData);
-  console.log(averageGrade);
 
   const uncompleted = 100 - averageGrade;
   const courseLength = 117;

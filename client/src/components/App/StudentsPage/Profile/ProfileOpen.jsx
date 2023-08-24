@@ -11,6 +11,8 @@ const ProfileOpen = () => {
     username,
     setChatLarge,
     setChatOpen,
+    setMessages,
+    socket,
   } = useContext(LandingPageContext);
   const { logoutProfile } = useContext(AuthContext);
 
@@ -18,6 +20,10 @@ const ProfileOpen = () => {
     setProfileMenu(false);
     setChatOpen(false);
     setChatLarge(false);
+    setMessages([]);
+    socket.on("disconnect", () => {
+      console.log("Disconnected from the server");
+    });
     logoutProfile();
   };
   if (currentStudent && currentUser) {

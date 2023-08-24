@@ -20,6 +20,7 @@ import toggleDM from "/assets/toggle/toggleOnOffDM.svg";
 import toggleLM from "/assets/toggle/toggleOnOffLM.svg";
 import studentsLM from "/assets/students/studentsLM.svg";
 import studentsDM from "/assets/students/studentsDM.svg";
+import ChatBox from "../ChatBox.jsx";
 
 const InstructorPage = () => {
   const {
@@ -31,6 +32,12 @@ const InstructorPage = () => {
     userFirstName,
     userLastName,
     setIsDarkMode,
+    chatOpen,
+    chatLarge,
+    setChatLarge,
+    setChatOpen,
+    messages,
+    makeChatLarger,
   } = useContext(LandingPageContext);
 
   const openProfileMenu = () => {
@@ -323,6 +330,19 @@ const InstructorPage = () => {
                 Copyright © 2023 Insight Corporation
               </li>
             </ul>
+          </div>
+          {chatOpen ? (
+            <div
+              id="chatFunction"
+              className="ml-[3rem] bg-DGLogin border-LGLogin border-[2px] w-[10rem] flex justify-center absolute right-[5%] cursor-pointer rounded-md"
+              onClick={makeChatLarger}
+            >
+              <p className="text-black">Insight Chat</p>
+            </div>
+          ) : null}
+          <div className="h-[300px] absolute right-[5%] bottom-[3rem]">
+            {" "}
+            {chatLarge ? <ChatBox /> : null}
           </div>
         </div>
       </div>
