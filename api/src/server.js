@@ -52,7 +52,7 @@ if (cluster.isPrimary) { //if prim see total cpus aval on system
   app.use(logWorkerAndMemory);
   app.use(express.json());
   app.use(cors());
-  app.use(express.static('../../client/dist'))
+  app.use(express.static('../../client/src/dist'))
   // ROUTES
   app.use("/admin", adminRoutes);
   app.use('/logout', logoutRoutes)
