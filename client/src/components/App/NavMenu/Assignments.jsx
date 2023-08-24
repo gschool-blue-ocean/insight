@@ -1,45 +1,41 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import LandingPageContext from "../LandingPage/LandingPageContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import checkmark from "../../../assets/assignment/checkmark.svg";
+import x from "../../../assets/assignment/x.svg";
 const Assignments = () => {
-  const { isDarkMode, localURL, cohortNumber } = useContext(LandingPageContext);
+  const { isDarkMode, studentAssignments, saData } =
+    useContext(LandingPageContext);
 
-  const [assignments, setAssignments] = useState([]);
+  const assignmentResults = [];
 
-  const getAssignmentData = async () => {
-    try {
-      let response = await fetch(`${localURL}/assignments/${cohortNumber}`);
+  for (const studentAssignment of studentAssignments) {
+    const saDataItem = saData.find(
+      (sa) => sa.assignmentid === studentAssignment.assignmentid
+    );
+    const { grade, is_submitted, instructor_comments } = saDataItem;
+    console.log(saDataItem);
+    assignmentResults.push({
+      title: studentAssignment.title,
+      grade,
+      is_submitted,
+      instructor_comments,
+    });
+  }
 
-      if (!response.ok) {
-        throw new Error(`assignments not found, Status: ${response.status}`);
-      }
-
-      setAssignments(await response.json());
-    } catch (error) {
-      console.error(
-        "There was a problem finding these assignments:",
-        error.message
-      );
-    }
-  };
-  useEffect(() => {
-    getAssignmentData();
-    console.log(cohortNumber);
-  }, []);
+  console.log(assignmentResults[0]);
 
   return (
     <>
       <div
-        id="AssignmentContainer"
+        id="GradesContainer"
         className="flex flex-col items-center h-full font-robot pb-[4rem]"
       >
         <div
-          id="assignmentHeader"
+          id="gradesHeader"
           className={
             isDarkMode
-              ? "font-robot text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-white"
-              : "font-robot text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-black"
+              ? "font-Sig text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-white"
+              : "font-Sig text-[1.5rem] w-[95%] pt-[1.5rem] flex justify-center text-black"
           }
         >
           <p
@@ -70,11 +66,12 @@ const Assignments = () => {
               <tr>
                 <th className="py-[1rem]">Title</th>
                 <th>Submitted</th>
+                <th>Grade</th>
                 <th>Instructor Feedback</th>
               </tr>
             </thead>
             <tbody>
-              {assignments.map((item, index) => (
+              {assignmentResults.map((item, index) => (
                 <tr
                   key={index}
                   className={
@@ -88,28 +85,11 @@ const Assignments = () => {
                   }
                 >
                   <td className="text-center py-[0.7rem]">{item.title}</td>
-                  <td className="text-center">
-                    <label htmlFor="checkbox1">
-                      <input
-                        type="checkbox"
-                        checked={item.submitted}
-                        className="w-5 h-5 appearance-none"
-                        id="checkbox1"
-                        readOnly
-                      />
-                      <FontAwesomeIcon
-                        className={
-                          isDarkMode
-                            ? "text-[2rem] h-5 w-5 text-DOLogin"
-                            : "text-[2rem] h-5 w-5 text-LPLogin"
-                        }
-                        icon={faCheck}
-                      />
-                    </label>
+                  <td className="flex justify-center">
+                    {<img src={`${item.is_submitted ? checkmark : x}`}></img>}
                   </td>
-                  <td className={`text-center max-h-[20px] max-w-[10rem]`}>
-                    {item.comments}
-                  </td>
+                  <td className="text-center">{item.grade}</td>
+                  <td className="text-center">{`${item.instructor_comments}`}</td>
                 </tr>
               ))}
             </tbody>

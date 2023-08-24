@@ -5,7 +5,6 @@ import { LandingPageProvider } from "./LandingPage/LandingPageContext";
 import StudentsPage from "./StudentsPage/StudentsPage";
 import StudentsLanding from "./StudentsPage/StudentsLanding";
 import Assignments from "./NavMenu/Assignments";
-import Grades from "./NavMenu/Grades";
 import Calendar from "./NavMenu/Calendar";
 import Messages from "./NavMenu/Messages";
 import Error from "../Error";
@@ -17,6 +16,7 @@ import InstructorPage from "./InstructorPage/InstructorPage";
 import InstructorLanding from "./InstructorPage/InstructorLanding";
 import Students from "./NavMenu/Students";
 import InstructorAssignments from "./NavMenu/InstructorAssignments";
+import InstructorGrades from "./NavMenu/InstructorGrades";
 
 const App = () => {
   return (
@@ -30,7 +30,6 @@ const App = () => {
                 <Route path="studentHome" element={<StudentsLanding />} />
                 <Route path="Assignments" element={<Assignments />} />
                 <Route path="Calendar" element={<Calendar />} />
-                <Route path="Grades" element={<Grades />} />
                 <Route path="Messages" element={<Messages />} />
               </Route>
               <Route element={<ProtectedRoute />}>
@@ -45,8 +44,8 @@ const App = () => {
                     element={<InstructorAssignments />}
                   />
                   <Route path="Calendar" element={<Calendar />} />
-                  <Route path="Grades" element={<Grades />} />
                   <Route path="Messages" element={<Messages />} />
+                  <Route path="Grades" element={<InstructorGrades />} />
                   <Route path="Students" element={<Students />} />
                 </Route>
                 {/* ADMIN PAGES */}
@@ -54,7 +53,6 @@ const App = () => {
                   <Route path="AdminHome" element={<AdminLandingPage />} />
                   <Route path="Assignments" element={<Assignments />} />
                   <Route path="Calendar" element={<Calendar />} />
-                  <Route path="Grades" element={<Grades />} />
                   <Route path="Messages" element={<Messages />} />
                   <Route path="Students" element={<Students />} />
                 </Route>

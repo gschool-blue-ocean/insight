@@ -33,8 +33,6 @@ const InstructorPage = () => {
     setIsDarkMode,
   } = useContext(LandingPageContext);
 
-  //testdata
-
   const openProfileMenu = () => {
     setProfileMenu(!profileMenu);
   };

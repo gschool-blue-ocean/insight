@@ -1,9 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { format } from "date-fns"; // Using date-fns for date formatting
+import LandingPageContext from "../LandingPage/LandingPageContext";
 
 const Calendar = () => {
+  const { isDarkMode } = useContext(LandingPageContext);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState(null);
+  const [assignments, setAssignments] = useState([]);
+
+  useEffect(() => {
+    async function fetchAssignments() {
+      try {
+        const response = await fetch("http://localhost:10000/assignments/1");
+        const data = await response.json();
+        setAssignments(data);
+      } catch (error) {
+        console.error("Error fetching assignments:", error);
+      }
+    }
+
+    fetchAssignments();
+  }, []);
 
   const handlePrevMonth = () => {
     setSelectedDate(
@@ -63,21 +80,45 @@ const Calendar = () => {
           } ${
             selectedDate.getDate() === dayNumber &&
             selectedDate.getMonth() === date.getMonth()
-              ? "bg-[#f0bd5eeb] text-[#31503b]"
+              ? "bg-[#f0bd5eeb] text-[#c2c7c2]"
               : ""
           } ${
             selectedDay &&
             selectedDay.getDate() === dayNumber &&
             selectedDay.getMonth() === date.getMonth()
-              ? "bg-[#f0bd5eb3] text-[#31503b]"
+              ? "bg-[#f0bd5eb3] text-[#c2c7c2]"
               : ""
           }`}
           onClick={() => isCurrentMonth && handleDateClick(date)}
         >
-          {isCurrentMonth ? dayNumber : ""}
+          {dayNumber > 0 && dayNumber <= daysInMonth ? (
+            <div className="text-[#1a2e21]">{dayNumber}</div>
+          ) : (
+            <div className="text-[#717672]">
+              {dayNumber <= 0
+                ? daysInMonth + dayNumber
+                : dayNumber - daysInMonth}
+            </div>
+          )}
+          {assignments.map((assignment) => {
+            const dueDate = new Date(assignment.due_date);
+            if (
+              isCurrentMonth &&
+              dueDate.getDate() === dayNumber &&
+              dueDate.getMonth() === date.getMonth()
+            ) {
+              return (
+                <div key={assignment.id} className="text-[#1c1d1d]">
+                  {assignment.title}
+                </div>
+              );
+            }
+            return null;
+          })}
         </div>
       );
     }
+
     calendarGrid.push(
       <div key={i} className="grid grid-cols-7 gap-1">
         {week}
@@ -86,14 +127,32 @@ const Calendar = () => {
   }
 
   return (
-    <div className="p-4 m-8 overflow-y-auto rounded shadow font-robot">
-      <h1 className="text-xl font-bold text-left text-[#e1f9ee]">
+    <div className="h-full p-4 m-8 overflow-y-auto rounded shadow font-robot">
+      <h1
+        className={
+          isDarkMode
+            ? "text-[26px] font-bold text-left text-[#e1f9ee]"
+            : "text-[26px] font-bold text-left text-[#141515]"
+        }
+      >
         Assignment Due Date Tracker
       </h1>
       <div className="flex items-center justify-between mb-2">
-        <button onClick={handlePrevMonth}>Previous</button>
-        <h2 className="text-xl font-semibold text-center">{monthYearString}</h2>
-        <button onClick={handleNextMonth}>Next</button>
+        <button
+          className="p-4 border-2 border-[#33483c] rounded-xl"
+          onClick={handlePrevMonth}
+        >
+          Previous
+        </button>
+        <h2 className="text-[30px] font-semibold text-center">
+          {monthYearString}
+        </h2>
+        <button
+          className="p-4 border-2 border-[#33483c] rounded-xl"
+          onClick={handleNextMonth}
+        >
+          Next
+        </button>
       </div>
       {calendarGrid}
     </div>

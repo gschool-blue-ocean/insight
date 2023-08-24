@@ -13,6 +13,9 @@ export const LandingPageProvider = ({ children }) => {
   const { currentProfile } = useContext(AuthContext);
   const [currentStudent, setCurrentStudent] = useState({});
   const [currentUser, setCurrentUser] = useState({});
+  const [studentAssignments, setStudentAssignments] = useState([])
+  const [isCohorts, setCurrentCohort] = useState([])
+  const [saData, setSaData] = useState([])
 
   const [isCohorts, setCurrentCohort] = useState([]);
 
@@ -21,6 +24,7 @@ export const LandingPageProvider = ({ children }) => {
   const [chatOpen, setChatOpen] = useState(false);
   const [chatLarge, setChatLarge] = useState(false);
   const [messages, setMessages] = useState([]);
+
 
   const getUserData = async () => {
     try {
@@ -66,7 +70,6 @@ export const LandingPageProvider = ({ children }) => {
       let res = await fetch(`${localURL}/cohorts/`);
       let cohortData = res.json();
       setCurrentCohort(cohortData);
-      console.log(cohortData);
       if (!res.ok) {
         throw new Error(`Cohort not found, status: ${res.status}`);
       }
@@ -78,11 +81,15 @@ export const LandingPageProvider = ({ children }) => {
     getCohort();
   }, []);
 
+
+  
+
   let daysMissed = 0;
   let cohortNumber = 0;
   let userFirstName = "";
   let userLastName = "";
   let username = "";
+  let studentId
 
   if (currentUser[0]) {
     userFirstName = currentUser[0].firstname;
@@ -96,7 +103,42 @@ export const LandingPageProvider = ({ children }) => {
       daysMissed = currentStudent[0].days_absent;
     }
     cohortNumber = currentStudent[0].cohortid;
+    studentId = currentStudent[0].studentid
   }
+
+  const getAssignments = async () => {
+    try {
+      let res = await fetch(`${localURL}/assignments/${cohortNumber}`)
+      let assignments = await res.json()
+      setStudentAssignments(assignments)
+      if (!res.ok) {
+        throw new Error('Response not ok')
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+  useEffect(() => {
+    getAssignments();
+  }, [currentStudent]);
+
+
+  const getSaData = async () => {
+    try {
+      let res = await fetch(`${localURL}/students_assignments/${studentId}`)
+      let sa = await res.json()
+      setSaData(sa)
+      if (!res.ok) {
+        throw new Error('Response not ok')
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+  useEffect(() => {
+    getSaData();
+  }, [currentStudent]);
+
   const localURL = "http://localhost:10000";
   //dates obj
   const todayDate = new Date();
@@ -198,7 +240,6 @@ export const LandingPageProvider = ({ children }) => {
         monthNames,
         profileMenu,
         setProfileMenu,
-        averageGrade,
         tableData,
         countdown,
         setCountdown,
@@ -225,6 +266,9 @@ export const LandingPageProvider = ({ children }) => {
         setChatLarge,
         messages,
         setMessages,
+        studentAssignments,
+        saData
+
       }}
     >
       {children}
