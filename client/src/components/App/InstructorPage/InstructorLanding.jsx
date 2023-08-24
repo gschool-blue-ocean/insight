@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import LandingPageContext from "../LandingPage/LandingPageContext";
 import alertDM from "/assets/alerts/alertDM.svg";
 import alertLM from "/assets/alerts/alertLM.svg";
+import CohortName from "../AdminPage/CohortList";
 import { Chart as ChartJS } from "chart.js";
 import Chart from "chart.js/auto";
 
@@ -94,7 +95,13 @@ const InstructorLanding = () => {
           className="flex justify-between items-center  text-center border-b-2 border-DGLogin border-opacity-[0.8] w-[90%] pb-[2rem] mb-[2rem]"
         >
           <div id="spacer"></div>
-          <h1 className="text-[3rem] pt-8 pl-[15rem]">{`Cohort 1`}</h1>
+          {/* Dropdown Menu */}
+          <div className="flex flex-col items-center text-[2.5rem] pt-8 pl-[15rem]">
+            <label htmlFor="cohortSelect" className="mb-2">
+              Select Cohort:
+            </label>
+            <CohortName />
+          </div>
           <div
             id="date"
             className="flex items-start pt-[1rem] pr-[1rem] gap-[1rem]"
