@@ -20,6 +20,7 @@ import toggleDM from "/assets/toggle/toggleOnOffDM.svg";
 import toggleLM from "/assets/toggle/toggleOnOffLM.svg";
 import studentsLM from "/assets/students/studentsLM.svg";
 import studentsDM from "/assets/students/studentsDM.svg";
+import BG from "client/src/images/reversecity.jpg";
 
 const InstructorPage = () => {
   const {
@@ -51,7 +52,7 @@ const InstructorPage = () => {
             : "h-screen text-black bg-center bg-cover"
         }
         style={{
-          backgroundImage: `url('/images/reversecity.jpg')`,
+          backgroundImage: `url(${BG})`,
           backgroundBlendMode: isDarkMode ? "multiply" : "screen",
           backgroundColor: isDarkMode
             ? "rgba(26, 61, 54, 0.9)"
