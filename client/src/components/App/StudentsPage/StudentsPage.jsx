@@ -26,6 +26,8 @@ const StudentsPage = () => {
     setIsProfileOpen,
     userFirstName,
     userLastName,
+    isChatOpen,
+    
   } = useContext(LandingPageContext);
 
   const openProfileMenu = () => {
