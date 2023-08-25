@@ -8,7 +8,6 @@ const CohortName = () => {
 
   const handleCohortChange = (event) => {
     setSelectedCohort(event.target.value);
-    console.log(event.target.value);
     // Update the selected cohort when the dropdown value changes
   };
 

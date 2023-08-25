@@ -5,6 +5,9 @@ import pg from "pg";
 import cluster from "cluster";
 import dotenv from "dotenv";
 import os from "os";
+import { createServer } from 'http';
+import { Server } from 'socket.io';
+
 //!ROUTES imports
 import studentRoutes from "./roles/studentRoutes.js";
 import assignmentRoutes from "./misc/assignments.js";
@@ -17,11 +20,33 @@ import loginRoute from "./misc/loginRoute.js";
 import logoutRoutes from './misc/logoutRoutes.js'
 import students_assignmentsRoutes from './misc/students_assignments.js'
 
+const app = express();
+const db = new pg.Pool({ connectionString: process.env.DATABASE_URL });
+
+
+const socketServer = createServer(app);
+const io = new Server(socketServer, {
+    cors: {
+        origin: "*", // Adjust this according to your frontend's location
+        methods: ["GET", "POST"]
+    },
+    reconnection: false
+});
+io.on('connection', (socket) => {
+  console.log('A user connected');
+
+  socket.on('send_message', (messageData) => {
+    io.emit('receive_message', messageData);
+    console.log('Message received:', messageData);
+  });
+
+  socket.on('disconnect', () => {
+      console.log('A user disconnected');
+  });
+});
 //env config pathing
 dotenv.config({ path: ".env" });
 
-const app = express();
-const db = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 
 //checkto see if the curr process is the primary process or a forked one
 if (cluster.isPrimary) { //if prim see total cpus aval on system 
@@ -91,6 +116,10 @@ if (cluster.isPrimary) { //if prim see total cpus aval on system
   });
 
 const PORT = process.env.PORT;
+
+socketServer.listen(4000, () => {
+  console.log('Socket is listening')
+})
 
   app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);

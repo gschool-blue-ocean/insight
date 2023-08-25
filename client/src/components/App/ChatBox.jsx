@@ -30,14 +30,15 @@ const Chat = () => {
     setCurrentMessage("");
   };
   useMemo(() => {
-    socket.on("connect", () => {
+    socket.on("connection", () => {
       console.log("Connected to the server");
     });
 
-    socket.on("receive_message", (message) => {
-      setMessages((list) => [...list, message]);
+    socket.on("receive_message", (messageData) => {
+      console.log('received on front end')
+      setMessages((list) => [...list, messageData]);
     });
-  }, []);
+  }, [socket]);
 
   const minimizeChat = () => {
     setChatLarge(false);
