@@ -17,6 +17,7 @@ import calendarLM from "/assets/calendar/calendarLM.svg";
 import gradesDM from "/assets/grades/gradesDM.svg";
 import gradesLM from "/assets/grades/gradesLM.svg";
 import ChatBox from "../ChatBox.jsx";
+import BG from "client/src/images/reversecity.jpg"
 
 const StudentsPage = () => {
   const {
@@ -32,6 +33,7 @@ const StudentsPage = () => {
     setChatLarge,
     setChatOpen,
     messages,
+    makeChatLarger,
   } = useContext(LandingPageContext);
 
   const openProfileMenu = () => {
@@ -41,10 +43,7 @@ const StudentsPage = () => {
   const openProfile = () => {
     setIsProfileOpen(!isProfileOpen);
   };
-  const makeChatLarger = () => {
-    setChatLarge(!chatLarge);
-    setChatOpen(false);
-  };
+
   return (
     <>
       <div
@@ -55,7 +54,7 @@ const StudentsPage = () => {
             : "h-screen text-black bg-center bg-cover"
         }
         style={{
-          backgroundImage: `url('/images/reversecity.jpg')`,
+          backgroundImage: `url(${BG})`,
           backgroundBlendMode: isDarkMode ? "multiply" : "screen",
           backgroundColor: isDarkMode
             ? "rgba(26, 61, 54, 0.9)"
@@ -283,7 +282,7 @@ const StudentsPage = () => {
           {chatOpen ? (
             <div
               id="chatFunction"
-              className="ml-[3rem] bg-white border-black border-[2px] w-[10rem] flex justify-center absolute right-[5%] cursor-pointer rounded-md"
+              className="ml-[3rem] bg-DGLogin border-LGLogin border-[2px] w-[10rem] flex justify-center absolute right-[5%] cursor-pointer rounded-md"
               onClick={makeChatLarger}
             >
               <p className="text-black">Insight Chat</p>

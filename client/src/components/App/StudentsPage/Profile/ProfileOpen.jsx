@@ -11,6 +11,8 @@ const ProfileOpen = () => {
     username,
     setChatLarge,
     setChatOpen,
+    setMessages,
+    socket,
   } = useContext(LandingPageContext);
   const { logoutProfile } = useContext(AuthContext);
 
@@ -18,6 +20,10 @@ const ProfileOpen = () => {
     setProfileMenu(false);
     setChatOpen(false);
     setChatLarge(false);
+    setMessages([]);
+    socket.on("disconnect", () => {
+      console.log("Disconnected from the server");
+    });
     logoutProfile();
   };
   if (currentStudent && currentUser) {
@@ -39,12 +45,6 @@ const ProfileOpen = () => {
             <button onClick={handleLogout}>Sign Out</button>
           </Link>
         </div>
-        <button
-          id="deleteAccount"
-          className="flex bg-[#ff24249e]  px-[0.25rem] rounded-xl  justify-center "
-        >
-          <p className="text-center">Delete Account</p>
-        </button>
       </div>
     </>
   );

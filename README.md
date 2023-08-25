@@ -5,8 +5,8 @@
 - [Isaac Summers](https://www.linkedin.com/in/isaac-w-summers/)
 - [Carl Gutierrez ](https://www.linkedin.com/in/carlanthonyg/)
 - [Autumn Sheridan](https://www.linkedin.com/in/autumn-r-sheridan/)
--  [Brandon Stegall](https://www.linkedin.com/in/brandonstegall817/)
--  [Nathan Vititoe]((https://www.linkedin.com/in/nathanvititoe/))
+- [Brandon Stegall](https://www.linkedin.com/in/brandonstegall817/)
+- [Nathan Vititoe](https://www.linkedin.com/in/nathanvititoe/)
 
 ## Description ##
 
@@ -30,8 +30,9 @@ Backend:
 - [`Docker`](https://www.docker.com/) - Containerization framework for dev and deployment.
 - [`Node Cluster Module`](https://nodejs.org/api/cluster.html) -  Utilized for enhancing application performance by distributing workloads across multiple processes for improved efficiency and response times.
 - [`loadtest`](https://nodejs.org/api/cluster.html) -  Employed for load testing and assessing the robustness of the application's node clustering implementation.
-- [`ChartJS`](https://nodejs.org/api/cluster.html) - Utilized for seamlessly creating interactive and visually appealing charts and graphs on web applications.
+- [`ChartJS`](https://nodejs.org/api/cluster.html) - Utilized for seamlessly creating interactive and visually appealing charts and graphs.
 - [`Sockets.io`](https://nodejs.org/api/cluster.html) - Integrated for establishing real-time, bidirectional communication between the server and clients.
+- [`jwt-decode`](https://jwt.io/) - Leveraged to securely manage user sessions and access control.
 
 # Development Setup #
 

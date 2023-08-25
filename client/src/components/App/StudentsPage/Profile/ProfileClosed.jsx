@@ -13,24 +13,16 @@ const ProfileClosed = () => {
     setChatOpen,
     setChatLarge,
     setProfileMenu,
-    chatname,
-    socket,
   } = useContext(LandingPageContext);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
 
-  const joinRoom = () => {
-    if (chatname !== "") {
-      socket.emit("join_room");
-    }
-  };
   const openChat = () => {
     setChatOpen(!chatOpen);
     setChatLarge(false);
     setProfileMenu(false);
-    joinRoom();
   };
 
   return (
