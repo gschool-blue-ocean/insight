@@ -27,7 +27,7 @@ const InstructorLanding = () => {
 
   useEffect(() => {
     // Fetch student data from the API
-    fetch("http://localhost:10000/students")
+    fetch("https://insight-uqbc.onrender.com/students")
       .then((response) => response.json())
       .then((data) => {
         // Filter students from cohort ID 1
@@ -119,9 +119,12 @@ const InstructorLanding = () => {
       </div>
       <div
         id="analyticsContainer"
-        className="px-[2rem] py-[2rem] text-[1.25rem] flex justify-between items-end h-[80%]"
+        className="px-[2rem] py-[2rem] text-[1.25rem] flex justify-between items-start max-h-[fit-content]"
       >
-        <div id="countdown" className="flex flex-col items-center gap-[1rem]">
+        <div
+          id="countdown"
+          className="flex flex-col items-center w-1/2 gap-[1rem]"
+        >
           <p>Days till Graduation</p>
           <div className="text-[8rem] font-bold border-[#77877c] border-[3px] bg-[#666f69] text-[#d2af6b] rounded-md">
             <p className="font-robot p-[1rem]">{countdown}</p>
@@ -129,7 +132,7 @@ const InstructorLanding = () => {
         </div>
         <div
           id="npsdata"
-          className="flex flex-col text-center items-center mb-[20rem] mr-[8rem]"
+          className="flex flex-col text-center items-center mb-[10rem]"
         >
           <div>
             <canvas id="bubbleChart" width={600} height={400} />
