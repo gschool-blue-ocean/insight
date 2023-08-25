@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <meta http-equiv="Content-Security-Policy"
+    <meta http-equiv="Content-Security-Policy"
     content="
       default-src 'self' https://fonts.googleapis.com data: gap: https://ssl.gstatic.com 'unsafe-eval'; 
       style-src 'self' 'unsafe-inline' fonts.googleapis.com;
@@ -14,7 +14,9 @@
       media-src   *;
       connect-src 'self' http://localhost:10000 http://localhost:4000 https://insight-uqbc.onrender.com/;   /* Add the necessary connect-src directive */
     "
-  /> -->
+  />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' http://localhost:10000 http://localhost:4000 ws://localhost:4000 https://insight-uqbc.onrender.com/">
+
     <title>Insight</title>
     
     
@@ -25,8 +27,8 @@
       href="https://fonts.googleapis.com/css2?family=Lato&family=Libre+Franklin:wght@800&family=Roboto+Serif:opsz@8..144&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/assets/index.2397693e.js"></script>
-    <link rel="stylesheet" href="/assets/index.350941fc.css">
+    <!-- <script type="module" crossorigin src="/assets/index.2397693e.js"></script>
+    <link rel="stylesheet" href="/assets/index.350941fc.css"> -->
   </head>
   <body>
     <div id="root"></div>
