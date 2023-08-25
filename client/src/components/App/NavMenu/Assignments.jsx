@@ -86,7 +86,7 @@ const Assignments = () => {
                 >
                   <td className="text-center py-[0.7rem]">{item.title}</td>
                   <td className="flex justify-center">
-                    {<img src={`${item.is_submitted ? checkmark : x}`}></img>}
+                    {<img src={`${item.is_submitted ? checkmark : x}`} className="mt-2.5"></img>}
                   </td>
                   <td className="text-center">{item.grade}</td>
                   <td className="text-center">{`${item.instructor_comments}`}</td>
