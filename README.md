@@ -35,42 +35,60 @@ Backend:
 - [`jwt-decode`](https://jwt.io/) - Leveraged to securely manage user sessions and access control.
 
 # Development Setup #
-
+### INITIAL SETUP ###
 1. Clone this repository: `git clone https://github.com/gschool-blue-ocean/insight`
-2. Install dependencies for both client and API directories : `npm install`
+2. Install dependencies for both Root, Client and API directories : `npm install`
 3. Set up your environment variables (database connection, etc.): Create a `.env` file
-4. Start the development server: `npm start`
+4. Start the development server: INSIDE CLIENT FOLDER: `npm run dev`, INSIDE API FOLDER: `npm run server`
 
 ## Project Structure ##
 
 - `/client`: Frontend code built with React and Tailwind CSS.
 - `/server`: Backend code powered by Node.js, Express, and PostgreSQL.
 
-# Galvanize
-
 ## Technical Challenges ##
-* Why, what was the plan to overcome those challenges?
-* What did you learn?
 
-## Challenges that were unexpected ## 
-* Why was it a challenge
-* What did you learn?
+- WebSockets + Chatbot feature
+- WebSockets + Clustering 
+- One of the major challenges the team faced was organizing the various data needed to populate the site. Common issues included complex client requests involving multiple tables, unforeseen interdependencies, and sticky syntax issues from end to end
 
-## Walkthrough of the app ##
-* What were the user stories /  what was MVP (mention Minimal Viable Product)
-* INSERT SCREENSHOT / VIDEOS WALKTHROUGH IN HERE
+## Walkthrough of the App ##
+
+### Login Page
+<img align="center" alt="Banner" src="./readMeResources/LoginPage.png"  width="100%" height="70%">
+
+### Student Page 
+<img align="center" alt="Banner" src="./readMeResources/StudentPageLMS.png"  width="100%" height="70%">
+
+### Teacher Page
+<img align="center" alt="Banner" src="./readMeResources/TeacherPageLMS.png"  width="100%" height="70%">
+
+### Admin Page
+<img align="center" alt="Banner" src="./readMeResources/AdminPageLMS.png"  width="100%" height="70%">
 
 ## How does the app work?
- * What research was required?
+ Research Required:
+  - NodeJS Cluster
+  - WebSockets
+  - loadtest
+  - jwt-decode
+  - bcrypt
+  - socket.io-client
+  - Chart.js
 
-## Workflow and Key lessons from your team - specifically those related to: Agile, CI/CD, testing, working with external stakeholders, ticketing, and user stories.
-* Your git workflow, style guides, commit guides, etc
-* What did you learn from the process
-* What were key takeaways from stand ups, code reviews, etc
-* Writing tests
-* Link to your trello board, discuss completed tickets
+## Workflow and Key lessons
+- Team Workflow : 
+  - Team StandUp
+  - Morning Sync Merge / reviews
+  - Afternoon Sync + Merge / reviews
+- Git Workflow :
+  - Deploy off main branch
+  - Branch for task named off of TMS epic/ticket
 
-## what was left unfinished
+
+### Key Lessons
+
+- Commit and Push often even if you're not 100%
+- Learn: Git Stash / Git Apply / Git Rebase / and how to properly work with branching, pulling, and Merging Conflicts
 
 
-## LINK FOR DOCUMENTATION FOR THE PROJECT
