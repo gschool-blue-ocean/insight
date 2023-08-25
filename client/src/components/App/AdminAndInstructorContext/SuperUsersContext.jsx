@@ -7,14 +7,13 @@ import Chart from "chart.js/auto";
 
 
 export const SuperUsersProvider = ({ children }) => {
-    const {localURL} = useContext(LandingPageContext)
   //state for cohort drop down
   const [selectedCohort, setSelectedCohort] = useState("");
   const [isCohorts, setCurrentCohort] = useState([]);
   //grab all cohorts name for Admin and instructors drop down
   const getCohort = async () => {
     try {
-      let res = await fetch(`${localURL}/cohorts/`);
+      let res = await fetch(`https://insight-uqbc.onrender.com/cohorts/`);
       // console.log(cohortData);
       if (!res.ok) {
           throw new Error(`Cohort not found, status: ${res.status}`);

@@ -32,7 +32,7 @@ const AdminLandingPage = () => {
 
   useEffect(() => {
     // Fetch student data from the API
-    fetch("http://localhost:10000/students")
+    fetch("https://insight-uqbc.onrender.com/students")
       .then((response) => response.json())
       .then((data) => {
         // Filter students from cohort ID 1
